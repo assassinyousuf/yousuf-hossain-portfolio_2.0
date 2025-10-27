@@ -3,7 +3,48 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-      <!-- Removed aside: using single-column main layout. -->
+  <title>Md. Yousuf Hossain — Portfolio</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="header">
+      <div class="avatar">
+        <img src="yousuf.jpeg" alt="Yousuf Hossain">
+      </div>
+      <div class="title">
+        <h1>Md. Yousuf Hossain</h1>
+        <div class="lead">Cybersecurity Enthusiast • Application Developer • CTF Champion • Graphics Designer</div>
+        <div style="margin-top:8px;color:var(--muted);font-size:13px">
+          Sayednagar, Vatara, Dhaka ·
+          <a href="mailto:itsmemehrab369@gmail.com" style="color:var(--accent2);text-decoration:none;margin-left:8px">itsmemehrab369@gmail.com</a>
+          <span style="margin-left:10px">· 01629-263618</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="grid">
+      <div>
+        <!-- About -->
+        <article class="card fade-in" id="aboutCard">
+          <div class="section-title">About Me</div>
+          <div style="color:var(--muted); font-size:13px; line-height:1.45">
+            I’m a curious problem-solver who loves puzzles — from CTF challenges to algorithm design — and I combine that with a passion for visual design.
+            I build secure and user-friendly apps, design event identities, and enjoy hands-on learning in cybersecurity.
+            <br><br>
+            <strong>Hobbies:</strong> Watching anime, Gaming, Drawing, Exploring new tech, Music production.
+          </div>
+        </article>
+
+        <!-- Experience -->
+        <article class="card fade-in" id="expCard">
+          <div class="section-title">Experience</div>
           <div class="projects">
             <div class="project">
               <div><span class="icon">🎨</span><h4>Freelance Graphics Designer</h4></div>
@@ -200,8 +241,6 @@
           </div>
         </article>
       </div>
-
-      <!-- Removed aside for single-column layout -->
     </section>
 
     <div class="footer">Built with ❤️ by Yousuf — &copy; <span id="year"></span></div>
