@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="320" viewBox="0 0 480 320">
+  <defs>
+    <linearGradient id="g1" x1="0" x2="1">
+      <stop offset="0%" stop-color="#00e5ff"/>
+      <stop offset="100%" stop-color="#39ff14"/>
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" rx="16" fill="url(#g1)" opacity="0.12" />
+  <g transform="translate(28,36)">
+    <rect x="0" y="28" width="120" height="84" rx="8" fill="#071327" opacity="0.9" stroke="#ffffff20"/>
+    <rect x="132" y="12" width="268" height="160" rx="10" fill="#071327" opacity="0.85" stroke="#ffffff20"/>
+    <g fill="#eaf6ff" font-family="JetBrains Mono, monospace">
+      <text x="6" y="82" font-size="18">Hostel</text>
+      <text x="6" y="104" font-size="12" opacity="0.8">Management</text>
+    </g>
+  </g>
+  <g transform="translate(320,8)">
+    <circle cx="40" cy="40" r="28" fill="#ffffff10" stroke="#ffffff20"/>
+    <text x="24" y="48" font-size="20">🏨</text>
+  </g>
+</svg>

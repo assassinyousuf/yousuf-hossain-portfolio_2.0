@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="320" viewBox="0 0 480 320">
+  <defs>
+    <linearGradient id="g3" x1="0" x2="1">
+      <stop offset="0%" stop-color="#00e5ff"/>
+      <stop offset="100%" stop-color="#ff3864"/>
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" rx="16" fill="url(#g3)" opacity="0.10" />
+  <g transform="translate(40,38)">
+    <rect x="12" y="12" width="100" height="140" rx="8" fill="#071327" stroke="#ffffff20" />
+    <g font-size="28" fill="#eaf6ff">
+      <text x="22" y="84">🗼</text>
+    </g>
+    <text x="132" y="64" font-size="18" fill="#eaf6ff">Tower of Hanoi</text>
+    <text x="132" y="88" font-size="12" fill="#eaf6ff" opacity="0.85">Recursive animation</text>
+  </g>
+</svg>
