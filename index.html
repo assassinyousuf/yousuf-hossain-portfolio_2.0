@@ -3,249 +3,294 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Md. Yousuf Hossain — Portfolio</title>
+  <title>Yousuf Hossain — Portfolio + Fun Zone</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="wrap">
-    <header class="header">
+    <header>
       <div class="avatar">
-        <img src="yousuf.jpeg" alt="Yousuf Hossain">
+        <img src="yousuf.jpeg" alt="Yousuf Hossain" class="profile-pic">
       </div>
-      <div class="title">
+      <div>
         <h1>Md. Yousuf Hossain</h1>
-        <div class="lead">Cybersecurity Enthusiast • Application Developer • CTF Champion • Graphics Designer</div>
-        <div style="margin-top:8px;color:var(--muted);font-size:13px">
-          Sayednagar, Vatara, Dhaka ·
-          <a href="mailto:itsmemehrab369@gmail.com" style="color:var(--accent2);text-decoration:none;margin-left:8px">itsmemehrab369@gmail.com</a>
-          <span style="margin-left:10px">· 01629-263618</span>
-        </div>
+        <p class="lead">Cybersecurity Enthusiast • Application Developer • CTF Learner • Graphics Designer</p>
+        <p style="color:var(--muted);margin-top:8px">
+          Sayednagar Block-A, Vatara, Badda, Dhaka · 
+          <a href="mailto:itsmemehrab369@gmail.com" style="color:var(--accent2);text-decoration:none">itsmemehrab369@gmail.com</a> · 01629-263618
+        </p>
       </div>
     </header>
 
-    <section class="grid">
-      <div>
-        <!-- About -->
-        <article class="card fade-in" id="aboutCard">
-          <div class="section-title">About Me</div>
-          <div style="color:var(--muted); font-size:13px; line-height:1.45">
-            I’m a curious problem-solver who loves puzzles — from CTF challenges to algorithm design — and I combine that with a passion for visual design.
-            I build secure and user-friendly apps, design event identities, and enjoy hands-on learning in cybersecurity.
-            <br><br>
-            <strong>Hobbies:</strong> Watching anime, Gaming, Drawing, Exploring new tech, Music production.
-          </div>
-        </article>
+    <div class="grid">
+      <main>
+          <div class="card">
+            <div class="section-title">About Me</div>
+            <p style="color:var(--muted)">I'm a curious mind who loves solving puzzles — whether it's breaking down complex cybersecurity challenges or crafting eye-catching visual designs. As a cybersecurity enthusiast, I thrive on Capture The Flag (CTF) competitions and hands-on learning through platforms like TryHackMe and HackTheBox.
 
-        <!-- Experience -->
-        <article class="card fade-in" id="expCard">
-          <div class="section-title">Experience</div>
-          <div class="projects">
+Beyond code and exploits, I'm also a passionate graphics designer who enjoys creating impactful visuals that tell stories and inspire engagement. My goal is to bridge creativity with technology — building secure, functional, and visually stunning digital experiences.
+
+Recently, I was crowned Champion of the DIU Intra First Practice CTF, a milestone that fueled my motivation to push further into ethical hacking and digital security innovation.</p>
+          </div>
+
+          <!-- Experience -->
+          <article class="card fade-in" id="expCard">
+            <div class="section-title">Experience</div>
+            <div class="projects">
+              <div class="project">
+                <div><span class="icon">🎨</span><h4>Freelance Graphics Designer</h4></div>
+                <p>Created promotional posters, event banners, and UI assets for student organizations and social media campaigns using Adobe Photoshop, Illustrator, and Canva. Designed branding visuals for DIU CPC events and tech workshops.</p>
+                <div class="p-tags">
+                  <span class="tag" data-color="cyan">Photoshop</span>
+                  <span class="tag" data-color="cyan">Illustrator</span>
+                  <span class="tag" data-color="green">Branding</span>
+                </div>
+              </div>
+
+              <div class="project">
+                <div><span class="icon">💻</span><h4>Cybersecurity Learner & CTF Player</h4></div>
+                <p>Champion of DIU Intra First Practice CTF organized by DIU Cyber Security Club. Experienced with hands-on learning through TryHackMe, HackTheBox, and PicoCTF, focusing on Linux exploitation, cryptography, and web vulnerabilities.</p>
+                <div class="p-tags">
+                  <span class="tag" data-color="green">TryHackMe</span>
+                  <span class="tag" data-color="green">HTB</span>
+                  <span class="tag" data-color="green">CTF</span>
+                </div>
+              </div>
+
+              <div class="project">
+                <div><span class="icon">📱</span><h4>Application Development</h4></div>
+                <p>Developed several academic and hobby projects using Flutter, Java, and C, integrating logical problem solving with user-friendly design principles.</p>
+                <div class="p-tags">
+                  <span class="tag" data-color="cyan">Flutter</span>
+                  <span class="tag" data-color="cyan">Java</span>
+                  <span class="tag" data-color="cyan">C</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <div class="card">
+            <div class="section-title">Projects</div>
             <div class="project">
-              <div><span class="icon">🎨</span><h4>Freelance Graphics Designer</h4></div>
-              <p>Designed posters, event banners, and UI assets for student orgs using Photoshop, Illustrator, and Canva. Managed branding materials for DIU CPC events.</p>
-              <div class="p-tags">
-                <span class="tag" data-color="cyan">Photoshop</span>
-                <span class="tag" data-color="cyan">Illustrator</span>
-                <span class="tag" data-color="green">Branding</span>
-              </div>
+              <h4>Hostel Management System</h4>
+              <p style="color:var(--muted);font-size:14px">C-based group project — managed data operations and implemented hostel features.</p>
             </div>
-
             <div class="project">
-              <div><span class="icon">💻</span><h4>Cybersecurity Learner & CTF Player</h4></div>
-              <p>Champion — DIU Intra First Practice CTF. Regularly complete TryHackMe/HackTheBox rooms (Linux, web, crypto). Focus on vulnerability hunting and exploit development.</p>
-              <div class="p-tags">
-                <span class="tag" data-color="green">TryHackMe</span>
-                <span class="tag" data-color="green">HTB</span>
-                <span class="tag" data-color="green">CTF</span>
-              </div>
+              <h4>SudokuSolver</h4>
+              <p style="color:var(--muted);font-size:14px">Java OOP program visualizing the solving process using backtracking algorithm.</p>
             </div>
-
             <div class="project">
-              <div><span class="icon">📱</span><h4>Application Development</h4></div>
-              <p>Built hobby and academic projects using Flutter, Java and C — focusing on UX and clear code structure.</p>
-              <div class="p-tags">
-                <span class="tag" data-color="cyan">Flutter</span>
-                <span class="tag" data-color="cyan">Java</span>
-                <span class="tag" data-color="cyan">C</span>
-              </div>
+              <h4>Tower Of Hanoi</h4>
+              <p style="color:var(--muted);font-size:14px">Flutter app that visualizes recursion logic behind Tower of Hanoi puzzles.</p>
             </div>
-          </div>
-        </article>
-
-        <!-- Projects -->
-        <article class="card fade-in" id="projectsCard">
-          <div class="section-title">Projects</div>
-
-          <!-- Hostel Management -->
-          <div class="project">
-            <div style="display:flex; align-items:center; justify-content:space-between">
-              <div style="display:flex;align-items:center">
-                <img class="project-thumb" src="images/project-hostel.svg" alt="Hostel">
-                <span class="icon">🏨</span>
-                <h4>Hostel Management System</h4>
-              </div>
-              <a class="view-more" href="#" aria-label="View details - Hostel Management">
-                View details <span class="arrow">→</span>
-              </a>
-            </div>
-
-            <p>
-              A C-based multi-user console system that handles student registration, room allocation, fee records, and attendance.
-              Implemented file-based persistent storage with modular code for user, room and billing subsystems. Included input validation and transaction logging.
-            </p>
-
-            <div class="p-tags">
-              <span class="tag" data-color="green">C</span>
-              <span class="tag" data-color="cyan">Database</span>
-              <span class="tag" data-color="green">System Design</span>
+            <div class="project">
+              <h4>Event Branding for DIU CPC</h4>
+              <p style="color:var(--muted);font-size:14px">Designed all digital branding materials for DIU CSE Fest 2024 including posters, social media ads, and digital banners.</p>
             </div>
           </div>
 
-          <!-- Sudoku Solver -->
-          <div class="project">
-            <div style="display:flex; align-items:center; justify-content:space-between">
-              <div style="display:flex;align-items:center">
-                <img class="project-thumb" src="images/project-sudoku.svg" alt="Sudoku">
-                <span class="icon">🧩</span>
-                <h4>SudokuSolver</h4>
-              </div>
-              <a class="view-more" href="#" aria-label="View details - SudokuSolver">View details <span class="arrow">→</span></a>
+          <!-- Fun Zone -->
+          <div class="card" id="funZoneCard">
+            <div class="section-title">Fun Zone — Mini Games</div>
+            <div style="color:var(--muted); margin-bottom:8px">
+              Want to chill while browsing? Play a short mini-game — all embedded right here. Beat the high score, solve the puzzle, or test your memory.
             </div>
 
-            <p>
-              Java OOP application demonstrating backtracking. Visualizes the step-by-step solving process and supports different difficulty levels. Optimized with constraint checks and cell-order heuristics.
-            </p>
+            <div class="fun-zone-row">
+              <button class="game-btn" data-game="hack" id="openHack">
+                <span class="emoji">🎯</span>
+                <span>Hack the Code</span>
+              </button>
 
-            <div class="p-tags">
-              <span class="tag" data-color="cyan">Java</span>
-              <span class="tag" data-color="green">OOP</span>
-              <span class="tag" data-color="green">Algorithms</span>
-            </div>
-          </div>
+              <button class="game-btn" data-game="virus" id="openVirus">
+                <span class="emoji">🦠</span>
+                <span>Avoid the Virus</span>
+              </button>
 
-          <!-- Tower of Hanoi -->
-          <div class="project">
-            <div style="display:flex; align-items:center; justify-content:space-between">
-              <div style="display:flex;align-items:center">
-                <img class="project-thumb" src="images/project-tower.svg" alt="Tower of Hanoi">
-                <span class="icon">🗼</span>
-                <h4>Tower Of Hanoi</h4>
-              </div>
-              <a class="view-more" href="#" aria-label="View details - Tower Of Hanoi">View details <span class="arrow">→</span></a>
+              <button class="game-btn" data-game="memory" id="openMemory">
+                <span class="emoji">🧠</span>
+                <span>Memory Match</span>
+              </button>
             </div>
 
-            <p>
-              Flutter app that animates recursion for the Tower of Hanoi puzzle. Includes interactive controls to change disk counts and watch recursive moves with easing animations.
-            </p>
-
-            <div class="p-tags">
-              <span class="tag" data-color="cyan">Flutter</span>
-              <span class="tag" data-color="green">Recursion</span>
-              <span class="tag" data-color="green">Animation</span>
+            <div style="margin-top:12px; color:var(--muted); font-size:13px">
+              Tip: You can play directly in the page. Close the modal to return — progress resets on close.
             </div>
           </div>
 
-          <!-- DIU CPC Branding -->
-          <div class="project">
-            <div style="display:flex; align-items:center; justify-content:space-between">
-              <div style="display:flex;align-items:center">
-                <img class="project-thumb" src="images/project-branding.svg" alt="Branding">
-                <span class="icon">🎨</span>
-                <h4>Event Branding for DIU CPC</h4>
-              </div>
-              <a class="view-more" href="#" aria-label="View details - Branding">View details <span class="arrow">→</span></a>
+          <div class="card">
+            <div class="section-title">Education & Activities</div>
+            <p style="color:var(--muted)"><strong>BSc in Computer Science and Engineering (CSE)</strong><br>
+              Dhaka International University — 5th Semester<br>Expected Graduation: 2027</p>
+            <p style="color:var(--muted)"><strong>HSC</strong> — 2022 · GPA: 4.67 / 5.00</p>
+
+            <div style="margin-top:16px">
+              <div class="section-title">Extracurricular</div>
+              <ul style="color:var(--muted);margin-left:18px">
+                <li>Treasurer, DIU Computer Programming Club (DIU CPC)</li>
+                <li>Executive Member of BASIS Student Forum</li>
+                <li>Organizer, CSE Fest Fall 2024</li>
+                <li>Champion, DIU Intra First Practice CTF (DIU Cyber Security Club)</li>
+                <li>Designed branding and digital banners for DIU CPC official events</li>
+              </ul>
             </div>
+          </div>
+        </main>
 
-            <p>
-              Full visual identity for DIU Computer Programming Club events: posters, social ads, stage banners and templates. Focus on bold typography, color contrast and readable layouts for both print and digital.
-            </p>
-
-            <div class="p-tags">
-              <span class="tag" data-color="cyan">Design</span>
-              <span class="tag" data-color="cyan">Branding</span>
-              <span class="tag" data-color="green">Graphics</span>
+        <aside>
+          <div class="card">
+            <div class="section-title">Skills & Tools</div>
+            <div class="skills">
+              <a href="https://flutter.dev" target="_blank" class="skill">Flutter</a>
+              <a href="https://python.org" target="_blank" class="skill">Python</a>
+              <a href="https://en.cppreference.com/w/c" target="_blank" class="skill">C</a>
+              <a href="https://www.java.com" target="_blank" class="skill">Java</a>
+              <a href="https://ctftime.org" target="_blank" class="skill">CTF</a>
+              <a href="https://www.linux.org" target="_blank" class="skill">Linux</a>
+              <a href="https://www.adobe.com/products/photoshop.html" target="_blank" class="skill">Photoshop</a>
+              <a href="https://www.adobe.com/products/illustrator.html" target="_blank" class="skill">Illustrator</a>
+              <a href="https://www.canva.com" target="_blank" class="skill">Canva</a>
+              <a href="https://tryhackme.com" target="_blank" class="skill">TryHackMe</a>
+              <a href="https://www.hackthebox.com" target="_blank" class="skill">Hack The Box</a>
+              <a href="https://picoctf.org" target="_blank" class="skill">PicoCTF</a>
             </div>
           </div>
 
-        </article>
-
-        <!-- Hobbies (full-width card) -->
-        <article class="card fade-in" id="hobbiesCard">
-          <div class="section-title">Hobbies & Interests</div>
-          <div class="hobby-grid">
-            <div class="hobby-item" data-category="entertainment">
-              <img class="hobby-image" src="images/hobby-gaming.svg" alt="Gaming">
-              <div class="hobby-content">
-                <h4>Gaming</h4>
-                <p>Strategy games & RPGs</p>
-              </div>
-            </div>
-
-            <div class="hobby-item" data-category="creativity">
-              <img class="hobby-image" src="images/hobby-drawing.svg" alt="Drawing">
-              <div class="hobby-content">
-                <h4>Drawing</h4>
-                <p>Digital art & sketching</p>
-              </div>
-            </div>
-
-            <div class="hobby-item" data-category="entertainment">
-              <img class="hobby-image" src="images/hobby-anime.svg" alt="Anime">
-              <div class="hobby-content">
-                <h4>Anime</h4>
-                <p>Watching & discussing</p>
-              </div>
-            </div>
-
-            <div class="hobby-item" data-category="tech">
-              <img class="hobby-image" src="images/hobby-tech.svg" alt="Tech">
-              <div class="hobby-content">
-                <h4>Tech Exploration</h4>
-                <p>New tools & gadgets</p>
-              </div>
-            </div>
-
-            <div class="hobby-item" data-category="creativity">
-              <img class="hobby-image" src="images/hobby-music.svg" alt="Music">
-              <div class="hobby-content">
-                <h4>Music Production</h4>
-                <p>Electronic & beats</p>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Education & Extracurricular -->
-        <article class="card fade-in" id="eduCard">
-          <div class="section-title">Education & Activities</div>
-          <div style="color:var(--muted); font-size:13px">
-            <strong>BSc in Computer Science & Engineering</strong><br>
-            Dhaka International University — 5th Semester (Expected 2027)<br><br>
-            <strong>HSC</strong> — 2022 · GPA: 4.67 / 5.00
-          </div>
-
-          <div style="margin-top:12px">
-            <div class="section-title" style="font-size:12px;margin-bottom:8px">Extracurricular</div>
-            <ul class="simple-list">
-              <li>Treasurer, DIU Computer Programming Club (DIU CPC)</li>
-              <li>Executive Member, BASIS Student Forum</li>
-              <li>Organizer, CSE Fest 2024</li>
-              <li>Champion — DIU Intra First Practice CTF</li>
+          <div class="card">
+            <div class="section-title">Achievements</div>
+            <ul style="color:var(--muted);margin-left:18px">
+              <li>Champion — DIU Intra First Practice CTF (Cyber Security Club)</li>
+              <li>Organized Hackathon and tech events under DIU CPC</li>
+              <li>Completed 25+ rooms on TryHackMe platform</li>
             </ul>
           </div>
-        </article>
+
+          <div class="card">
+            <div class="section-title">Links</div>
+            <div class="contact">
+              <a href="https://github.com/assassinyousuf" target="_blank">GitHub</a>
+              <a href="https://www.linkedin.com/in/yousuf-hossain-06089a328/" target="_blank">LinkedIn</a>
+              <a href="https://www.facebook.com/yousufhossain.mehrab" target="_blank">Facebook</a>
+              <a href="cv.pdf" target="_blank">Download CV</a>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="section-title">Contact</div>
+            <p style="color:var(--muted)">Open to collaborations, cybersecurity internships, and design projects. Let's connect!</p>
+            <div class="contact">
+              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=itsmemehrab369@gmail.com&su=Portfolio%20Contact" target="_blank">Email</a>
+              <a href="https://wa.me/+8801629263618" target="_blank" class="whatsapp">WhatsApp</a>
+              <a href="https://t.me/+8801629263618" target="_blank" class="telegram">Telegram</a>
+            </div>
+          </div>
+        </aside>
       </div>
-    </section>
 
-    <div class="footer">Built with ❤️ by Yousuf — &copy; <span id="year"></span></div>
+      <footer>
+        Built by Yousuf — &copy; <span id="year"></span>
+      </footer>
+    </div>
+
+    <!-- Modal Backdrop (single backdrop for all games) -->
+    <div id="modalBackdrop" class="modal-backdrop" aria-hidden="true">
+      <div id="modal" class="modal" role="dialog" aria-modal="true" aria-label="Mini game">
+        <div class="modal-header" style="display:flex;align-items:center;justify-content:space-between;">
+          <div>
+            <div class="modal-title" id="modalTitle">Game</div>
+            <div class="muted" id="modalSubtitle">Fun mini games — cyberpunk edition</div>
+          </div>
+          <div style="display:flex;gap:8px;align-items:center">
+            <button id="modalReset" class="close-btn" title="Reset">Reset</button>
+            <button id="modalClose" class="close-btn" title="Close">Close</button>
+          </div>
+        </div>
+
+        <!-- Modal content containers for each game -->
+        <div id="modalContent" style="min-height:240px;">
+          <!-- Hack the Code -->
+          <div id="gameHack" style="display:none;">
+            <div style="display:flex;gap:12px;align-items:center;justify-content:space-between;margin-bottom:10px">
+              <div style="display:flex;align-items:center;gap:10px">
+                <div style="font-size:20px">🎯</div>
+                <div style="font-weight:700;color:var(--accent2)">Hack the Code</div>
+              </div>
+              <div class="muted">Guess the 4-digit code — 6 attempts</div>
+            </div>
+
+            <div class="hack-ui">
+              <div class="code-digits" id="hackSecretDisplay" aria-hidden="true">
+                <div class="digit">•</div>
+                <div class="digit">•</div>
+                <div class="digit">•</div>
+                <div class="digit">•</div>
+              </div>
+
+              <div style="display:flex;gap:8px;align-items:center;margin-top:6px">
+                <input id="guessInput" class="guess-input" placeholder="Enter 4-digit code (e.g. 0427)" maxlength="4" inputmode="numeric" />
+                <button id="guessBtn" class="small-btn">Guess</button>
+                <button id="hintBtn" class="small-btn" style="background:transparent;color:var(--accent2);border:1px solid rgba(255,255,255,0.06)">Hint</button>
+              </div>
+
+              <div id="guessLog" style="max-height:140px; overflow:auto; padding-top:6px;"></div>
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px">
+                <div class="attempts" id="attemptsLeft">Attempts left: 6</div>
+                <div class="muted" id="hackStatus"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Avoid the Virus -->
+          <div id="gameVirus" style="display:none;">
+            <div style="display:flex;gap:12px;align-items:center;justify-content:space-between;margin-bottom:10px">
+              <div style="display:flex;align-items:center;gap:10px">
+                <div style="font-size:20px">🦠</div>
+                <div style="font-weight:700;color:var(--accent2)">Avoid the Virus</div>
+              </div>
+              <div class="muted">Use arrow keys or A/D to move. Survive as long as possible.</div>
+            </div>
+
+            <div class="center" style="flex-direction:column">
+              <canvas id="virusCanvas" width="720" height="360" aria-label="Avoid the Virus game canvas"></canvas>
+              <div class="canvas-controls">
+                <button id="startVirus" class="small-btn">Start</button>
+                <button id="pauseVirus" class="small-btn" style="background:transparent;color:var(--accent2);border:1px solid rgba(255,255,255,0.06)">Pause</button>
+                <button id="resetVirus" class="small-btn" style="background:transparent;color:var(--accent2);border:1px solid rgba(255,255,255,0.06)">Reset</button>
+              </div>
+              <div style="margin-top:8px;color:var(--muted)">Score: <span id="virusScore">0</span> · Best: <span id="virusBest">0</span></div>
+            </div>
+          </div>
+
+          <!-- Memory Match -->
+          <div id="gameMemory" style="display:none;">
+            <div style="display:flex;gap:12px;align-items:center;justify-content:space-between;margin-bottom:10px">
+              <div style="display:flex;align-items:center;gap:10px">
+                <div style="font-size:20px">🧠</div>
+                <div style="font-weight:700;color:var(--accent2)">Memory Match</div>
+              </div>
+              <div class="muted">Find matching pairs — quick and fun.</div>
+            </div>
+
+            <div style="display:flex;align-items:center;gap:12px">
+              <button id="startMem" class="small-btn">Start</button>
+              <button id="resetMem" class="small-btn" style="background:transparent;color:var(--accent2);border:1px solid rgba(255,255,255,0.06)">Reset</button>
+              <div style="margin-left:12px;color:var(--muted)">Moves: <span id="memMoves">0</span> · Matches: <span id="memMatches">0</span></div>
+            </div>
+
+            <div class="memory-grid" id="memoryGrid" style="margin-top:12px"></div>
+            <div style="margin-top:10px;color:var(--muted)">Icons: locks, servers, keys, bugs — themed for CTF vibes.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
   </div>
-
-  <script src="script.js"></script>
 </body>
 </html>

@@ -1,65 +1,136 @@
-/* Playful theme - cleaned and consolidated */
-:root{
-  --bg:#050617;
-  --card-bg: rgba(255,255,255,0.04);
-  --muted:#9aa6bf;
-  --accent1:#39ff14;   /* neon green */
-  --accent2:#00e5ff;   /* cyan */
+/* Theme Variables */
+:root {
+  --bg: #0a0a23;
+  --card: rgba(0,0,0,0.5);
+  --card-bg: rgba(0,0,0,0.5);
+  --muted: #a0a8c0;
+  --accent: #39ff14;
+  --accent2: #0ff;
+  --dark-navy: #0f172a;
+  --deeper-navy: #020617;
   --glass-border: rgba(255,255,255,0.06);
-  --tag-bg: rgba(255,255,255,0.03);
-  --transition: 0.32s cubic-bezier(.2,.9,.2,1);
-  --min-card-width: 280px;
+  --neonGlow: 0 8px 30px rgba(57,255,20,0.08);
+  --transition: 0.3s cubic-bezier(.2,.9,.2,1);
+  --tag-bg: rgba(255,255,255,0.02);
 }
 
-/* base */
-*{box-sizing:border-box}
+/* Base Styles */
+* { box-sizing: border-box; scroll-behavior: smooth; }
 html,body{height:100%}
-body{
-  margin:0;
+
+/* Skills */
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 13px;
+  padding: 4px 12px;
+  border-radius: 99px;
+  background: var(--tag-bg);
+  border: 1px solid var(--glass-border);
+  transition: all 0.3s ease;
+}
+
+.skill:hover {
+  color: var(--accent2);
+  border-color: var(--accent2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,255,255,0.1);
+}
+
+/* Contact */
+.contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.contact a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 13px;
+  padding: 6px 14px;
+  border-radius: 8px;
+  background: var(--tag-bg);
+  border: 1px solid var(--glass-border);
+  transition: all 0.3s ease;
+}
+
+.contact a:hover {
+  transform: translateY(-2px);
+}
+
+.contact a.whatsapp:hover {
+  color: #25D366;
+  border-color: #25D366;
+}
+
+.contact a.telegram:hover {
+  color: #0088cc;
+  border-color: #0088cc;
+}
+body {
   font-family: 'JetBrains Mono', monospace;
-  background:
-    radial-gradient(1000px 600px at 10% 10%, rgba(0,255,255,0.03), transparent 10%),
-    radial-gradient(900px 500px at 90% 80%, rgba(57,255,20,0.03), transparent 12%),
-    linear-gradient(180deg,#020214 0%, #050617 100%);
-  color:#e6eef8;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-  overflow-x:hidden;
-  padding:48px 16px;
+  background: radial-gradient(circle at center, var(--dark-navy), var(--deeper-navy), #000000);
+  color: #e6eef8;
+  margin: 0;
+  line-height: 1.5;
+  overflow-x: hidden;
+  padding: 28px 12px;
   min-height:100vh;
 }
 
-/* subtle hacker background pattern (low opacity) */
-body::before{
-  content:"";
-  position:fixed; inset:0; z-index:-2;
-  background-image: url('https://i.ibb.co/6HfQYh3/hacker-bg.png');
-  background-size:cover; background-position:center; opacity:0.04;
+/* Background Effects */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background:
+    radial-gradient(circle at 15% 25%, rgba(57,255,20,0.06), transparent 40%),
+    radial-gradient(circle at 85% 75%, rgba(0,255,255,0.06), transparent 40%);
+  z-index: -2;
   pointer-events:none;
 }
-
-/* animated gradient overlay */
-body::after{
-  content:""; position:fixed; inset:0; z-index:-1;
-  background:linear-gradient(120deg, rgba(57,255,20,0.02), rgba(0,229,255,0.02), transparent);
-  animation:bgshift 14s ease-in-out infinite;
-  mix-blend-mode:screen; pointer-events:none;
+body::after {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(120deg, rgba(57,255,20,0.02), rgba(0,255,255,0.02));
+  animation: backgroundShift 12s ease infinite;
+  z-index: -1;
+  pointer-events:none;
 }
-@keyframes bgshift{ 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+@keyframes backgroundShift {
+  0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}
+}
 
 /* page container */
 .wrap{max-width:1100px; margin:0 auto;}
 
 /* header */
 .header{ display:flex; gap:20px; align-items:center; flex-wrap:wrap; margin-bottom:28px; }
-.avatar{ width:120px; height:120px; border-radius:50%; overflow:hidden; border:2px solid var(--accent1); box-shadow:0 6px 30px rgba(57,255,20,0.08), inset 0 0 14px rgba(0,0,0,0.5); flex:0 0 120px; }
+.avatar{ width:120px; height:120px; border-radius:50%; overflow:hidden; border:2px solid var(--accent); box-shadow:0 6px 30px rgba(57,255,20,0.08), inset 0 0 14px rgba(0,0,0,0.5); flex:0 0 120px; }
 .avatar img{width:100%;height:100%;object-fit:cover;display:block}
 .title{ flex:1 1 auto }
-.title h1{ margin:0; font-family:'Press Start 2P',cursive; font-size:24px; background:linear-gradient(90deg,var(--accent1),var(--accent2)); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent }
+.title h1{ margin:0; font-family:'Press Start 2P',cursive; font-size:24px; background:linear-gradient(90deg,var(--accent),var(--accent2)); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent }
 .lead{ color:var(--muted); margin-top:8px; font-size:13px }
 
 /* grid layout: responsive */
-.grid{ display:grid; grid-template-columns: repeat(2, minmax(var(--min-card-width), 1fr)); gap:20px }
+.grid{ display:grid; grid-template-columns: 2fr 1fr; gap:20px }
+main { grid-column: 1 }
+aside { grid-column: 2 }
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  main, aside { grid-column: auto }
+}
 
 /* cards glassmorphism */
 .card{ position:relative; background:var(--card-bg); border-radius:14px; padding:18px; border:1px solid var(--glass-border); backdrop-filter: blur(10px) saturate(120%); box-shadow: 0 10px 40px rgba(0,0,0,0.6); overflow:hidden; transition: transform var(--transition), box-shadow var(--transition); min-height:120px; opacity:0; transform:translateY(26px) }
@@ -107,3 +178,199 @@ body::after{
 .hobby-content p{ margin:4px 0 0 0; color:var(--muted); font-size:12px }
 
 @media (max-width:900px){ .grid{ grid-template-columns:1fr } .avatar{ width:96px; height:96px; flex:0 0 96px } }
+
+/* Fun Zone & Games */
+.fun-zone-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.game-btn {
+  background: var(--card);
+  border: 1px solid var(--glass-border);
+  color: inherit;
+  padding: 12px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+}
+
+.game-btn:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent2);
+  box-shadow: 0 8px 24px rgba(0,255,255,0.12);
+}
+
+.emoji {
+  font-size: 20px;
+}
+
+/* Modal & Game UI */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.modal-backdrop.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal {
+  background: var(--dark-navy);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 20px;
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow: auto;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+.modal-header {
+  margin-bottom: 18px;
+}
+
+.modal-title {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 18px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.close-btn {
+  background: transparent;
+  border: 1px solid var(--glass-border);
+  color: var(--muted);
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 12px;
+  transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+  color: var(--accent2);
+  border-color: var(--accent2);
+}
+
+/* Game: Hack the Code */
+.hack-ui {
+  padding: 12px;
+  border-radius: 10px;
+  background: var(--deeper-navy);
+  border: 1px solid var(--glass-border);
+}
+
+.code-digits {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.digit {
+  width: 40px;
+  height: 40px;
+  background: var(--dark-navy);
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.guess-input {
+  background: var(--dark-navy);
+  border: 1px solid var(--glass-border);
+  color: var(--accent);
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-family: inherit;
+  width: 160px;
+  font-size: 14px;
+}
+
+.guess-input::placeholder {
+  color: var(--muted);
+  opacity: 0.5;
+}
+
+.small-btn {
+  background: var(--accent2);
+  color: var(--deeper-navy);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.small-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,255,255,0.2);
+}
+
+/* Game: Memory Match */
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.card-mem {
+  aspect-ratio: 1;
+  background: var(--dark-navy);
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.card-mem:hover {
+  border-color: var(--accent2);
+}
+
+.card-mem.flipped {
+  background: var(--deeper-navy);
+  border-color: var(--accent);
+}
+
+/* Game: Avoid the Virus */
+canvas {
+  background: var(--deeper-navy);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  max-width: 100%;
+  height: auto;
+}
