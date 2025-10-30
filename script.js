@@ -447,38 +447,63 @@ style.textContent = `
 document.head.appendChild(style);
 
 // --- Visitor Counter ---
+// Global unique visitor counter using CountAPI with per-browser uniqueness guard.
 function initVisitorCounter() {
   const counterElement = document.getElementById('visitorCount');
-  // If no counter element exists on the page, skip initialization
   if (!counterElement) return;
-  
-  // Using localStorage to track visits (for demo purposes)
-  // In production, you would use a backend API or service like Firebase, Google Analytics, etc.
-  const STORAGE_KEY = 'portfolio_visitor_count';
-  const LAST_VISIT_KEY = 'portfolio_last_visit';
-  
-  // Get current count from localStorage
-  let visitorCount = localStorage.getItem(STORAGE_KEY);
-  const lastVisit = localStorage.getItem(LAST_VISIT_KEY);
-  const now = Date.now();
-  const ONE_HOUR = 60 * 60 * 1000; // 1 hour in milliseconds
-  
-  // Initialize counter if it doesn't exist
-  if (!visitorCount) {
-    visitorCount = 0;
-  } else {
-    visitorCount = parseInt(visitorCount, 10);
-  }
-  
-  // Increment count if it's a new visit (more than 1 hour since last visit)
-  if (!lastVisit || (now - parseInt(lastVisit, 10)) > ONE_HOUR) {
-    visitorCount++;
-    localStorage.setItem(STORAGE_KEY, visitorCount);
-    localStorage.setItem(LAST_VISIT_KEY, now.toString());
-  }
-  
-  // Animate the counter
-  animateCounter(counterElement, visitorCount);
+
+  const COUNTAPI_BASE = 'https://api.countapi.xyz';
+  const NAMESPACE = 'assassinyousuf_yousuf_hossain_portfolio';
+  const KEY = 'site_unique_visitors';
+  const UNIQUE_FLAG = 'portfolio_visitor_counted_v1';
+
+  const localFallback = () => {
+    // Fallback to local-only counter if network blocked
+    const STORAGE_KEY = 'portfolio_visitor_count';
+    const LAST_VISIT_KEY = 'portfolio_last_visit';
+    let visitorCount = parseInt(localStorage.getItem(STORAGE_KEY) || '0', 10);
+    const lastVisit = parseInt(localStorage.getItem(LAST_VISIT_KEY) || '0', 10);
+    const now = Date.now();
+    const ONE_HOUR = 60 * 60 * 1000;
+    if (!lastVisit || now - lastVisit > ONE_HOUR) {
+      visitorCount++;
+      localStorage.setItem(STORAGE_KEY, String(visitorCount));
+      localStorage.setItem(LAST_VISIT_KEY, String(now));
+    }
+    animateCounter(counterElement, visitorCount);
+  };
+
+  const createIfMissing = async () => {
+    await fetch(`${COUNTAPI_BASE}/create?namespace=${encodeURIComponent(NAMESPACE)}&key=${encodeURIComponent(KEY)}&value=0`)
+      .catch(() => {});
+  };
+
+  (async () => {
+    try {
+      let value = 0;
+      const hasCounted = localStorage.getItem(UNIQUE_FLAG) === '1';
+      if (!hasCounted) {
+        // Increment (creates the key if missing)
+        const res = await fetch(`${COUNTAPI_BASE}/hit/${NAMESPACE}/${KEY}`, { cache: 'no-store' });
+        const data = await res.json();
+        value = Number(data?.value || 0);
+        localStorage.setItem(UNIQUE_FLAG, '1');
+      } else {
+        // Just read current value; ensure exists
+        let res = await fetch(`${COUNTAPI_BASE}/get/${NAMESPACE}/${KEY}`, { cache: 'no-store' });
+        if (!res.ok) {
+          await createIfMissing();
+          res = await fetch(`${COUNTAPI_BASE}/get/${NAMESPACE}/${KEY}`, { cache: 'no-store' });
+        }
+        const data = await res.json();
+        value = Number(data?.value || 0);
+      }
+      animateCounter(counterElement, value);
+    } catch (err) {
+      // Network failed or blocked — fallback to local counter
+      localFallback();
+    }
+  })();
 }
 
 function animateCounter(element, targetValue) {
