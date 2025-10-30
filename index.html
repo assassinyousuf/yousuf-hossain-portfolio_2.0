@@ -9,10 +9,59 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <!-- Developer-portfolio inspired fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <!-- Subtle animated aurora background (lightweight, single overlay) -->
+  <div class="bg-aurora" aria-hidden="true"></div>
+  <!-- Tsushima cinematic overlay (enabled when theme is on) -->
+  <div class="tsushima-scene" aria-hidden="true"></div>
+  <div class="cyberpunk-overlay"></div>
+  <div class="dark-atmosphere"></div>
+  <!-- Ravens -->
+  <div class="raven"></div>
+  <div class="raven"></div>
+  <div class="raven"></div>
+  <div class="raven"></div>
+  <!-- Black Flames -->
+  <div class="black-flame"></div>
+  <div class="flame-particle"></div>
+  <div class="flame-particle"></div>
+  <div class="flame-particle"></div>
+  <div class="flame-particle"></div>
+  <div class="flame-particle"></div>
+
+  <!-- Sticky Navigation Menu -->
+  <nav class="sticky-nav" id="stickyNav">
+    <div class="nav-container">
+      <div class="nav-left">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#quotes" class="nav-link">Quotes</a>
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#education" class="nav-link">Education</a>
+  <a href="#dailyQuoteAside" class="nav-link">Daily Quote</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+      <div class="nav-right">
+        <div class="nav-games" aria-label="Quick games">
+          <button class="nav-game-btn" data-game="hack" title="Hack the Code">🎯</button>
+          <button class="nav-game-btn" data-game="virus" title="Avoid the Virus">🦠</button>
+          <button class="nav-game-btn" data-game="memory" title="Memory Match">🧠</button>
+        </div>
+        <button id="themeToggle" class="theme-toggle" title="Toggle Tsushima theme">🌅 Tsushima</button>
+        <div class="visitor-counter">
+          <span class="counter-icon">🌐</span>
+          <span class="counter-label">Visitors:</span>
+          <span class="counter-value" id="visitorCount">Loading...</span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
   <div class="wrap">
     <header>
       <div class="avatar">
@@ -30,17 +79,70 @@
 
     <div class="grid">
       <main>
-          <div class="card">
-            <div class="section-title">About Me</div>
-            <p style="color:var(--muted)">I'm a curious mind who loves solving puzzles — whether it's breaking down complex cybersecurity challenges or crafting eye-catching visual designs. As a cybersecurity enthusiast, I thrive on Capture The Flag (CTF) competitions and hands-on learning through platforms like TryHackMe and HackTheBox.
+          <!-- Fun Zone removed from main view; pinned quick access in nav -->
+
+          <div class="top-grid">
+            <div class="card" id="about">
+              <div class="section-title">About Me</div>
+              <p style="color:var(--muted)">I'm a curious mind who loves solving puzzles — whether it's breaking down complex cybersecurity challenges or crafting eye-catching visual designs. As a cybersecurity enthusiast, I thrive on Capture The Flag (CTF) competitions and hands-on learning through platforms like TryHackMe and HackTheBox.
 
 Beyond code and exploits, I'm also a passionate graphics designer who enjoys creating impactful visuals that tell stories and inspire engagement. My goal is to bridge creativity with technology — building secure, functional, and visually stunning digital experiences.
 
 Recently, I was crowned Champion of the DIU Intra First Practice CTF, a milestone that fueled my motivation to push further into ethical hacking and digital security innovation.</p>
+            </div>
+
+            <!-- Daily Quotes moved next to About for prominence -->
+            <div class="card" id="quotes">
+              <div class="section-title">
+                Daily Quotes
+                <button id="adminLoginBtn" class="admin-btn" title="Admin Login">
+                  <span>🔐</span>
+                </button>
+              </div>
+              
+              <!-- Today's Quote -->
+              <div id="todaysQuoteCard" class="todays-quote-card">
+                <div class="quote-label">Today's Quote</div>
+                <div id="todaysQuoteText" class="quote-text">
+                  Loading...
+                </div>
+                <div id="todaysQuoteDate" class="quote-date"></div>
+              </div>
+
+              <!-- Admin Controls (hidden by default) -->
+              <div id="adminControls" class="admin-controls" style="display: none;">
+                <textarea 
+                  id="newQuoteInput" 
+                  placeholder="Write your quote here..."
+                  maxlength="500"
+                ></textarea>
+                <div class="admin-actions">
+                  <button id="publishQuoteBtn" class="btn-primary">
+                    <span>✨</span> Publish Quote
+                  </button>
+                  <button id="adminLogoutBtn" class="btn-secondary">
+                    <span>🚪</span> Logout
+                  </button>
+                </div>
+              </div>
+
+              <!-- All Quotes List -->
+              <div class="quotes-section">
+                <div class="quotes-header">
+                  <h3>All Quotes</h3>
+                  <button id="toggleQuotesBtn" class="toggle-btn">
+                    <span id="toggleIcon">▼</span>
+                  </button>
+                </div>
+                <div id="allQuotesList" class="all-quotes-list">
+                  <div class="loading-quotes">Loading quotes...</div>
+                </div>
+              </div>
+            </div>
           </div>
 
           <!-- Experience -->
-          <article class="card fade-in" id="expCard">
+          <article class="card fade-in" id="experience">
             <div class="section-title">Experience</div>
             <div class="projects">
               <div class="project">
@@ -75,7 +177,7 @@ Recently, I was crowned Champion of the DIU Intra First Practice CTF, a mileston
             </div>
           </article>
 
-          <div class="card">
+          <div class="card" id="projects">
             <div class="section-title">Projects</div>
             <div class="project">
               <h4>Hostel Management System</h4>
@@ -95,36 +197,9 @@ Recently, I was crowned Champion of the DIU Intra First Practice CTF, a mileston
             </div>
           </div>
 
-          <!-- Fun Zone -->
-          <div class="card" id="funZoneCard">
-            <div class="section-title">Fun Zone — Mini Games</div>
-            <div style="color:var(--muted); margin-bottom:8px">
-              Want to chill while browsing? Play a short mini-game — all embedded right here. Beat the high score, solve the puzzle, or test your memory.
-            </div>
+          <!-- Fun Zone was above -->
 
-            <div class="fun-zone-row">
-              <button class="game-btn" data-game="hack" id="openHack">
-                <span class="emoji">🎯</span>
-                <span>Hack the Code</span>
-              </button>
-
-              <button class="game-btn" data-game="virus" id="openVirus">
-                <span class="emoji">🦠</span>
-                <span>Avoid the Virus</span>
-              </button>
-
-              <button class="game-btn" data-game="memory" id="openMemory">
-                <span class="emoji">🧠</span>
-                <span>Memory Match</span>
-              </button>
-            </div>
-
-            <div style="margin-top:12px; color:var(--muted); font-size:13px">
-              Tip: You can play directly in the page. Close the modal to return — progress resets on close.
-            </div>
-          </div>
-
-          <div class="card">
+          <div class="card" id="education">
             <div class="section-title">Education & Activities</div>
             <p style="color:var(--muted)"><strong>BSc in Computer Science and Engineering (CSE)</strong><br>
               Dhaka International University — 5th Semester<br>Expected Graduation: 2027</p>
@@ -144,22 +219,14 @@ Recently, I was crowned Champion of the DIU Intra First Practice CTF, a mileston
         </main>
 
         <aside>
-          <div class="card">
-            <div class="section-title">Skills & Tools</div>
-            <div class="skills">
-              <a href="https://flutter.dev" target="_blank" class="skill">Flutter</a>
-              <a href="https://python.org" target="_blank" class="skill">Python</a>
-              <a href="https://en.cppreference.com/w/c" target="_blank" class="skill">C</a>
-              <a href="https://www.java.com" target="_blank" class="skill">Java</a>
-              <a href="https://ctftime.org" target="_blank" class="skill">CTF</a>
-              <a href="https://www.linux.org" target="_blank" class="skill">Linux</a>
-              <a href="https://www.adobe.com/products/photoshop.html" target="_blank" class="skill">Photoshop</a>
-              <a href="https://www.adobe.com/products/illustrator.html" target="_blank" class="skill">Illustrator</a>
-              <a href="https://www.canva.com" target="_blank" class="skill">Canva</a>
-              <a href="https://tryhackme.com" target="_blank" class="skill">TryHackMe</a>
-              <a href="https://www.hackthebox.com" target="_blank" class="skill">Hack The Box</a>
-              <a href="https://picoctf.org" target="_blank" class="skill">PicoCTF</a>
+          <div class="card" id="dailyQuoteAside">
+            <div class="section-title">Today's Quote</div>
+            <div class="todays-quote-card">
+              <div class="quote-label">Daily Quote</div>
+              <div id="todaysQuoteTextAside" class="quote-text">Loading...</div>
+              <div id="todaysQuoteDateAside" class="quote-date"></div>
             </div>
+            <div class="muted" style="font-size:12px;margin-top:8px">Managed from the Quotes section</div>
           </div>
 
           <div class="card">
@@ -181,7 +248,9 @@ Recently, I was crowned Champion of the DIU Intra First Practice CTF, a mileston
             </div>
           </div>
 
-          <div class="card">
+          <!-- Quotes moved to top grid next to About -->
+
+          <div class="card" id="contact">
             <div class="section-title">Contact</div>
             <p style="color:var(--muted)">Open to collaborations, cybersecurity internships, and design projects. Let's connect!</p>
             <div class="contact">
@@ -286,6 +355,27 @@ Recently, I was crowned Champion of the DIU Intra First Practice CTF, a mileston
             <div class="memory-grid" id="memoryGrid" style="margin-top:12px"></div>
             <div style="margin-top:10px;color:var(--muted)">Icons: locks, servers, keys, bugs — themed for CTF vibes.</div>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Admin Login Modal -->
+    <div id="adminLoginModal" class="admin-modal" style="display: none;">
+      <div class="admin-modal-content">
+        <div class="admin-modal-header">
+          <h2>🔐 Admin Access</h2>
+          <button id="closeAdminModal" class="close-btn">×</button>
+        </div>
+        <div class="admin-modal-body">
+          <p>Enter admin password to manage quotes</p>
+          <input 
+            type="password" 
+            id="adminPasswordInput" 
+            placeholder="Password"
+            autocomplete="current-password"
+          />
+          <div id="loginError" class="login-error" style="display: none;"></div>
+          <button id="adminLoginSubmit" class="btn-primary">Login</button>
         </div>
       </div>
     </div>
