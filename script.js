@@ -662,7 +662,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollHighlight();
   
   const yearEl = document.getElementById('year');
-  if (yearEl) yearEl.textContent = new Date().getFullYear?.() ?? new Date().getFullYear();
+  if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
   // Intersection observer for cards entrance
   const observer = new IntersectionObserver(entries => {
