@@ -1,22 +1,22 @@
 const initialData = {
   profile: {
     name: "Md. Yousuf Hossain",
-    title: "Aspiring Cybersecurity Specialist & App Developer",
+    title: "Aspiring Cybersecurity Specialist & Computer Science Undergraduate",
     address: "Sayednagar Block-A, Vatara, Badda, Dhaka",
     email: "itsmemehrab369@gmail.com",
     phone: "01629-263618",
     avatar: "yousuf.jpeg",
     social: {
       github: "https://github.com/assassinyousuf",
-      linkedin: "https://www.linkedin.com/in/yousuf-hossain-06089a328/",
+      linkedin: "https://www.linkedin.com/in/yousuf-hossain",
       facebook: "https://www.facebook.com/yousufhossain.mehrab"
     }
   },
   summary: {
     title: "Professional Summary",
     content: [
-      "Aspiring Cybersecurity Specialist and Computer Science undergraduate with a strong foundation in network security and ethical hacking. Proven track record in Capture The Flag (CTF) competitions and hands-on experience with security tools like Hack The Box and TryHackMe.",
-      "Passionate about identifying vulnerabilities and researching secure transmission mechanisms. Eager to leverage technical skills in a professional environment to contribute to robust security solutions and innovative research."
+      "Aspiring Cybersecurity Specialist and Computer Science undergraduate with a robust foundation in network security and ethical hacking. Notable expertise in Capture The Flag (CTF) competitions and deep proficiency with specialized security platforms including Hack The Box and TryHackMe.",
+      "Passionate about identifying critical vulnerabilities and researching secure transmission protocols. Eager to contribute technical skills to high-impact security solutions and innovative cybersecurity research."
     ]
   },
   skills: [
@@ -25,39 +25,86 @@ const initialData = {
       items: ["Python", "Flutter (Dart)", "C", "Java", "SQL"]
     },
     {
-      category: "Cybersecurity",
-      items: ["CTF Basics", "Linux Fundamentals", "Ethical Hacking"]
+      category: "Cybersecurity & Ethical Hacking",
+      items: ["CTF Methodologies", "Linux Administration", "Ethical Hacking Principles", "Network Defensive Security"]
     },
     {
       category: "Tools & Platforms",
-      items: ["Hack The Box", "TryHackMe", "PicoCTF", "Git & GitHub", "VS Code", "Android Studio"]
+      items: ["Hack The Box", "TryHackMe", "PicoCTF", "Git/GitHub", "VS Code", "Android Studio"]
     }
   ],
   projects: [
     {
-      title: "Visiolock: Secure Image Transmission",
-      description: "Developed a cross-media secure image transmission system utilizing audio-domain encoding and device-bound cryptography. Focused on enhancing data privacy and security during transmissions through non-traditional communication channels.",
-      tags: ["Cryptography", "Data Privacy"]
+      title: "Visiolock",
+      role: "Dart",
+      description: "Engineered cross-media secure image transmission via audio-domain encoding and cryptography. (Publication Under Review)",
+      tags: ["Dart", "Cryptography", "Audio-Encoding"]
     },
     {
-      title: "Secure NFC: Mobile Ticketing System",
-      description: "Investigated NFC-based mobile ticketing frameworks using Host Card Emulation (HCE). Implemented and analyzed security protocols to mitigate Replay Attacks and ensure transactional integrity.",
-      tags: ["NFC", "Security Protocols"]
+      title: "Secure NFC",
+      role: "Lead Researcher",
+      description: "Investigated Host Card Emulation (HCE) for mobile ticketing ecosystems to defend against Replay Attacks. (Publication Accepted)",
+      tags: ["NFC", "Security Analytics", "HCE"]
     },
     {
-      title: "Sudoku Solver",
-      description: "Engineered a Java-based application implementing OOP principles and backtracking algorithms to solve complex Sudoku puzzles. Designed an interactive UI to visualize the step-by-step backtracking process.",
-      tags: ["Java", "OOP", "Algorithms"]
+      title: "Intrusion Detection System",
+      role: "Researcher",
+      description: "Developed a real-time lightweight intrusion detection system utilizing optimized Deep Learning. (Publication Under Review)",
+      tags: ["Deep Learning", "Real-Time Systems", "Smart City"]
     },
     {
-      title: "University Database Management System",
-      description: "Architected a comprehensive database solution to manage university informatics, including student records, academic cycles, and department logistics. Optimized SQL queries for efficient data handling.",
-      tags: ["SQL", "Relational Design"]
+      title: "Dyslexia Assessment System",
+      role: "Researcher",
+      description: "Engineered a real-time assessment/assistance system using Speech and Behavioral Analytics. (Publication Under Review)",
+      tags: ["AI", "Speech Analytics", "Behavioral Tech"]
     },
     {
-      title: "Hostel Management System",
-      description: "Developed a C-based management tool for room allocation and student lifecycle tracking in a collaborative group environment.",
-      tags: ["C", "Management Systems"]
+      title: "Offline Emergency Comms",
+      role: "Researcher",
+      description: "Developed an infrastructure-free offline emergency system using adaptive hybrid mesh networking. (Publication Under Review)",
+      tags: ["Networking", "Hybrid Mesh", "Infrastructure-free"]
+    },
+    {
+      title: "SafeLink+ Framework",
+      role: "Researcher",
+      description: "Designed a framework to protect users from malicious URLs via zero-trust execution models. (Publication Under Review)",
+      tags: ["Zero-Trust", "Web Security", "URL Protection"]
+    },
+    {
+      title: "Adaptive Firewall AI",
+      role: "Python",
+      description: "Designed an intelligent firewall system in Python to adaptively detect and mitigate sophisticated network threats.",
+      tags: ["Python", "Firewall", "Network Security"]
+    },
+    {
+      title: "DIU CPC Web Portal",
+      role: "JavaScript",
+      description: "Developed the dynamic web portal for the DIU Computer Programming Club using JavaScript and optimized UI interactions.",
+      tags: ["JavaScript", "Web Dev", "UI/UX"]
+    },
+    {
+      title: "Personal Portfolio Website",
+      role: "JavaScript",
+      description: "Designed and deployed a responsive, modern web portfolio utilizing complex JavaScript and dynamic CSS styling.",
+      tags: ["JavaScript", "CSS", "Frontend"]
+    },
+    {
+      title: "SlapApp & Crypto Apps",
+      role: "Flutter / Dart",
+      description: "Built responsive mobile applications (\"SlapApp\" and \"image-encryption\") focusing on dynamic states and cryptography in Dart.",
+      tags: ["Flutter", "Dart", "Cryptography"]
+    },
+    {
+      title: "My Jarvis (AI Assistant)",
+      role: "Python",
+      description: "Developed a localized, voice-activated AI desktop assistant in Python to automate computational tasks.",
+      tags: ["Python", "AI Desktop", "Automation"]
+    },
+    {
+      title: "University Database",
+      role: "PostgreSQL",
+      description: "Designed a PostgreSQL-backed structure to streamline university informatics and optimize query workloads.",
+      tags: ["PostgreSQL", "Database Design", "SQL"]
     }
   ],
   publications: [
@@ -65,16 +112,6 @@ const initialData = {
       status: "Accepted",
       title: "Secure NFC-Based Mobile Ticketing System Using Host Card Emulation (HCE)",
       description: "Implementation and Analysis of Security Mechanisms Against Replay Attacks."
-    },
-    {
-      status: "Under Review",
-      title: "VisioLock: Cross-Media Secure Image Transmission",
-      description: "via Audio-Domain Encoding and Device-Bound Cryptography."
-    },
-    {
-      status: "Under Review",
-      title: "SafeLink+: A Zero-Trust Mobile Link Execution Framework",
-      description: "For Protecting Users from Malicious URLs."
     },
     {
       status: "Under Review",
@@ -88,15 +125,25 @@ const initialData = {
     },
     {
       status: "Under Review",
+      title: "VisioLock: Cross-Media Secure Image Transmission",
+      description: "Via Audio-Domain Encoding and Device-Bound Cryptography."
+    },
+    {
+      status: "Under Review",
       title: "A Multimodal, Infrastructure-Free Offline Emergency Communication System",
       description: "For Mobile Devices Using Adaptive Hybrid Mesh Networking."
+    },
+    {
+      status: "Under Review",
+      title: "SafeLink+: A Zero-Trust Mobile Link Execution Framework",
+      description: "For Protecting Users from Malicious URLs."
     }
   ],
   education: [
     {
       date: "2023 – Present",
-      title: "BSc in Computer Science and Engineering",
-      description: "Dhaka International University (5th Semester). Expected Graduation: 2027."
+      title: "Bachelor of Science in Computer Science and Engineering (CSE)",
+      description: "Dhaka International University, Dhaka, Bangladesh. Expected 2027. Current Status: 5th Semester, 3rd Year. Focused Specialization: Application Development, App Bug Bounty, Cybersecurity."
     },
     {
       date: "2022",
@@ -105,11 +152,11 @@ const initialData = {
     }
   ],
   leadership: [
-    { role: "Treasurer", org: "DIU Computer Programming Club (DIU CPC)", year: "2025–2026" },
+    { role: "Treasurer", org: "DIU Computer Programming Club (DIU CPC)", year: "March 2025 – April 2026" },
+    { role: "Executive Member", org: "DIU Computer Programming Club (DIU CPC)", year: "2024 – 2025" },
     { role: "Executive Member", org: "BASIS (Bangladesh Association of Software and Information Services)", year: "" },
-    { role: "Organizer", org: "CSE Fest Fall 2024", year: "" },
-    { role: "Volunteer", org: "3rd BIM 2025", year: "" },
-    { role: "Executive Member", org: "DIU CPC", year: "2024–2025" }
+    { role: "Lead Organizer", org: "CSE Fest Fall 2024", year: "(Coordinated logistics and technical events)" },
+    { role: "Volunteer", org: "3rd BIM 2025", year: "" }
   ]
 };
 

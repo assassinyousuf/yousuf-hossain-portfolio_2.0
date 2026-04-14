@@ -43,12 +43,12 @@ function renderPortfolio() {
   const main = document.getElementById('main-content');
   main.innerHTML = `
     <article class="card" id="about">
-      <div class="section-title">${data.summary.title}</div>
+      <div class="section-title"><i class="fas fa-user"></i> ${data.summary.title}</div>
       ${data.summary.content.map(p => `<p>${p}</p>`).join('')}
     </article>
 
     <article class="card" id="skills">
-      <div class="section-title">Technical Skills</div>
+      <div class="section-title"><i class="fas fa-bolt"></i> Technical Skills</div>
       <div class="skills-container">
         ${data.skills.map(cat => `
           <div class="skill-category">
@@ -62,11 +62,11 @@ function renderPortfolio() {
     </article>
 
     <article class="card" id="projects">
-      <div class="section-title">Featured Projects</div>
+      <div class="section-title"><i class="fas fa-code"></i> Projects & Research</div>
       <div class="projects">
         ${data.projects.map(proj => `
           <div class="project">
-            <h4>${proj.title}</h4>
+            <h4>${proj.title} ${proj.role ? `<span style="font-size: 0.8rem; color: var(--accent2); margin-left: 12px; font-weight: normal; font-family: 'JetBrains Mono', monospace;"><i class="fas fa-terminal" style="font-size:0.7rem; margin-right:4px;"></i>${proj.role}</span>` : ''}</h4>
             <p>${proj.description}</p>
             <div class="p-tags">
               ${proj.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
@@ -77,11 +77,11 @@ function renderPortfolio() {
     </article>
 
     <article class="card" id="publications">
-      <div class="section-title">Publications</div>
+      <div class="section-title"><i class="fas fa-book"></i> Publications</div>
       <div class="timeline">
         ${data.publications.map(pub => `
           <div class="timeline-item">
-            <div class="timeline-date">${pub.status}</div>
+            <div class="timeline-date"><i class="fas fa-check-circle" style="font-size:0.8rem; margin-right:4px;"></i>${pub.status}</div>
             <div class="timeline-title">${pub.title}</div>
             <p class="timeline-desc">${pub.description}</p>
           </div>
@@ -90,17 +90,17 @@ function renderPortfolio() {
     </article>
 
     <article class="card" id="education">
-      <div class="section-title">Education & Extracurriculars</div>
+      <div class="section-title"><i class="fas fa-graduation-cap"></i> Education & Extracurriculars</div>
       <div class="timeline">
         ${data.education.map(edu => `
           <div class="timeline-item">
-            <div class="timeline-date">${edu.date}</div>
+            <div class="timeline-date"><i class="far fa-calendar-alt" style="font-size:0.8rem; margin-right:4px;"></i>${edu.date}</div>
             <div class="timeline-title">${edu.title}</div>
             <p class="timeline-desc">${edu.description}</p>
           </div>
         `).join('')}
       </div>
-      <div class="section-title" style="margin-top: 32px;">Leadership & Activities</div>
+      <div class="section-title" style="margin-top: 32px;"><i class="fas fa-users"></i> Leadership & Activities</div>
       <ul style="color:var(--muted); margin-left:18px; line-height: 1.8;">
         ${data.leadership.map(l => `
           <li><strong style="color:#fff;">${l.role}</strong>, ${l.org} ${l.year ? `<em>${l.year}</em>` : ''}</li>
@@ -113,20 +113,20 @@ function renderPortfolio() {
   const aside = document.getElementById('aside-content');
   aside.innerHTML = `
     <article class="card" style="position: sticky; top: 100px;">
-      <div class="section-title">Profiles & CV</div>
+      <div class="section-title"><i class="fas fa-id-badge"></i> Profiles & CV</div>
       <div class="contact">
-        <a href="${data.profile.social.github}" target="_blank" class="btn-link">GitHub Profile</a>
-        <a href="${data.profile.social.linkedin}" target="_blank" class="btn-link">LinkedIn Profile</a>
-        <a href="${data.profile.social.facebook}" target="_blank" class="btn-link">Facebook</a>
-        <a href="youusf_cv.pdf" target="_blank" class="btn-link btn-primary" style="margin-top: 12px; color: #000;">Download CV</a>
+        <a href="${data.profile.social.github}" target="_blank" class="btn-link"><i class="fab fa-github" style="margin-right:8px; font-size: 1.2rem;"></i> GitHub</a>
+        <a href="${data.profile.social.linkedin}" target="_blank" class="btn-link"><i class="fab fa-linkedin" style="margin-right:8px; font-size: 1.2rem;"></i> LinkedIn</a>
+        <a href="${data.profile.social.facebook}" target="_blank" class="btn-link"><i class="fab fa-facebook" style="margin-right:8px; font-size: 1.2rem;"></i> Facebook</a>
+        <a href="yousuf_cv.pdf" target="_blank" class="btn-link btn-primary" style="margin-top: 12px; color: #000;"><i class="fas fa-file-pdf" style="margin-right:8px; font-size: 1.2rem;"></i> Download CV</a>
       </div>
     </article>
     <article class="card" id="contact" style="position: sticky; top: 380px;">
-      <div class="section-title">Let's Connect</div>
+      <div class="section-title"><i class="fas fa-envelope-open-text"></i> Let's Connect</div>
       <p>Open for collaborations and projects.</p>
       <div class="contact">
-        <a href="mailto:${data.profile.email}" class="btn-link" style="border-color: rgba(34, 211, 238, 0.4);">Email Me</a>
-        <a href="https://wa.me/${data.profile.phone.replace(/\D/g,'')}" target="_blank" class="btn-link">WhatsApp</a>
+        <a href="mailto:${data.profile.email}" class="btn-link" style="border-color: rgba(34, 211, 238, 0.4);"><i class="fas fa-envelope" style="margin-right:8px; font-size: 1.2rem;"></i> Email Me</a>
+        <a href="https://wa.me/${data.profile.phone.replace(/\D/g,'')}" target="_blank" class="btn-link"><i class="fab fa-whatsapp" style="margin-right:8px; font-size: 1.2rem;"></i> WhatsApp</a>
       </div>
     </article>
   `;
