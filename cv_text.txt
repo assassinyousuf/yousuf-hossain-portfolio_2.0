@@ -1,0 +1,65 @@
+Md. Yousuf Hossain
+♂¶ap-¶arker-altSayednagar Block-A, Vatara, Badda, Dhaka
+/envel⌢peitsmemehrab369@gmail.com —♂phone01629263618 —/githubassassinyousuf —/linkedin
+yousuf-hossain
+/gl⌢bePortfolio —/facebookFacebook
+Professional Summary
+Aspiring Cybersecurity Specialist and Computer Science undergraduate with a strong foundation
+in network security and ethical hacking. Proven track record in Capture The Flag (CTF) competitions
+and hands-on experience with security tools like Hack The Box and TryHackMe. Passionate about
+identifying vulnerabilities and researching secure transmission mechanisms. Eager to leverage technical
+skills in a professional environment to contribute to robust security solutions and innovative research.
+Education
+Bachelor of Science in Computer Science and Engineering (CSE)2023 – Present
+Dhaka International University Dhaka, Bangladesh
+5th Semester, 3rd Year (Expected Graduation: 2027)
+Future Major: Application Development, App Bug Bounty, Cybersecurity.
+Higher Secondary Certificate (HSC)2022
+GPA: 4.67 / 5.00
+Technical Skills
+•Programming Languages:Python, Flutter (Dart), C, Java, SQL
+•Cybersecurity & Ethical Hacking:CTF Basics, Linux Fundamentals, Ethical Hacking Principles,
+Network Security
+•Tools & Platforms:Hack The Box, TryHackMe, PicoCTF, Git, GitHub, VS Code, Android Studio
+Featured Projects
+Visiolock: Secure Image TransmissionDeveloper
+•Developed a cross-media secure image transmission system utilizing audio-domain encoding and
+device-bound cryptography.
+•Focused on enhancing data privacy and security during transmissions through non-traditional com-
+munication channels.
+Secure NFC: Mobile Ticketing SystemResearcher
+•Investigated NFC-based mobile ticketing frameworks using Host Card Emulation (HCE).
+•Implemented and analyzed security protocols to mitigate Replay Attacks and ensure transactional
+integrity.
+Sudoku SolverDeveloper
+•Engineered a Java-based application implementing OOP principles and backtracking algorithms to
+solve complex Sudoku puzzles.
+•Designed an interactive UI to visualize the step-by-step backtracking process.
+University Database Management SystemDeveloper
+•architected a comprehensive database solution to manage university informatics, including student
+records, academic cycles, and department logistics.
+•Optimized SQL queries for efficient data handling and relational management.
+Hostel Management SystemCoder & Planner
+•Developed a C-based management tool for room allocation and student lifecycle tracking in a collab-
+orative group environment.
+Extracurricular Activities
+•Treasurer, DIU Computer Programming Club (DIU CPC) 2025 – 2026
+•Executive Member, BASIS (Bangladesh Association of Software and Information Services)
+•Organizer, CSE Fest Fall 2024 (Successfully coordinated technical events and student logistics)
+•Volunteer, 3rd BIM 2025
+•Executive Member, DIU Computer Programming Club (DIU CPC) 2024 – 2025
+Publications
+1.Secure NFC-Based Mobile Ticketing System Using Host Card Emulation (HCE):Im-
+plementation and Analysis of Security Mechanisms Against Replay Attacks.[Accepted]
+2.A Real-Time Lightweight Intrusion Detection System for Smart City Networks Using
+Optimized Deep Learning.[Under Review]
+3.AI-Driven Real-Time Reading Assessment and Assistance System for Dyslexia Using
+Speech and Behavioral Analytics.[Under Review]
+4.VisioLock: Cross-Media Secure Image Transmission via Audio-Domain Encoding and
+Device-Bound Cryptography.[Under Review]
+5.A Multimodal, Infrastructure-Free Offline Emergency Communication System for Mo-
+bile Devices Using Adaptive Hybrid Mesh Networking.[Under Review]
+6.SafeLink+: A Zero-Trust Mobile Link Execution Framework for Protecting Users from
+Malicious URLs.[Under Review]
+I hereby affirm that the information provided above is accurate and true to the best of my knowledge.
+Signature
