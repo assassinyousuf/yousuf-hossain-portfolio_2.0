@@ -28,12 +28,8 @@ const initialData = {
       items: ["Python", "Flutter (Dart)", "C", "Java", "SQL"]
     },
     {
-      category: "Cybersecurity & Ethical Hacking",
-      items: ["CTF Methodologies", "Linux Administration", "Ethical Hacking Principles", "Network Defensive Security"]
-    },
-    {
       category: "Tools & Platforms",
-      items: ["Hack The Box", "TryHackMe", "PicoCTF", "Git/GitHub", "VS Code", "Android Studio"]
+      items: ["Basic CTF", "Hack The Box", "TryHackMe", "PicoCTF", "Git/GitHub", "VS Code", "Android Studio"]
     }
   ],
   projects: [
