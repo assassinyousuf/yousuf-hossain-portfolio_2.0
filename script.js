@@ -253,20 +253,34 @@ function initImmersiveBackground() {
 function initVisitorCounter() {
   const el = document.getElementById('visitorCount');
   if (!el) return;
-  let count = localStorage.getItem('site_v_count') || 1337;
-  count = parseInt(count) + 1;
-  localStorage.setItem('site_v_count', count);
-  el.textContent = count.toLocaleString();
+  
+  const url = 'https://api.countapi.xyz/hit/assassinyousuf.github.io/portfolio-visits';
+  fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      el.textContent = data.value.toLocaleString();
+    })
+    .catch(() => {
+      let count = localStorage.getItem('site_v_count') || 1337;
+      count = parseInt(count) + 1;
+      localStorage.setItem('site_v_count', count);
+      el.textContent = count.toLocaleString();
+    });
 }
 
 function initDashboard() {
   const modal = document.getElementById('dashboard-modal');
   const close = document.getElementById('close-dashboard');
+  const formsContainer = document.getElementById('forms-container');
+  const saveBtn = document.getElementById('save-dashboard');
+  const exportBtn = document.getElementById('export-data');
+  let activeTab = 'identity';
 
   const openDashboard = () => {
     const password = prompt("Enter Admin Password:");
     if (password === "yousuf") {
       modal.classList.add('show');
+      renderDashboardForms();
     } else if (password !== null) {
       alert("Unauthorized access!");
     }
@@ -279,6 +293,83 @@ function initDashboard() {
       openDashboard();
     }
   });
+
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  tabBtns.forEach(btn => {
+    btn.onclick = () => {
+      activeTab = btn.dataset.tab;
+      tabBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderDashboardForms();
+    };
+  });
+
+  function renderDashboardForms() {
+    const data = window.PORTFOLIO_DATA;
+    if (!data) return;
+    formsContainer.innerHTML = '';
+    
+    if (activeTab === 'identity') {
+      formsContainer.innerHTML = `
+        <div style="display:grid; gap:20px;">
+          <div class="form-group"><label>Name</label><input type="text" id="edit-name" value="${data.profile.name}"></div>
+          <div class="form-group"><label>Title</label><input type="text" id="edit-title" value="${data.profile.title}"></div>
+          <div class="form-group"><label>Email</label><input type="text" id="edit-email" value="${data.profile.email}"></div>
+        </div>
+      `;
+    } else if (activeTab === 'summary') {
+      formsContainer.innerHTML = `<textarea id="edit-summary" style="width:100%; height:300px; background:rgba(0,0,0,0.2); color:#fff; border:1px solid var(--glass-border); padding:15px; border-radius:10px;">${data.summary.content.join('\n')}</textarea>`;
+    } else if (activeTab === 'skills') {
+      formsContainer.innerHTML = data.skills.map((s, i) => `
+        <div style="margin-bottom:15px;">
+          <input type="text" class="edit-skill-cat" data-index="${i}" value="${s.category}" style="margin-bottom:5px;">
+          <input type="text" class="edit-skill-items" data-index="${i}" value="${s.items.join(', ')}">
+        </div>
+      `).join('');
+    } else if (activeTab === 'projects') {
+      formsContainer.innerHTML = data.projects.map((p, i) => `
+        <div style="border-bottom:1px solid var(--glass-border); padding-bottom:15px; margin-bottom:15px;">
+          <input type="text" class="edit-proj-title" data-index="${i}" value="${p.title}" style="margin-bottom:5px; font-weight:bold;">
+          <textarea class="edit-proj-desc" data-index="${i}" style="width:100%; height:60px;">${p.description}</textarea>
+          <input type="text" class="edit-proj-link" data-index="${i}" value="${p.link || ''}" placeholder="GitHub Repo Name">
+        </div>
+      `).join('');
+    }
+  }
+
+  saveBtn.onclick = () => {
+    const data = window.PORTFOLIO_DATA;
+    if (activeTab === 'identity') {
+      data.profile.name = document.getElementById('edit-name').value;
+      data.profile.title = document.getElementById('edit-title').value;
+      data.profile.email = document.getElementById('edit-email').value;
+    } else if (activeTab === 'summary') {
+      data.summary.content = document.getElementById('edit-summary').value.split('\n').filter(l => l.trim());
+    } else if (activeTab === 'skills') {
+      document.querySelectorAll('.edit-skill-cat').forEach((el, i) => {
+        data.skills[i].category = el.value;
+        data.skills[i].items = document.querySelectorAll('.edit-skill-items')[i].value.split(',').map(s => s.trim());
+      });
+    } else if (activeTab === 'projects') {
+      document.querySelectorAll('.edit-proj-title').forEach((el, i) => {
+        data.projects[i].title = el.value;
+        data.projects[i].description = document.querySelectorAll('.edit-proj-desc')[i].value;
+        data.projects[i].link = document.querySelectorAll('.edit-proj-link')[i].value;
+      });
+    }
+    saveData(data);
+    alert("Updated locally! Push to GitHub to make it permanent.");
+    modal.classList.remove('show');
+  };
+
+  exportBtn.onclick = () => {
+    const blob = new Blob([JSON.stringify(window.PORTFOLIO_DATA, null, 2)], {type : 'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'portfolio_data.json';
+    a.click();
+  };
 
   if (close) close.onclick = () => modal.classList.remove('show');
 }
