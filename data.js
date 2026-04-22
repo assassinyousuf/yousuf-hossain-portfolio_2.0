@@ -5,18 +5,21 @@ const initialData = {
     address: "Sayednagar Block-A, Vatara, Badda, Dhaka",
     email: "itsmemehrab369@gmail.com",
     phone: "01629-263618",
-    avatar: "yousuf.jpeg",
+    avatar: "yousuf.png",
     social: {
       github: "https://github.com/assassinyousuf",
-      linkedin: "https://www.linkedin.com/in/yousuf-hossain",
+      linkedin: "https://www.linkedin.com/in/md-yousuf-hossain-06089a328/",
       facebook: "https://www.facebook.com/yousufhossain.mehrab"
     }
   },
   summary: {
-    title: "Professional Summary",
+    title: "Personal Brand & Vision",
     content: [
-      "Aspiring Cybersecurity Specialist and Computer Science undergraduate with a robust foundation in network security and ethical hacking. Notable expertise in Capture The Flag (CTF) competitions and deep proficiency with specialized security platforms including Hack The Box and TryHackMe.",
-      "Passionate about identifying critical vulnerabilities and researching secure transmission protocols. Eager to contribute technical skills to high-impact security solutions and innovative cybersecurity research."
+      "I am a Computer Science and Engineering student at Dhaka International University, currently in my 6th semester, with a strong focus on cybersecurity, application development, and bug bounty practices.",
+      "My work revolves around building practical and research-driven solutions. I have contributed to multiple projects spanning intrusion detection systems, secure NFC-based mobile systems, offline emergency communication networks, and zero-trust security frameworks. Several of my research works have been accepted in academic venues, reflecting my strong interest in solving real-world security challenges through innovation.",
+      "I am proficient in Python, Flutter (Dart), C, Java, and SQL, and actively use platforms like Hack The Box, TryHackMe, and PicoCTF to sharpen my cybersecurity skills. Alongside research, I build applications ranging from AI-based assistants to secure mobile apps and dynamic web systems.",
+      "Beyond technical work, I actively contribute to the tech community. I currently serve as the General Secretary of the DIU Computer Programming Club (DIU CPC), after previously holding roles as Treasurer and Executive Member. I have also led and organized major university-level events, including CSE Fest Fall 2024.",
+      "I am particularly interested in the intersection of machine learning and cybersecurity, and I am currently working on an adaptive AI-based firewall system. My long-term goal is to pursue advanced studies in cybersecurity and contribute to the development of intelligent, secure systems."
     ]
   },
   skills: [
@@ -37,37 +40,37 @@ const initialData = {
     {
       title: "Visiolock",
       role: "Dart",
-      description: "Engineered cross-media secure image transmission via audio-domain encoding and cryptography. (Publication Under Review)",
+      description: "Engineered cross-media secure image transmission via audio-domain encoding and cryptography.",
       tags: ["Dart", "Cryptography", "Audio-Encoding"]
     },
     {
       title: "Secure NFC",
       role: "Lead Researcher",
-      description: "Investigated Host Card Emulation (HCE) for mobile ticketing ecosystems to defend against Replay Attacks. (Publication Accepted)",
+      description: "Investigated Host Card Emulation (HCE) for mobile ticketing ecosystems to defend against Replay Attacks.",
       tags: ["NFC", "Security Analytics", "HCE"]
     },
     {
       title: "Intrusion Detection System",
       role: "Researcher",
-      description: "Developed a real-time lightweight intrusion detection system utilizing optimized Deep Learning. (Publication Under Review)",
+      description: "Developed a real-time lightweight intrusion detection system utilizing optimized Deep Learning.",
       tags: ["Deep Learning", "Real-Time Systems", "Smart City"]
     },
     {
       title: "Dyslexia Assessment System",
       role: "Researcher",
-      description: "Engineered a real-time assessment/assistance system using Speech and Behavioral Analytics. (Publication Under Review)",
+      description: "Engineered a real-time assessment/assistance system using Speech and Behavioral Analytics.",
       tags: ["AI", "Speech Analytics", "Behavioral Tech"]
     },
     {
       title: "Offline Emergency Comms",
       role: "Researcher",
-      description: "Developed an infrastructure-free offline emergency system using adaptive hybrid mesh networking. (Publication Under Review)",
+      description: "Developed an infrastructure-free offline emergency system using adaptive hybrid mesh networking.",
       tags: ["Networking", "Hybrid Mesh", "Infrastructure-free"]
     },
     {
       title: "SafeLink+ Framework",
       role: "Researcher",
-      description: "Designed a framework to protect users from malicious URLs via zero-trust execution models. (Publication Under Review)",
+      description: "Designed a framework to protect users from malicious URLs via zero-trust execution models.",
       tags: ["Zero-Trust", "Web Security", "URL Protection"]
     },
     {
@@ -114,7 +117,22 @@ const initialData = {
       description: "Implementation and Analysis of Security Mechanisms Against Replay Attacks."
     },
     {
-      status: "Under Review",
+      status: "Accepted",
+      title: "VisioLock: Cross-Media Secure Image Transmission",
+      description: "Via Audio-Domain Encoding and Device-Bound Cryptography."
+    },
+    {
+      status: "Accepted",
+      title: "A Multimodal, Infrastructure-Free Offline Emergency Communication System",
+      description: "For Mobile Devices Using Adaptive Hybrid Mesh Networking."
+    },
+    {
+      status: "Accepted",
+      title: "SafeLink+: A Zero-Trust Mobile Link Execution Framework",
+      description: "For Protecting Users from Malicious URLs."
+    },
+    {
+      status: "Accepted",
       title: "A Real-Time Lightweight Intrusion Detection System",
       description: "For Smart City Networks Using Optimized Deep Learning."
     },
@@ -122,28 +140,13 @@ const initialData = {
       status: "Under Review",
       title: "AI-Driven Real-Time Reading Assessment and Assistance System",
       description: "For Dyslexia Using Speech and Behavioral Analytics."
-    },
-    {
-      status: "Under Review",
-      title: "VisioLock: Cross-Media Secure Image Transmission",
-      description: "Via Audio-Domain Encoding and Device-Bound Cryptography."
-    },
-    {
-      status: "Under Review",
-      title: "A Multimodal, Infrastructure-Free Offline Emergency Communication System",
-      description: "For Mobile Devices Using Adaptive Hybrid Mesh Networking."
-    },
-    {
-      status: "Under Review",
-      title: "SafeLink+: A Zero-Trust Mobile Link Execution Framework",
-      description: "For Protecting Users from Malicious URLs."
     }
   ],
   education: [
     {
       date: "2023 – Present",
       title: "Bachelor of Science in Computer Science and Engineering (CSE)",
-      description: "Dhaka International University, Dhaka, Bangladesh. Expected 2027. Current Status: 5th Semester, 3rd Year. Focused Specialization: Application Development, App Bug Bounty, Cybersecurity."
+      description: "Dhaka International University, Dhaka, Bangladesh. Expected 2027. Current Status: 6th Semester, 3rd Year. Focused Specialization: Application Development, App Bug Bounty, Cybersecurity."
     },
     {
       date: "2022",
@@ -152,6 +155,7 @@ const initialData = {
     }
   ],
   leadership: [
+    { role: "General Secretary", org: "DIU Computer Programming Club (DIU CPC)", year: "April 2026 – Present" },
     { role: "Treasurer", org: "DIU Computer Programming Club (DIU CPC)", year: "March 2025 – April 2026" },
     { role: "Executive Member", org: "DIU Computer Programming Club (DIU CPC)", year: "2024 – 2025" },
     { role: "Executive Member", org: "BASIS (Bangladesh Association of Software and Information Services)", year: "" },
@@ -162,6 +166,10 @@ const initialData = {
 
 // Handle data syncing with localStorage
 window.PORTFOLIO_DATA = JSON.parse(localStorage.getItem('portfolio_config')) || initialData;
+
+// Update CV and Avatar for the new assets
+window.PORTFOLIO_DATA.profile.avatar = "yousuf.png";
+window.PORTFOLIO_DATA.profile.cv = "youusf_cv.pdf";
 
 const saveData = (newData) => {
   localStorage.setItem('portfolio_config', JSON.stringify(newData));
