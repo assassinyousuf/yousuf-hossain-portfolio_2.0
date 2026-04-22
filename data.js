@@ -165,7 +165,9 @@ const initialData = {
 };
 
 // Handle data syncing with localStorage
-window.PORTFOLIO_DATA = JSON.parse(localStorage.getItem('portfolio_config')) || initialData;
+// Force a refresh of the localStorage to match the new code data
+window.PORTFOLIO_DATA = initialData;
+localStorage.setItem('portfolio_config', JSON.stringify(initialData));
 
 // Update CV and Avatar for the new assets
 window.PORTFOLIO_DATA.profile.avatar = "yousuf.png";
@@ -174,6 +176,5 @@ window.PORTFOLIO_DATA.profile.cv = "youusf_cv.pdf";
 const saveData = (newData) => {
   localStorage.setItem('portfolio_config', JSON.stringify(newData));
   window.PORTFOLIO_DATA = newData;
-  // Trigger re-render if function exists
   if (typeof renderPortfolio === 'function') renderPortfolio();
 };
