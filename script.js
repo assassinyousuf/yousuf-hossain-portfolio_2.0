@@ -260,7 +260,6 @@ function initVisitorCounter() {
 }
 
 function initDashboard() {
-  const trigger = document.getElementById('admin-trigger');
   const modal = document.getElementById('dashboard-modal');
   const close = document.getElementById('close-dashboard');
 
@@ -273,6 +272,13 @@ function initDashboard() {
     }
   };
 
-  if (trigger) trigger.onclick = openDashboard;
+  // Secret Shortcut: Ctrl + Shift + A
+  document.addEventListener('keydown', (e) => {
+    if (e.ctrlKey && e.shiftKey && e.code === 'KeyA') {
+      e.preventDefault();
+      openDashboard();
+    }
+  });
+
   if (close) close.onclick = () => modal.classList.remove('show');
 }
