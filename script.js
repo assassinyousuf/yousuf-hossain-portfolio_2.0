@@ -77,9 +77,14 @@ function renderPortfolio() {
               <div style="color:var(--accent); font-family:var(--font-mono); font-size:0.7rem; margin-bottom:10px;">${proj.role || 'RESEARCHER'}</div>
               <h4>${proj.title}</h4>
               <p>${proj.description}</p>
-              <div class="p-tags">
+              <div class="p-tags" style="margin-bottom: 20px;">
                 ${proj.tags.map(tag => `<span class="tag" style="font-size:0.7rem;">${tag}</span>`).join('')}
               </div>
+              ${proj.link ? `
+                <a href="${proj.link}" target="_blank" class="btn" style="padding: 8px 16px; font-size: 0.8rem; border: 1px solid var(--accent); color: var(--accent);">
+                  <i class="fab fa-github"></i> Source Code
+                </a>
+              ` : ''}
             </div>
           `).join('')}
         </div>

@@ -38,76 +38,74 @@ const initialData = {
   ],
   projects: [
     {
-      title: "Visiolock",
-      role: "Dart",
-      description: "Engineered cross-media secure image transmission via audio-domain encoding and cryptography.",
-      tags: ["Dart", "Cryptography", "Audio-Encoding"]
+      title: "Visiolock: Secure Image Transmission",
+      role: "Developer & Researcher",
+      description: "Engineered cross-media secure image transmission via audio-domain encoding and device-bound cryptography. Focused on data privacy in non-traditional channels.",
+      tags: ["Dart", "Cryptography", "Audio-Encoding"],
+      link: "https://github.com/assassinyousuf/visiolock"
     },
     {
-      title: "Secure NFC",
+      title: "Secure NFC: Mobile Ticketing",
       role: "Lead Researcher",
-      description: "Investigated Host Card Emulation (HCE) for mobile ticketing ecosystems to defend against Replay Attacks.",
-      tags: ["NFC", "Security Analytics", "HCE"]
+      description: "Investigated NFC frameworks using HCE. Implemented security protocols to mitigate Replay Attacks and ensure transactional integrity.",
+      tags: ["NFC", "Security", "HCE"],
+      link: "https://github.com/assassinyousuf/secure-nfc"
     },
     {
-      title: "Intrusion Detection System",
-      role: "Researcher",
-      description: "Developed a real-time lightweight intrusion detection system utilizing optimized Deep Learning.",
-      tags: ["Deep Learning", "Real-Time Systems", "Smart City"]
+      title: "Sudoku Solver",
+      role: "Java Developer",
+      description: "Engineered a Java application using OOP principles and backtracking algorithms to solve complex puzzles with a step-by-step visualization UI.",
+      tags: ["Java", "Algorithms", "Swing"],
+      link: "https://github.com/assassinyousuf/sudoku-solver"
     },
     {
-      title: "Dyslexia Assessment System",
-      role: "Researcher",
-      description: "Engineered a real-time assessment/assistance system using Speech and Behavioral Analytics.",
-      tags: ["AI", "Speech Analytics", "Behavioral Tech"]
+      title: "University Database Management",
+      role: "Database Architect",
+      description: "Architected a comprehensive solution for university informatics, records, and logistics. Optimized SQL queries for efficient relational management.",
+      tags: ["PostgreSQL", "SQL", "Database Design"],
+      link: "https://github.com/assassinyousuf/university-db"
     },
     {
-      title: "Offline Emergency Comms",
-      role: "Researcher",
-      description: "Developed an infrastructure-free offline emergency system using adaptive hybrid mesh networking.",
-      tags: ["Networking", "Hybrid Mesh", "Infrastructure-free"]
-    },
-    {
-      title: "SafeLink+ Framework",
-      role: "Researcher",
-      description: "Designed a framework to protect users from malicious URLs via zero-trust execution models.",
-      tags: ["Zero-Trust", "Web Security", "URL Protection"]
+      title: "Hostel Management System",
+      role: "Coder & Planner",
+      description: "Developed a C-based tool for room allocation and student lifecycle tracking in a collaborative environment.",
+      tags: ["C", "System Dev", "Project Planning"],
+      link: "https://github.com/assassinyousuf/hostel-management"
     },
     {
       title: "Adaptive Firewall AI",
-      role: "Python",
-      description: "Designed an intelligent firewall system in Python to adaptively detect and mitigate sophisticated network threats.",
-      tags: ["Python", "Firewall", "Network Security"]
+      role: "Python Developer",
+      description: "Designed an intelligent firewall system in Python to adaptively detect and mitigate sophisticated network threats using ML concepts.",
+      tags: ["Python", "Network Security", "AI"],
+      link: "https://github.com/assassinyousuf/adaptive-firewall"
     },
     {
       title: "DIU CPC Web Portal",
-      role: "JavaScript",
-      description: "Developed the dynamic web portal for the DIU Computer Programming Club using JavaScript and optimized UI interactions.",
-      tags: ["JavaScript", "Web Dev", "UI/UX"]
+      role: "Frontend Lead",
+      description: "Developed the dynamic web portal for the DIU Computer Programming Club with optimized UI interactions and member management.",
+      tags: ["JavaScript", "Web Dev", "UI/UX"],
+      link: "https://github.com/assassinyousuf/diu-cpc-portal"
     },
     {
-      title: "Personal Portfolio Website",
-      role: "JavaScript",
-      description: "Designed and deployed a responsive, modern web portfolio utilizing complex JavaScript and dynamic CSS styling.",
-      tags: ["JavaScript", "CSS", "Frontend"]
+      title: "Immersive 3D Portfolio",
+      role: "Creator",
+      description: "A high-performance full-screen immersive portfolio with 3D starfield, scroll-snapping, and real-time data integration.",
+      tags: ["Three.js", "JavaScript", "GLSL"],
+      link: "https://github.com/assassinyousuf/yousuf-hossain-portfolio_2.0"
     },
     {
       title: "SlapApp & Crypto Apps",
-      role: "Flutter / Dart",
-      description: "Built responsive mobile applications (\"SlapApp\" and \"image-encryption\") focusing on dynamic states and cryptography in Dart.",
-      tags: ["Flutter", "Dart", "Cryptography"]
+      role: "Flutter Developer",
+      description: "Built responsive mobile applications focusing on dynamic states and cryptography in Dart.",
+      tags: ["Flutter", "Dart", "Security"],
+      link: "https://github.com/assassinyousuf/slap-app"
     },
     {
       title: "My Jarvis (AI Assistant)",
-      role: "Python",
-      description: "Developed a localized, voice-activated AI desktop assistant in Python to automate computational tasks.",
-      tags: ["Python", "AI Desktop", "Automation"]
-    },
-    {
-      title: "University Database",
-      role: "PostgreSQL",
-      description: "Designed a PostgreSQL-backed structure to streamline university informatics and optimize query workloads.",
-      tags: ["PostgreSQL", "Database Design", "SQL"]
+      role: "Python Developer",
+      description: "Developed a localized, voice-activated AI desktop assistant in Python to automate computational tasks and system controls.",
+      tags: ["Python", "Automation", "AI"],
+      link: "https://github.com/assassinyousuf/jarvis"
     }
   ],
   publications: [
