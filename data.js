@@ -38,49 +38,49 @@ const initialData = {
       role: "Developer & Researcher",
       description: "Engineered cross-media secure image transmission via audio-domain encoding and device-bound cryptography. Focused on data privacy in non-traditional channels.",
       tags: ["Dart", "Cryptography", "Audio-Encoding"],
-      link: "https://github.com/assassinyousuf/visiolock"
+      link: "https://github.com/assassinyousuf/visiolock_nextGen"
     },
     {
       title: "Secure NFC: Mobile Ticketing",
       role: "Lead Researcher",
       description: "Investigated NFC frameworks using HCE. Implemented security protocols to mitigate Replay Attacks and ensure transactional integrity.",
       tags: ["NFC", "Security", "HCE"],
-      link: "https://github.com/assassinyousuf/secure-nfc"
+      link: "https://github.com/assassinyousuf/VisioLock"
     },
     {
       title: "Sudoku Solver",
       role: "Java Developer",
       description: "Engineered a Java application using OOP principles and backtracking algorithms to solve complex puzzles with a step-by-step visualization UI.",
       tags: ["Java", "Algorithms", "Swing"],
-      link: "https://github.com/assassinyousuf/sudoku-solver"
+      link: "https://github.com/assassinyousuf/sudoku_solver"
     },
     {
       title: "University Database Management",
       role: "Database Architect",
       description: "Architected a comprehensive solution for university informatics, records, and logistics. Optimized SQL queries for efficient relational management.",
       tags: ["PostgreSQL", "SQL", "Database Design"],
-      link: "https://github.com/assassinyousuf/university-db"
+      link: "https://github.com/assassinyousuf/University_database"
     },
     {
       title: "Hostel Management System",
       role: "Coder & Planner",
       description: "Developed a C-based tool for room allocation and student lifecycle tracking in a collaborative environment.",
       tags: ["C", "System Dev", "Project Planning"],
-      link: "https://github.com/assassinyousuf/hostel-management"
+      link: "https://github.com/assassinyousuf/hostel_management"
     },
     {
       title: "Adaptive Firewall AI",
       role: "Python Developer",
       description: "Designed an intelligent firewall system in Python to adaptively detect and mitigate sophisticated network threats using ML concepts.",
       tags: ["Python", "Network Security", "AI"],
-      link: "https://github.com/assassinyousuf/adaptive-firewall"
+      link: "https://github.com/assassinyousuf/adaptive-firewall-ai"
     },
     {
       title: "DIU CPC Web Portal",
       role: "Frontend Lead",
       description: "Developed the dynamic web portal for the DIU Computer Programming Club with optimized UI interactions and member management.",
       tags: ["JavaScript", "Web Dev", "UI/UX"],
-      link: "https://github.com/assassinyousuf/diu-cpc-portal"
+      link: "https://github.com/assassinyousuf/cpc_website"
     },
     {
       title: "Immersive 3D Portfolio",
@@ -94,14 +94,14 @@ const initialData = {
       role: "Flutter Developer",
       description: "Built responsive mobile applications focusing on dynamic states and cryptography in Dart.",
       tags: ["Flutter", "Dart", "Security"],
-      link: "https://github.com/assassinyousuf/slap-app"
+      link: "https://github.com/assassinyousuf/SlapApp"
     },
     {
       title: "My Jarvis (AI Assistant)",
       role: "Python Developer",
       description: "Developed a localized, voice-activated AI desktop assistant in Python to automate computational tasks and system controls.",
       tags: ["Python", "Automation", "AI"],
-      link: "https://github.com/assassinyousuf/jarvis"
+      link: "https://github.com/assassinyousuf/my_jarvis"
     }
   ],
   publications: [
