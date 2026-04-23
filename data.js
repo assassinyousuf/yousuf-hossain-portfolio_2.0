@@ -1,7 +1,7 @@
 const initialData = {
   profile: {
     name: "Md. Yousuf Hossain",
-    title: "Aspiring Cybersecurity Specialist & Computer Science Undergraduate",
+    title: "Cybersecurity Researcher | Aspiring Security Engineer | General Secretary, DIU CPC",
     address: "Sayednagar Block-A, Vatara, Badda, Dhaka",
     email: "itsmemehrab369@gmail.com",
     phone: "01629-263618",
