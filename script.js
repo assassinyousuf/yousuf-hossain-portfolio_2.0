@@ -31,15 +31,19 @@ function renderPortfolio() {
   wrap.innerHTML = `
     <!-- HERO SECTION -->
     <section class="section" id="hero">
-      <div class="content-wrap hero-content">
-        <div class="profile-container">
-          <img src="${data.profile.avatar}" alt="${data.profile.name}">
+      <div class="content-wrap hero-grid">
+        <div class="hero-text">
+          <h1>${data.profile.name}</h1>
+          <p class="hero-lead">${data.profile.title}</p>
+          <div class="hero-btns">
+            <a href="#about" class="btn btn-primary">Explore My World</a>
+            <a href="${data.profile.cv || 'youusf_cv.pdf'}" target="_blank" class="btn" style="border: 1px solid var(--glass-border); color:#fff;">View CV</a>
+          </div>
         </div>
-        <h1>${data.profile.name}</h1>
-        <p class="hero-lead">${data.profile.title}</p>
-        <div style="display:flex; justify-content:center; gap:20px;">
-          <a href="#about" class="btn btn-primary">Explore My World</a>
-          <a href="${data.profile.cv || 'youusf_cv.pdf'}" target="_blank" class="btn" style="border: 1px solid var(--glass-border); color:#fff;">View CV</a>
+        <div class="hero-image">
+          <div class="profile-container">
+            <img src="${data.profile.avatar}" alt="${data.profile.name}">
+          </div>
         </div>
       </div>
       <div class="tech-marquee-container">
@@ -51,9 +55,12 @@ function renderPortfolio() {
 
     <!-- ABOUT SECTION -->
     <section class="section" id="about">
-      <div class="content-wrap">
-        <div class="section-title">01. ${data.summary.title}</div>
-        <div class="about-text">
+      <div class="content-wrap about-grid">
+        <div class="about-left">
+          <div class="huge-number">01</div>
+          <div class="section-title">${data.summary.title}</div>
+        </div>
+        <div class="about-right about-text">
           ${data.summary.content.map(p => `<p style="margin-bottom:20px;">${p}</p>`).join('')}
         </div>
       </div>
@@ -144,7 +151,7 @@ function renderPortfolio() {
         });
       }
     });
-  }, { threshold: 0.5 });
+  }, { threshold: 0.15 });
   
   document.querySelectorAll('.section').forEach(el => observer.observe(el));
 
@@ -203,9 +210,12 @@ function initImmersiveBackground() {
     positions[i+1] = (Math.random() - 0.5) * 2000;
     positions[i+2] = (Math.random() - 0.5) * 2000;
 
-    const r = 0.5 + Math.random() * 0.5;
-    const g = 0.8 + Math.random() * 0.2;
-    const b = 0.9 + Math.random() * 0.1;
+    const isCyan = Math.random() > 0.5;
+    // Cyan: 0.0, 0.94, 1.0 (approx #00f0ff)
+    // Purple: 0.69, 0.15, 1.0 (approx #b026ff)
+    const r = isCyan ? 0.0 : 0.69;
+    const g = isCyan ? 0.94 : 0.15;
+    const b = 1.0;
     colors[i] = r; colors[i+1] = g; colors[i+2] = b;
   }
   starsGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
@@ -223,7 +233,7 @@ function initImmersiveBackground() {
 
   // Large Orbs for depth
   const orbGeo = new THREE.IcosahedronGeometry(100, 1);
-  const orbMat = new THREE.MeshBasicMaterial({ color: 0x22d3ee, wireframe: true, transparent: true, opacity: 0.05 });
+  const orbMat = new THREE.MeshBasicMaterial({ color: 0x00f0ff, wireframe: true, transparent: true, opacity: 0.05 });
   const orbs = [];
   for(let i=0; i<5; i++) {
     const orb = new THREE.Mesh(orbGeo, orbMat);
