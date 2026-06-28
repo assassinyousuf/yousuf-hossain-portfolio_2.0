@@ -184,6 +184,21 @@ function renderPortfolio() {
       });
     });
   }
+
+  // --- CYBER-SPINE ANIMATION ---
+  const spine = document.querySelector('.cyber-spine');
+  if (spine) {
+    window.addEventListener('scroll', () => {
+      // Parallax effect on the vertebrae
+      const offset = window.scrollY * 0.4;
+      spine.style.backgroundPosition = `0 0, 0 ${offset}px`;
+      
+      // Increase opacity slightly as user scrolls deeper
+      const maxScroll = document.body.scrollHeight - window.innerHeight;
+      const scrollProgress = window.scrollY / (maxScroll || 1);
+      spine.style.opacity = 0.15 + (scrollProgress * 0.2);
+    });
+  }
 }
 
 // --- IMMERSIVE 3D STARFIELD ---
