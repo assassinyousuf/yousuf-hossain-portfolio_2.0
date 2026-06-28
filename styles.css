@@ -10,6 +10,7 @@
   --font-heading: 'Space Grotesk', sans-serif;
   --font-main: 'Inter', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
+  --font-bio: 'Outfit', sans-serif;
 }
 
 /* Global Reset */
@@ -248,10 +249,21 @@ h1 {
   line-height: 1.1;
 }
 .about-text {
+  font-family: var(--font-bio);
   font-size: 1.15rem;
-  color: var(--muted);
+  font-weight: 300;
+  color: #e2e8f0;
   line-height: 1.8;
+  background: rgba(10, 10, 15, 0.4);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  border-left: 4px solid var(--accent);
+  position: relative;
 }
+.about-text p:last-child { margin-bottom: 0 !important; }
 
 /* Tech Marquee */
 .tech-marquee-container {

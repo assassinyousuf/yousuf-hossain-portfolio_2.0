@@ -15,11 +15,9 @@ const initialData = {
   summary: {
     title: "Personal Brand & Vision",
     content: [
-      "I am a Computer Science and Engineering student at Dhaka International University, currently in my 6th semester, with a strong focus on cybersecurity, application development, and bug bounty practices.",
-      "My work revolves around building practical and research-driven solutions. I have contributed to multiple projects spanning intrusion detection systems, secure NFC-based mobile systems, offline emergency communication networks, and zero-trust security frameworks. Several of my research works have been accepted in academic venues, reflecting my strong interest in solving real-world security challenges through innovation.",
-      "I am proficient in Python, Flutter (Dart), C, Java, and SQL, and actively use platforms like Hack The Box, TryHackMe, and PicoCTF to sharpen my cybersecurity skills. Alongside research, I build applications ranging from AI-based assistants to secure mobile apps and dynamic web systems.",
-      "Beyond technical work, I actively contribute to the tech community. I currently serve as the General Secretary of the DIU Computer Programming Club (DIU CPC), after previously holding roles as Treasurer and Executive Member. I have also led and organized major university-level events, including CSE Fest Fall 2024.",
-      "I am particularly interested in the intersection of machine learning and cybersecurity, and I am currently working on an adaptive AI-based firewall system. My long-term goal is to pursue advanced studies in cybersecurity and contribute to the development of intelligent, secure systems."
+      "I am a Computer Science researcher and developer specializing in cybersecurity, machine learning, and secure application architecture. Currently in my 6th semester at Dhaka International University, my work focuses on building zero-trust frameworks, intrusion detection systems, and adaptive AI-based firewalls.",
+      "Bridging the gap between academic research and practical engineering, I have published multiple research papers in recognized venues while actively developing secure mobile and web applications. I regularly sharpen my offensive security skills through platforms like Hack The Box and TryHackMe.",
+      "Beyond technical development, I am a dedicated community leader, currently serving as the General Secretary of the DIU Computer Programming Club, where I spearhead major tech initiatives and foster collaborative innovation."
     ]
   },
   skills: [
