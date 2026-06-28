@@ -5,7 +5,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   renderPortfolio();
   initImmersiveBackground();
-  initVisitorCounter();
   initDashboard();
 
   // Update year
@@ -24,6 +23,11 @@ function renderPortfolio() {
   // Clear the wrap and use it as our scroll container
   wrap.className = 'scroll-container'; 
   
+  // --- TECH STACK MARQUEE ---
+  const allSkills = data.skills.flatMap(cat => cat.items);
+  const marqueeItems = [...allSkills, ...allSkills, ...allSkills, ...allSkills, ...allSkills, ...allSkills, ...allSkills, ...allSkills];
+  const marqueeHTML = marqueeItems.map(skill => `<span>${skill}</span><span class="dot"></span>`).join('');
+
   wrap.innerHTML = `
     <!-- HERO SECTION -->
     <section class="section" id="hero">
@@ -38,6 +42,11 @@ function renderPortfolio() {
           <a href="${data.profile.cv || 'youusf_cv.pdf'}" target="_blank" class="btn" style="border: 1px solid var(--glass-border); color:#fff;">View CV</a>
         </div>
       </div>
+      <div class="tech-marquee-container">
+        <div class="tech-marquee-content">
+          ${marqueeHTML}
+        </div>
+      </div>
     </section>
 
     <!-- ABOUT SECTION -->
@@ -50,22 +59,7 @@ function renderPortfolio() {
       </div>
     </section>
 
-    <!-- SKILLS SECTION -->
-    <section class="section" id="skills">
-      <div class="content-wrap">
-        <div class="section-title">02. Technical Stack</div>
-        <div class="skills-grid">
-          ${data.skills.map(cat => `
-            <div class="skill-cat">
-              <h4>${cat.category}</h4>
-              <div class="p-tags">
-                ${cat.items.map(item => `<span class="tag">${item}</span>`).join('')}
-              </div>
-            </div>
-          `).join('')}
-        </div>
-      </div>
-    </section>
+
 
     <!-- PROJECTS SECTION -->
     <section class="section" id="projects">
@@ -88,7 +82,6 @@ function renderPortfolio() {
             </div>
           `).join('')}
         </div>
-        <div style="margin-top:40px; color:var(--muted); font-size:0.8rem; text-align:center;">Swipe to navigate projects →</div>
       </div>
     </section>
 
@@ -157,10 +150,33 @@ function renderPortfolio() {
 
   // --- NAV SETUP ---
   const navLinks = document.getElementById('nav-links');
-  const sections = ['hero', 'about', 'skills', 'projects', 'publications', 'contact'];
+  const sections = ['hero', 'about', 'projects', 'publications', 'contact'];
   navLinks.innerHTML = sections.map(id => `
     <a href="#${id}" class="nav-link ${id==='hero'?'active':''}">${id.toUpperCase()}</a>
   `).join('');
+
+  // --- DRAWER SETUP ---
+  const drawerToggle = document.getElementById('drawer-toggle');
+  const drawerMenu = document.getElementById('drawer-menu');
+  const drawerClose = document.getElementById('drawer-close');
+
+  if (drawerToggle && drawerMenu && drawerClose) {
+    drawerToggle.addEventListener('click', () => {
+      drawerMenu.classList.add('open');
+    });
+    
+    drawerClose.addEventListener('click', () => {
+      drawerMenu.classList.remove('open');
+    });
+
+    // Close drawer when a link is clicked
+    const links = drawerMenu.querySelectorAll('.nav-link');
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        drawerMenu.classList.remove('open');
+      });
+    });
+  }
 }
 
 // --- IMMERSIVE 3D STARFIELD ---
@@ -250,23 +266,6 @@ function initImmersiveBackground() {
 }
 
 // --- CORE UTILS ---
-function initVisitorCounter() {
-  const el = document.getElementById('visitorCount');
-  if (!el) return;
-  
-  const url = 'https://api.countapi.xyz/hit/assassinyousuf.github.io/portfolio-visits';
-  fetch(url)
-    .then(res => res.json())
-    .then(data => {
-      el.textContent = data.value.toLocaleString();
-    })
-    .catch(() => {
-      let count = localStorage.getItem('site_v_count') || 1337;
-      count = parseInt(count) + 1;
-      localStorage.setItem('site_v_count', count);
-      el.textContent = count.toLocaleString();
-    });
-}
 
 function initDashboard() {
   const modal = document.getElementById('dashboard-modal');

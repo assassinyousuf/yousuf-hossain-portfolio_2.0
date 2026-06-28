@@ -23,20 +23,22 @@
   <!-- Canvas Background for "Max" Upgrade -->
   <canvas id="bg-canvas" style="position:fixed; top:0; left:0; z-index:-1;"></canvas>
 
-  <!-- Sticky Navigation -->
-  <nav class="sticky-nav" id="stickyNav">
-    <div class="nav-container">
-      <div class="nav-left" id="nav-links">
-        <!-- Links populated by JS -->
-      </div>
-      <div class="nav-right">
-        <div class="visitor-counter">
-          <span class="counter-label">Visitors:</span>
-          <span class="counter-value" id="visitorCount">...</span>
-        </div>
-      </div>
+  <!-- Top Bar for Drawer Button -->
+  <div class="top-bar">
+    <button id="drawer-toggle" class="drawer-toggle">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+
+  <!-- Drawer Menu -->
+  <div id="drawer-menu" class="drawer">
+    <div class="drawer-header">
+      <button id="drawer-close" class="drawer-close">&times;</button>
     </div>
-  </nav>
+    <div class="drawer-nav" id="nav-links">
+      <!-- Links populated by JS -->
+    </div>
+  </div>
 
   <div class="wrap">
     <header id="header-section">
