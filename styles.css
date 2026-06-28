@@ -28,6 +28,30 @@ body {
   line-height: 1.5;
 }
 
+/* Cybernetic Backbone */
+.cyber-spine {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 100vh;
+  z-index: -1;
+  opacity: 0.15;
+  background:
+    linear-gradient(to right, transparent 28px, var(--accent) 29px, var(--accent) 31px, transparent 32px),
+    repeating-linear-gradient(to bottom, transparent 0, transparent 60px, var(--accent) 60px, var(--accent) 62px);
+  pointer-events: none;
+  animation: pulseSpine 4s infinite alternate ease-in-out;
+  mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+}
+
+@keyframes pulseSpine {
+  0% { opacity: 0.05; filter: drop-shadow(0 0 5px var(--accent)); }
+  100% { opacity: 0.25; filter: drop-shadow(0 0 20px var(--accent2)); }
+}
+
 /* Three.js Canvas */
 #bg-canvas {
   position: fixed;
@@ -413,6 +437,14 @@ h1 {
 /* Responsive */
 @media (max-width: 900px) {
   .section { padding: 80px 5%; }
+  .cyber-spine { 
+    left: 20px; 
+    transform: none; 
+    width: 20px; 
+    background:
+      linear-gradient(to right, transparent 8px, var(--accent) 9px, var(--accent) 11px, transparent 12px),
+      repeating-linear-gradient(to bottom, transparent 0, transparent 40px, var(--accent) 40px, var(--accent) 42px);
+  }
   .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 20px;}
   .hero-text { text-align: center; }
   .hero-btns { justify-content: center; }
