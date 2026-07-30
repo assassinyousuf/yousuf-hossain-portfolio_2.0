@@ -191,7 +191,7 @@ localStorage.setItem('portfolio_config', JSON.stringify(initialData));
 
 // Update CV and Avatar for the new assets
 window.PORTFOLIO_DATA.profile.avatar = "yousuf.png";
-window.PORTFOLIO_DATA.profile.cv = "documents/Md. Yousuf Hossain CV.pdf"; 
+window.PORTFOLIO_DATA.profile.cv = "Md__Yousuf_Hossain_CV.pdf"; 
 
 const saveData = (newData) => {
   localStorage.setItem('portfolio_config', JSON.stringify(newData));
