@@ -1,65 +1,66 @@
 Md. Yousuf Hossain
-♂¶ap-¶arker-altSayednagar Block-A, Vatara, Badda, Dhaka
-/envel⌢peitsmemehrab369@gmail.com —♂phone01629263618 —/githubassassinyousuf —/linkedin
-yousuf-hossain
-/gl⌢bePortfolio —/facebookFacebook
-Professional Summary
-Aspiring Cybersecurity Specialist and Computer Science undergraduate with a strong foundation
-in network security and ethical hacking. Proven track record in Capture The Flag (CTF) competitions
-and hands-on experience with security tools like Hack The Box and TryHackMe. Passionate about
-identifying vulnerabilities and researching secure transmission mechanisms. Eager to leverage technical
-skills in a professional environment to contribute to robust security solutions and innovative research.
-Education
-Bachelor of Science in Computer Science and Engineering (CSE)2023 – Present
-Dhaka International University Dhaka, Bangladesh
-5th Semester, 3rd Year (Expected Graduation: 2027)
-Future Major: Application Development, App Bug Bounty, Cybersecurity.
-Higher Secondary Certificate (HSC)2022
+Sayednagar Block-A, Vatara, Badda, Dhaka
+itsmemehrab369@gmail.com  01629263618
+github.com/assassinyousuf  linkedin.com/in/mdyousufhossainmehrab
+yousuf.surf
+
+PROFESSIONAL SUMMARY
+Computer Science and Engineering student at Dhaka International University with a strong interest in networking, cybersecurity, Linux systems, and IT infrastructure. Currently in the 6th semester and actively preparing for the Cisco CCNA certification through Jeremy’s IT Lab. Passionate about learning network technologies, troubleshooting, and system administration. Hands-on experience with Python, Java, C, SQL, Git, Linux, and Flutter, developing software applications and conducting cybersecurity and networking research. Quick learner with strong analytical, problem-solving, and teamwork skills, seeking practical experience through an IT Networking Internship.
+
+EDUCATION
+Bachelor of Science in Computer Science and Engineering (CSE) 2023 – Present
+Dhaka International University, Dhaka, Bangladesh Expected 2027
+Current Status: 6th Semester
+Higher Secondary Certificate (HSC) 2022
 GPA: 4.67 / 5.00
-Technical Skills
-•Programming Languages:Python, Flutter (Dart), C, Java, SQL
-•Cybersecurity & Ethical Hacking:CTF Basics, Linux Fundamentals, Ethical Hacking Principles,
-Network Security
-•Tools & Platforms:Hack The Box, TryHackMe, PicoCTF, Git, GitHub, VS Code, Android Studio
-Featured Projects
-Visiolock: Secure Image TransmissionDeveloper
-•Developed a cross-media secure image transmission system utilizing audio-domain encoding and
-device-bound cryptography.
-•Focused on enhancing data privacy and security during transmissions through non-traditional com-
-munication channels.
-Secure NFC: Mobile Ticketing SystemResearcher
-•Investigated NFC-based mobile ticketing frameworks using Host Card Emulation (HCE).
-•Implemented and analyzed security protocols to mitigate Replay Attacks and ensure transactional
-integrity.
-Sudoku SolverDeveloper
-•Engineered a Java-based application implementing OOP principles and backtracking algorithms to
-solve complex Sudoku puzzles.
-•Designed an interactive UI to visualize the step-by-step backtracking process.
-University Database Management SystemDeveloper
-•architected a comprehensive database solution to manage university informatics, including student
-records, academic cycles, and department logistics.
-•Optimized SQL queries for efficient data handling and relational management.
-Hostel Management SystemCoder & Planner
-•Developed a C-based management tool for room allocation and student lifecycle tracking in a collab-
-orative group environment.
-Extracurricular Activities
-•Treasurer, DIU Computer Programming Club (DIU CPC) 2025 – 2026
-•Executive Member, BASIS (Bangladesh Association of Software and Information Services)
-•Organizer, CSE Fest Fall 2024 (Successfully coordinated technical events and student logistics)
-•Volunteer, 3rd BIM 2025
-•Executive Member, DIU Computer Programming Club (DIU CPC) 2024 – 2025
-Publications
-1.Secure NFC-Based Mobile Ticketing System Using Host Card Emulation (HCE):Im-
-plementation and Analysis of Security Mechanisms Against Replay Attacks.[Accepted]
-2.A Real-Time Lightweight Intrusion Detection System for Smart City Networks Using
-Optimized Deep Learning.[Under Review]
-3.AI-Driven Real-Time Reading Assessment and Assistance System for Dyslexia Using
-Speech and Behavioral Analytics.[Under Review]
-4.VisioLock: Cross-Media Secure Image Transmission via Audio-Domain Encoding and
-Device-Bound Cryptography.[Under Review]
-5.A Multimodal, Infrastructure-Free Offline Emergency Communication System for Mo-
-bile Devices Using Adaptive Hybrid Mesh Networking.[Under Review]
-6.SafeLink+: A Zero-Trust Mobile Link Execution Framework for Protecting Users from
-Malicious URLs.[Under Review]
-I hereby affirm that the information provided above is accurate and true to the best of my knowledge.
-Signature
+
+RELEVANT COURSEWORK
+• Computer Networks
+• Operating Systems
+• Data Structures & Algorithms
+• Database Systems
+• Microprocessor & Assembly Language
+
+TECHNICAL SKILLS
+• Programming: Python, Java, C, SQL, Dart (Flutter)
+• Networking (Learning): Basic Networking Concepts, LAN & WAN Fundamentals, IPv4 Addressing, Wi-Fi Networking, OSI Model, TCP/IP Fundamentals, Router & Switch Basics, Network Troubleshooting
+• Operating Systems: Linux (Ubuntu/Kali), Windows 10/11
+• Cybersecurity: Capture The Flag (CTF)
+• Tools: Git & GitHub, VS Code, Android Studio, Microsoft Office, VMware, VirtualBox, Cisco Packet Tracer, ChatGPT, Google Gemini
+
+CURRENTLY LEARNING
+• Cisco CCNA (200-301)
+• Linux System Administration
+• Network Troubleshooting
+
+SELECTED PROJECTS
+Adaptive Firewall AI - Designed an intelligent firewall system in Python for adaptive detection and mitigation of network threats.
+Offline Emergency Comms - Designed an infrastructure-free communication system using adaptive hybrid mesh networking.
+DIU CPC Web Portal - Developed the official club website using JavaScript.
+My Jarvis - Built a Python-based voice-controlled desktop assistant.
+University Database - Designed a PostgreSQL database system for university management.
+Flutter Applications - Developed mobile applications using Flutter and Dart, including encryption-focused applications.
+
+RESEARCH EXPERIENCE & PUBLICATIONS
+Conducted research in Network Security, Secure Mobile Communication, Intrusion Detection Systems, Artificial Intelligence, Mobile Security, and Cybersecurity Frameworks. Published and submitted multiple research papers in networking and cybersecurity.
+
+• [1] Md. Yousuf Hossain, S. S. H. Sajeeb, S. M. N. Ausaf, M. M. Rahman, N. H. Saharaz, and M. A. Based, “VisioLock: Cross-Media Secure Image Transmission via Audio-Domain Encoding and Device-Bound Cryptography,” Taylor and Francis Book Chapter, Camera Ready.
+• [2] S. S. H. Sajeeb, Md. Yousuf Hossain, M. S. H. Naim, and M. M. Rahman, “Secure NFC-Based Mobile Ticketing System Using Host Card Emulation (HCE): Implementation and Analysis of Security Mechanisms Against Replay Attacks,” Camera Ready.
+• [3] S. M. N. Ausaf, Md. Yousuf Hossain, M. A. R. Mrida, M. M. Rahman, I. Zaman, M. S. Sarker, and M. A. Based, “A Real-Time Lightweight Intrusion Detection System for Smart City Networks Using Optimized Deep Learning,” Taylor and Francis Book Chapter, Camera Ready.
+• [4] S. S. H. Sajeeb, Md. Yousuf Hossain, S. M. N. Ausaf, M. N. H. Masud, M. F. Rabby, and M. A. Based, “A Multimodal, Infrastructure-Free Offline Emergency Communication System for Mobile Devices Using Adaptive Hybrid Mesh Networking,” Camera Ready.
+• [5] S. S. H. Sajeeb, Md. Yousuf Hossain, M. I. Dewan, M. N. H. Masud, M. T. Akhter, and M. M. Rahman, “SafeLink+: A Zero-Trust Mobile Link Execution Framework for Protecting Users from Malicious URLs,” Taylor and Francis Book Chapter, Camera Ready.
+
+AFFILIATIONS & MEMBERSHIPS
+• Student Member, IEEE (Institute of Electrical and Electronics Engineers) Valid through 2026
+• Member, IEEE Computer Society (CS) Valid through 2026
+
+LEADERSHIP & ACTIVITIES
+• General Secretary, DIU Computer Programming Club (DIU CPC) 2026 – Present
+• Treasurer, DIU Computer Programming Club (DIU CPC) 2025 – 2026
+• Executive Member, DIU Computer Programming Club (DIU CPC) 2024 – 2025
+• Executive Member, BASIS Students’ Forum
+• Volunteer, 3rd International Conference on Big Data, IoT & Machine Learning (BIM 2025)
+• Lead Organizer, CSE Fest Fall 2024
+
+SOFT SKILLS
+• Key Strengths: Problem Solving, Analytical Thinking, Team Collaboration, Communication, Fast Learner, Adaptability, Time Management
