@@ -1,16 +1,16 @@
 import React from "react";
 import SmoothScroll from "./components/SmoothScroll";
-import Section3DWrapper from "./components/Section3DWrapper";
 import Cyber3DScene from "./components/Cyber3DScene";
 import NetworkMeshCanvas from "./components/NetworkMeshCanvas";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import TechLogosTicker from "./components/TechLogosTicker";
-import Interactive3DShowcase from "./components/Interactive3DShowcase";
-import ResearchShowcase from "./components/ResearchShowcase";
-import SecurityBento from "./components/SecurityBento";
 import ProjectsMatrix from "./components/ProjectsMatrix";
+import ResearchShowcase from "./components/ResearchShowcase";
 import SkillsSection from "./components/SkillsSection";
+import AchievementsSection from "./components/AchievementsSection";
+import TimelineSection from "./components/TimelineSection";
+import EducationSection from "./components/EducationSection";
 import InteractiveTerminal from "./components/InteractiveTerminal";
 import Footer from "./components/Footer";
 
@@ -19,50 +19,48 @@ export default function App() {
     <SmoothScroll>
       <div className="relative min-h-screen bg-[#030408] text-[#E4E6F0] selection:bg-purple-600/30 selection:text-purple-300 overflow-x-hidden">
         
-        {/* Continuous 3D WebGL Scene & Infinite Runway */}
+        {/* Subtle Ambient 3D Cyber Core & Starfield */}
         <Cyber3DScene />
 
-        {/* Dynamic 2D Mesh Network Canvas */}
+        {/* Dynamic 2D Mesh Network Interactive Canvas */}
         <NetworkMeshCanvas />
 
-        {/* Top Header with Equalizer & F1 Audio */}
+        {/* Fixed Navigation Header with Audio Equalizer & CV Download */}
         <Header />
 
-        {/* Continuous 3D Sliding Content Runway */}
-        <main className="relative z-10 flex flex-col gap-10 sm:gap-14">
-          <Section3DWrapper direction="center">
-            <Hero />
-          </Section3DWrapper>
+        {/* Structured 8-Phase Information Narrative */}
+        <main className="relative z-10 flex flex-col">
+          
+          {/* 01 — Hero & Positioning */}
+          <Hero />
 
-          <Section3DWrapper direction="left">
-            <TechLogosTicker />
-          </Section3DWrapper>
+          {/* Accreditations & Research Partners Marquee */}
+          <TechLogosTicker />
 
-          <Section3DWrapper direction="center">
-            <Interactive3DShowcase />
-          </Section3DWrapper>
+          {/* 02 — Featured Work & Flagship Technical Case Studies */}
+          <ProjectsMatrix />
 
-          <Section3DWrapper direction="right">
-            <ResearchShowcase />
-          </Section3DWrapper>
+          {/* 03 — Peer-Reviewed Research & Publications */}
+          <ResearchShowcase />
 
-          <Section3DWrapper direction="left">
-            <SecurityBento />
-          </Section3DWrapper>
+          {/* 04 — Categorized Technical Competencies */}
+          <SkillsSection />
 
-          <Section3DWrapper direction="right">
-            <ProjectsMatrix />
-          </Section3DWrapper>
+          {/* 05 — Competitive CTF Honors & Interactive Challenge */}
+          <AchievementsSection />
 
-          <Section3DWrapper direction="left">
-            <SkillsSection />
-          </Section3DWrapper>
+          {/* 06 — Growth Timeline & Executive Leadership */}
+          <TimelineSection />
 
-          <Section3DWrapper direction="center">
-            <InteractiveTerminal />
-          </Section3DWrapper>
+          {/* 07 — Academics & Cisco CCNA Telemetry Sandbox */}
+          <EducationSection />
+
+          {/* 08 — Interactive CLI & Direct Communication */}
+          <InteractiveTerminal />
+
         </main>
 
+        {/* Grounded Clean Footer */}
         <Footer />
 
       </div>

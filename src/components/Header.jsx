@@ -1,16 +1,25 @@
 import React, { useState, useEffect, useRef } from "react";
 import { personalInfo } from "../data/portfolioData";
-import { Volume2, VolumeX, Terminal, Download, Menu, X, Shield, Globe } from "lucide-react";
+import { VolumeX, Download, Menu, X } from "lucide-react";
 
 export default function Header() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const audioRef = useRef(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     const audio = new Audio("/f1-theme.mp3");
     audio.loop = true;
-    audio.volume = 0.45;
+    audio.volume = 0.35;
     audioRef.current = audio;
 
     return () => {
@@ -29,123 +38,149 @@ export default function Header() {
         .play()
         .then(() => setIsPlaying(true))
         .catch((err) => {
-          console.warn("Audio playback requires user gesture:", err);
+          console.warn("Audio playback gesture needed:", err);
         });
     }
   };
 
   const navItems = [
     { label: "Overview", href: "#overview" },
-    { label: "Research", href: "#research" },
-    { label: "Security & CTF", href: "#ctf" },
     { label: "Projects", href: "#projects" },
+    { label: "Research", href: "#research" },
     { label: "Skills", href: "#skills" },
+    { label: "Timeline", href: "#timeline" },
+    { label: "Achievements", href: "#achievements" },
     { label: "Terminal", href: "#terminal" },
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-4 py-3 sm:px-8">
+    <header className="fixed top-0 left-0 right-0 z-50 px-3 py-2.5 sm:px-6 md:px-8 transition-all duration-300">
       <div className="mx-auto max-w-7xl">
-        <div className="glass-panel rounded-2xl px-5 py-3 shadow-[0_8px_32px_rgba(0,0,0,0.5)] border border-purple-500/20 flex items-center justify-between">
-
-          {/* Logo & Online Status */}
-          <a href="#" className="flex items-center gap-3 group">
-            <div className="relative flex h-3 w-3">
+        <div
+          className={`rounded-2xl px-4 py-2.5 sm:px-5 sm:py-3 transition-all duration-300 flex items-center justify-between border ${
+            scrolled
+              ? "bg-[#060814]/90 backdrop-blur-xl border-purple-500/25 shadow-[0_10px_35px_rgba(0,0,0,0.7)]"
+              : "bg-[#080b18]/75 backdrop-blur-lg border-purple-500/15 shadow-[0_6px_25px_rgba(0,0,0,0.4)]"
+          }`}
+        >
+          {/* Logo & Identity */}
+          <a href="#overview" className="flex items-center gap-2.5 group">
+            <div className="relative flex h-2.5 w-2.5">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
             </div>
             <div className="flex flex-col">
-              <span className="font-display text-sm sm:text-base font-bold tracking-wider text-white group-hover:text-purple-300 transition-colors">
-                YOUSUF<span className="text-purple-400">.SURF</span>
+              <span className="font-display text-sm sm:text-base font-extrabold tracking-wide text-white group-hover:text-purple-300 transition-colors">
+                YOUSUF<span className="text-cyan-400">.SURF</span>
               </span>
-              <span className="font-mono text-[9px] tracking-widest text-emerald-400/90 uppercase">
-                [ SYS: NOMINAL // 200 OK ]
+              <span className="font-mono text-[9px] tracking-wider text-slate-400 uppercase hidden xs:inline">
+                CSE // CYBER & NETWORKS
               </span>
             </div>
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-6 text-sm font-mono tracking-wide text-slate-300">
+          <nav className="hidden xl:flex items-center gap-5 text-xs font-mono text-slate-300">
             {navItems.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
-                className="relative py-1 text-xs hover:text-purple-300 transition-colors group"
+                className="py-1 text-slate-300 hover:text-white transition-colors relative group"
               >
-                <span className="text-purple-500 opacity-0 group-hover:opacity-100 transition-opacity">/ </span>
+                <span className="text-purple-400 opacity-0 group-hover:opacity-100 transition-opacity">/ </span>
                 {item.label}
               </a>
             ))}
           </nav>
 
-          {/* Action Hub (Audio Toggle + CV + Mobile Menu) */}
-          <div className="flex items-center gap-3">
-            {/* Audio Equalizer Button */}
+          {/* Controls: Audio + CV Download + Mobile Toggle */}
+          <div className="flex items-center gap-2 sm:gap-3">
+            {/* Audio Toggle */}
             <button
               onClick={toggleAudio}
-              className={`relative flex items-center gap-2 px-3 py-1.5 rounded-xl border text-xs font-mono transition-all duration-300 ${isPlaying
-                  ? "border-purple-400/80 bg-purple-950/40 text-purple-200 shadow-[0_0_15px_rgba(168,85,247,0.4)]"
+              className={`flex items-center gap-2 px-2.5 py-1.5 sm:px-3 sm:py-1.5 rounded-xl border text-xs font-mono transition-all duration-200 touch-target ${
+                isPlaying
+                  ? "border-purple-400/80 bg-purple-950/50 text-purple-200 shadow-[0_0_12px_rgba(168,85,247,0.35)]"
                   : "border-slate-800 bg-slate-900/60 text-slate-400 hover:border-slate-700 hover:text-slate-200"
-                }`}
-              title={isPlaying ? "Mute ambient audio" : "Play ambient cyber audio"}
+              }`}
+              title={isPlaying ? "Mute audio" : "Play ambient sound"}
+              aria-label="Toggle ambient cyber audio"
             >
               {isPlaying ? (
-                <div className="flex items-end gap-[3px] h-3.5 w-4">
-                  <span className="w-[3px] bg-purple-400 rounded-sm animate-[eq-1_1s_ease-in-out_infinite]" />
-                  <span className="w-[3px] bg-purple-300 rounded-sm animate-[eq-2_0.8s_ease-in-out_infinite]" />
-                  <span className="w-[3px] bg-cyan-400 rounded-sm animate-[eq-3_1.2s_ease-in-out_infinite]" />
-                  <span className="w-[3px] bg-purple-400 rounded-sm animate-[eq-4_0.9s_ease-in-out_infinite]" />
+                <div className="flex items-end gap-[2px] h-3 w-3.5">
+                  <span className="w-[2.5px] bg-purple-400 rounded-sm animate-[eq-1_0.9s_ease-in-out_infinite]" />
+                  <span className="w-[2.5px] bg-cyan-400 rounded-sm animate-[eq-2_0.7s_ease-in-out_infinite]" />
+                  <span className="w-[2.5px] bg-purple-300 rounded-sm animate-[eq-3_1.1s_ease-in-out_infinite]" />
                 </div>
               ) : (
                 <VolumeX className="w-3.5 h-3.5" />
               )}
-              <span className="hidden sm:inline text-[11px] uppercase tracking-wider font-bold">
-                {isPlaying ? "LOSE MY MIND: ON" : "LOSE MY MIND"}
+              <span className="hidden sm:inline text-[10px] uppercase tracking-wider font-semibold">
+                {isPlaying ? "AUDIO: ON" : "AUDIO"}
               </span>
             </button>
 
-            {/* Resume Button */}
+            {/* Direct CV Download Button */}
             <a
               href={personalInfo.cvUrl}
               download
               target="_blank"
               rel="noreferrer"
-              className="relative hidden sm:inline-flex items-center gap-2 px-4 py-1.5 rounded-xl text-xs font-mono font-semibold text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 border border-purple-400/40 shadow-[0_0_18px_rgba(147,51,234,0.35)] transition-all transform hover:scale-[1.03] active:scale-[0.98]"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-1.5 rounded-xl text-xs font-mono font-semibold text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 border border-purple-400/40 shadow-[0_0_15px_rgba(147,51,234,0.3)] transition-transform hover:scale-[1.02] active:scale-[0.98] touch-target"
             >
               <Download className="w-3.5 h-3.5" />
-              <span>CV.PDF</span>
+              <span className="text-[11px] sm:text-xs">CV.PDF</span>
             </a>
 
-            {/* Mobile Menu Toggle */}
+            {/* Mobile Hamburger Toggle */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 lg:hidden rounded-lg border border-slate-800 text-slate-300 hover:text-white"
+              className="p-2 xl:hidden rounded-xl border border-slate-800 bg-slate-900/60 text-slate-300 hover:text-white hover:border-purple-500/40 transition-colors touch-target flex items-center justify-center"
+              aria-label="Toggle Navigation Menu"
             >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {mobileMenuOpen ? <X className="w-5 h-5 text-purple-400" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
 
-        {/* Mobile Dropdown Menu */}
+        {/* Mobile Slide-down Drawer */}
         {mobileMenuOpen && (
-          <div className="lg:hidden mt-2 p-4 rounded-2xl glass-panel border border-purple-500/30 flex flex-col gap-3 font-mono text-sm animate-in fade-in slide-in-from-top-2">
-            {navItems.map((item) => (
+          <div className="xl:hidden mt-2 p-5 rounded-2xl bg-[#090d20]/95 backdrop-blur-2xl border border-purple-500/30 shadow-[0_15px_45px_rgba(0,0,0,0.8)] flex flex-col gap-2 font-mono text-sm animate-in fade-in slide-in-from-top-2">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-800/80 text-xs text-slate-400">
+              <span className="text-purple-300 font-bold">NAVIGATION MENU</span>
+              <span className="text-emerald-400 text-[10px]">[SYS: ACTIVE]</span>
+            </div>
+
+            <div className="grid grid-cols-2 gap-1.5 pt-1">
+              {navItems.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="py-2.5 px-3 rounded-xl hover:bg-purple-900/30 text-slate-200 hover:text-purple-300 text-xs transition-colors border border-transparent hover:border-purple-500/20"
+                >
+                  <span className="text-purple-400 font-bold">/</span> {item.label}
+                </a>
+              ))}
+            </div>
+
+            <div className="pt-3 border-t border-slate-800/80 flex items-center justify-between gap-3">
               <a
-                key={item.label}
-                href={item.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="py-2 px-3 rounded-lg hover:bg-purple-900/30 text-slate-200 hover:text-purple-300"
+                href={personalInfo.cvUrl}
+                download
+                className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-semibold text-xs transition-colors"
               >
-                / {item.label}
+                <Download className="w-4 h-4" /> Download Official CV
               </a>
-            ))}
-            <a
-              href={personalInfo.cvUrl}
-              download
-              className="mt-2 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-purple-600 text-white font-semibold text-xs"
-            >
-              <Download className="w-4 h-4" /> Download Official CV
-            </a>
+              <a
+                href={personalInfo.github}
+                target="_blank"
+                rel="noreferrer"
+                className="px-3 py-2.5 rounded-xl border border-slate-700 bg-slate-900 text-slate-300 hover:text-white text-xs"
+              >
+                GitHub
+              </a>
+            </div>
           </div>
         )}
       </div>
