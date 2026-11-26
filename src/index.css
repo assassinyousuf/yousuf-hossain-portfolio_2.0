@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Unbounded", system-ui, sans-serif;
+  --font-sans: "Hanken Grotesk", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --color-cyber-black: #030408;
+  --color-cyber-dark: #070913;
+  --color-cyber-card: #0c0f20;
+  --color-cyber-border: rgba(168, 85, 247, 0.2);
+  --color-cyber-purple: #a855f7;
+  --color-cyber-neon: #c084fc;
+  --color-cyber-cyan: #06b6d4;
+  --color-cyber-emerald: #10b981;
+}
+
+/* ========================================================
+   AETHERMIND MOTION SYSTEM: KEYFRAMES & SHADERS
+   ======================================================== */
+
+@keyframes aurora {
+  0% { background-position: 0% 25%; }
+  25% { background-position: 50% 85%; }
+  50% { background-position: 100% 20%; }
+  75% { background-position: 50% 80%; }
+  100% { background-position: 0% 25%; }
+}
+
+@keyframes shimmer-sweep {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes electric-pulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 6px rgba(192, 132, 252, 0.45)) drop-shadow(0 0 14px rgba(124, 58, 237, 0.3));
+  }
+  20% {
+    filter: drop-shadow(0 0 12px rgba(240, 171, 252, 0.8)) drop-shadow(0 0 24px rgba(139, 92, 246, 0.6));
+  }
+  50% {
+    filter: drop-shadow(0 0 4px rgba(168, 85, 247, 0.3));
+  }
+}
+
+@keyframes electric-arc {
+  0%, 70%, 100% {
+    opacity: 0;
+    stroke-dashoffset: 80;
+  }
+  75%, 85% {
+    opacity: 1;
+    stroke-dashoffset: 0;
+  }
+  80% {
+    opacity: 0.4;
+  }
+  92% {
+    opacity: 0;
+    stroke-dashoffset: -80;
+  }
+}
+
+@keyframes orb-float-1 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(80px, 60px) scale(1.1); }
+  100% { transform: translate(-40px, 90px) scale(0.95); }
+}
+
+@keyframes orb-float-2 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-70px, -50px) scale(1.08); }
+  100% { transform: translate(50px, -80px) scale(0.92); }
+}
+
+/* Audio Visualizer Equalizer Bar Keyframes */
+@keyframes eq-1 {
+  0%, 100% { height: 25%; }
+  50% { height: 95%; }
+}
+@keyframes eq-2 {
+  0%, 100% { height: 80%; }
+  50% { height: 30%; }
+}
+@keyframes eq-3 {
+  0%, 100% { height: 40%; }
+  50% { height: 100%; }
+}
+@keyframes eq-4 {
+  0%, 100% { height: 90%; }
+  50% { height: 15%; }
+}
+
+.animate-aurora {
+  background-size: 200% 200%;
+  animation: aurora 16s ease infinite;
+}
+
+.animate-shimmer {
+  background-size: 200% auto;
+  animation: shimmer-sweep 3s linear infinite;
+}
+
+.animate-electric {
+  animation: electric-pulse 4s ease-in-out infinite;
+}
+
+.animate-orb-1 {
+  animation: orb-float-1 18s ease-in-out infinite alternate;
+}
+
+.animate-orb-2 {
+  animation: orb-float-2 22s ease-in-out infinite alternate;
+}
+
+/* Glassmorphism helpers */
+.glass-panel {
+  background: rgba(12, 15, 32, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(168, 85, 247, 0.15);
+}
+
+.glass-panel:hover {
+  border-color: rgba(192, 132, 252, 0.35);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Grid overlay background */
+.cyber-grid {
+  background-image: linear-gradient(to right, rgba(168, 85, 247, 0.05) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(168, 85, 247, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}

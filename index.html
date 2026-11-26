@@ -1,162 +1,18 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png" />
-  <link rel="apple-touch-icon" href="favicon.png" />
-
-  <!-- Primary Meta Tags -->
-  <title>Md. Yousuf Hossain | Cybersecurity Researcher & Developer</title>
-  <meta name="title" content="Md. Yousuf Hossain | Cybersecurity Researcher & Developer" />
-  <meta name="description" content="Portfolio of Md. Yousuf Hossain - Cybersecurity Researcher, Application Developer, and Computer Science undergraduate specializing in zero-trust networks and AI." />
-  <meta name="keywords" content="Md. Yousuf Hossain, yousuf.surf, Cybersecurity, Researcher, Flutter Developer, Python, CTF, Networking, Dhaka International University" />
-  <meta name="author" content="Md. Yousuf Hossain" />
-  <link rel="canonical" href="https://www.yousuf.surf/" />
-
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.yousuf.surf/" />
-  <meta property="og:title" content="Md. Yousuf Hossain | Cybersecurity Researcher & Developer" />
-  <meta property="og:description" content="Portfolio of Md. Yousuf Hossain - Cybersecurity Researcher, Application Developer, and Computer Science undergraduate specializing in zero-trust networks and AI." />
-  <meta property="og:image" content="https://www.yousuf.surf/yousuf.png" />
-
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content="https://www.yousuf.surf/" />
-  <meta property="twitter:title" content="Md. Yousuf Hossain | Cybersecurity Researcher & Developer" />
-  <meta property="twitter:description" content="Portfolio of Md. Yousuf Hossain - Cybersecurity Researcher, Application Developer, and Computer Science undergraduate specializing in zero-trust networks and AI." />
-  <meta property="twitter:image" content="https://www.yousuf.surf/yousuf.png" />
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
-  
-  <!-- Fonts & Styles -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="styles.css?v=20260431">
-</head>
-<body class="loading">
-
-  <!-- Network Initialization Intro -->
-  <div id="preloader" style="position:fixed; inset:0; z-index:9999; background:#000; display:flex; align-items:center; justify-content:center; flex-direction:column; opacity:1; transition:opacity 0.8s ease;">
-    <div style="font-family:var(--font-mono); color:var(--muted); font-size:0.8rem; margin-bottom:40px; letter-spacing:0.1em; height:20px;" id="preloader-text">NETWORK INITIALIZING...</div>
-    
-    <div class="preloader-network" style="position:relative; width:80vw; max-width:800px; height:150px; display:flex; justify-content:space-between; align-items:center;">
-      <svg class="preloader-lines" style="position:absolute; top:0; left:0; width:100%; height:100%; z-index:1; pointer-events:none;">
-        <line x1="10%" y1="50%" x2="30%" y2="50%" stroke="var(--muted)" stroke-width="2" stroke-dasharray="4" opacity="0.3" id="line-1"></line>
-        <line x1="30%" y1="50%" x2="50%" y2="50%" stroke="var(--muted)" stroke-width="2" stroke-dasharray="4" opacity="0.3" id="line-2"></line>
-        <line x1="50%" y1="50%" x2="70%" y2="50%" stroke="var(--muted)" stroke-width="2" stroke-dasharray="4" opacity="0.3" id="line-3"></line>
-        <line x1="70%" y1="50%" x2="90%" y2="50%" stroke="var(--muted)" stroke-width="2" stroke-dasharray="4" opacity="0.3" id="line-4"></line>
-      </svg>
-      
-      <!-- Nodes will be injected by script.js using network-assets.js icons -->
-      <div class="intro-node" id="node-router" style="position:absolute; top:50%; left:10%; transform:translate(-50%, -50%) scale(0.9); z-index:2; opacity:0.2; color:var(--muted); transition:all 0.3s;"></div>
-      <div class="intro-node" id="node-switch" style="position:absolute; top:50%; left:30%; transform:translate(-50%, -50%) scale(0.9); z-index:2; opacity:0.2; color:var(--muted); transition:all 0.3s;"></div>
-      <div class="intro-node" id="node-firewall" style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%) scale(0.9); z-index:2; opacity:0.2; color:var(--muted); transition:all 0.3s;"></div>
-      <div class="intro-node" id="node-server" style="position:absolute; top:50%; left:70%; transform:translate(-50%, -50%) scale(0.9); z-index:2; opacity:0.2; color:var(--muted); transition:all 0.3s;"></div>
-      <div class="intro-node" id="node-cloud" style="position:absolute; top:50%; left:90%; transform:translate(-50%, -50%) scale(0.9); z-index:2; opacity:0.2; color:var(--muted); transition:all 0.3s;"></div>
-
-      <!-- Packets -->
-      <div class="intro-packet" id="packet-1" style="position:absolute; top:50%; left:10%; width:8px; height:8px; background:var(--accent); border-radius:50%; transform:translate(-50%, -50%); opacity:0; z-index:3; box-shadow:0 0 10px var(--accent);"></div>
-      <div class="intro-packet" id="packet-2" style="position:absolute; top:50%; left:30%; width:8px; height:8px; background:var(--accent2); border-radius:50%; transform:translate(-50%, -50%); opacity:0; z-index:3; box-shadow:0 0 10px var(--accent2);"></div>
-      <div class="intro-packet" id="packet-3" style="position:absolute; top:50%; left:50%; width:8px; height:8px; background:var(--accent); border-radius:50%; transform:translate(-50%, -50%); opacity:0; z-index:3; box-shadow:0 0 10px var(--accent);"></div>
-      <div class="intro-packet" id="packet-4" style="position:absolute; top:50%; left:70%; width:8px; height:8px; background:var(--accent2); border-radius:50%; transform:translate(-50%, -50%); opacity:0; z-index:3; box-shadow:0 0 10px var(--accent2);"></div>
-    </div>
-  </div>
-
-  <!-- 3D Canvas -->
-  <canvas id="bg-canvas"></canvas>
-  <div class="noc-bg-silhouettes"></div>
-
-  <!-- Cybernetic Backbone -->
-  <div class="cyber-spine"></div>
-
-  <!-- Top Bar for Drawer Button -->
-  <div class="top-bar">
-    <button id="drawer-toggle" class="drawer-toggle">
-      <i class="fas fa-bars"></i>
-    </button>
-  </div>
-
-  <!-- Drawer Menu -->
-  <div id="drawer-menu" class="drawer">
-    <div class="drawer-header">
-      <button id="drawer-close" class="drawer-close">&times;</button>
-    </div>
-    <div class="drawer-nav" id="nav-links">
-      <!-- Links populated by JS -->
-    </div>
-  </div>
-
-  <div class="wrap">
-    <header id="header-section">
-      <!-- Populated by JS -->
-    </header>
-
-    <div class="grid">
-      <main id="main-content">
-        <!-- Sections like About, Skills, Projects populated by JS -->
-      </main>
-
-      <aside id="aside-content">
-        <!-- Profile info and social links populated by JS -->
-      </aside>
-    </div>
-
-    <footer>
-      &copy; <span id="year"></span> • Md. Yousuf Hossain • <a href="javascript:void(0)" id="footer-admin-link" style="color:inherit; text-decoration:none; opacity:0.5;">Built for the Future</a>
-    </footer>
-  </div>
-
-  <!-- Admin Dashboard Modal -->
-  <div id="dashboard-modal" class="modal">
-    <div class="modal-content dashboard-content">
-      <div class="dashboard-sidebar">
-        <div class="sidebar-header">🛠️ Admin</div>
-        <nav class="sidebar-nav">
-          <button class="tab-btn active" data-tab="identity">Identity</button>
-          <button class="tab-btn" data-tab="summary">Summary</button>
-          <button class="tab-btn" data-tab="skills">Skills</button>
-          <button class="tab-btn" data-tab="projects">Projects</button>
-          <button class="tab-btn" data-tab="publications">Publications</button>
-          <button class="tab-btn" data-tab="timeline">Timeline</button>
-          <button class="tab-btn" data-tab="social">Socials</button>
-        </nav>
-      </div>
-      <div class="dashboard-main">
-        <div class="modal-header">
-          <h2 id="current-tab-title">Identity</h2>
-          <div class="header-actions">
-             <button id="close-dashboard" class="close-btn">&times;</button>
-          </div>
-        </div>
-        <div class="modal-body" id="dashboard-forms">
-          <!-- Dynamic Forms -->
-        </div>
-        <div class="dashboard-footer">
-          <button id="save-dashboard" class="btn-link btn-primary">Update In-Browser</button>
-          <button id="export-btn" class="btn-link">Export data.js</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
-
-
-  <!-- 3D Libraries -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
-
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/motion@11.11.11/dist/motion.js"></script>
-  <script src="network-assets.js?v=20260421"></script>
-  <script src="data.js?v=20260432"></script>
-  <script src="script.js?v=20260434"></script>
-</body>
+<html lang="en" class="dark scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Md. Yousuf Hossain | Cybersecurity & Networks Portfolio</title>
+    <meta name="description" content="Portfolio of Md. Yousuf Hossain (Mehrab) — Cybersecurity Researcher, CCNA Practitioner, General Secretary of DIU CPC, and CTF Champion." />
+    <!-- Google Fonts: Unbounded (Display), Hanken Grotesk (Body), JetBrains Mono (Code/HUD) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..900;1,300..900&family=JetBrains+Mono:ital,wght@0,300..800;1,300..800&family=Unbounded:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-[#030408] text-[#E4E6F0] font-sans antialiased selection:bg-purple-600/30 selection:text-purple-300 overflow-x-hidden">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
