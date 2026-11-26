@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { publications } from "../data/portfolioData";
 import { BookOpen, FileText, Copy, Check, Download, X, ShieldCheck } from "lucide-react";
+import { gsap } from "gsap";
 
 export default function ResearchShowcase() {
   const [selectedPaper, setSelectedPaper] = useState(null);
   const [copiedId, setCopiedId] = useState(null);
+
+  const sectionRef = useRef(null);
+  const headerRef = useRef(null);
+  const gridRef = useRef(null);
 
   const copyBibtex = (paper) => {
     navigator.clipboard.writeText(paper.bibtex);
@@ -12,9 +17,59 @@ export default function ResearchShowcase() {
     setTimeout(() => setCopiedId(null), 2500);
   };
 
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) return;
+
+    const ctx = gsap.context(() => {
+      // 1. Header entrance
+      gsap.fromTo(
+        headerRef.current,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.85,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: headerRef.current,
+            start: "top 85%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+
+      // 2. Staggered Publication Cards Entrance
+      if (gridRef.current) {
+        gsap.fromTo(
+          gridRef.current.children,
+          { opacity: 0, y: 45, scale: 0.95 },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            stagger: 0.12,
+            duration: 0.8,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: gridRef.current,
+              start: "top 80%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      }
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section id="research" className="relative py-16 sm:py-24 px-4 sm:px-6 md:px-8 bg-transparent border-t border-purple-900/25">
-      
+    <section
+      ref={sectionRef}
+      id="research"
+      className="relative py-16 sm:py-24 px-4 sm:px-6 md:px-8 bg-transparent border-t border-purple-900/25"
+    >
       {/* Background Section Glow */}
       <div className="pointer-events-none absolute right-10 top-1/4 w-[400px] h-[400px] rounded-full bg-purple-700/10 blur-[160px]" />
       <div className="pointer-events-none absolute left-10 bottom-1/4 w-[350px] h-[350px] rounded-full bg-cyan-600/10 blur-[150px]" />
@@ -22,7 +77,7 @@ export default function ResearchShowcase() {
       <div className="relative z-10 mx-auto max-w-7xl">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-8 sm:mb-12">
+        <div ref={headerRef} className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-8 sm:mb-12">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-purple-500/30 bg-purple-950/30 text-purple-300 font-mono text-xs tracking-widest mb-3">
               <BookOpen className="w-3.5 h-3.5 text-cyan-400" />
@@ -40,12 +95,12 @@ export default function ResearchShowcase() {
           </p>
         </div>
 
-        {/* Clean, Scannable Publication Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        {/* Clean, Scannable Publication Cards Grid with Staggered Entrance */}
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {publications.map((paper) => (
             <div
               key={paper.id}
-              className="rounded-3xl glass-panel p-5 sm:p-6 border border-purple-500/20 hover:border-purple-400/50 shadow-[0_8px_30px_rgba(0,0,0,0.4)] transition-all duration-300 flex flex-col justify-between group relative overflow-hidden"
+              className="rounded-3xl glass-panel p-5 sm:p-6 border border-purple-500/20 hover:border-cyan-400/50 shadow-[0_8px_30px_rgba(0,0,0,0.4)] transition-all duration-300 flex flex-col justify-between group relative overflow-hidden"
             >
               <div className="flex flex-col">
                 
@@ -65,7 +120,7 @@ export default function ResearchShowcase() {
                 </div>
 
                 {/* Paper Title */}
-                <h3 className="font-display text-base sm:text-lg font-bold text-white group-hover:text-purple-300 transition-colors line-clamp-3 leading-snug mb-2.5">
+                <h3 className="font-display text-base sm:text-lg font-bold text-white group-hover:text-cyan-300 transition-colors line-clamp-3 leading-snug mb-2.5">
                   {paper.title}
                 </h3>
 
@@ -103,7 +158,7 @@ export default function ResearchShowcase() {
               <div className="pt-3 sm:pt-4 border-t border-slate-800/80 flex items-center justify-between gap-2 font-mono text-xs">
                 <button
                   onClick={() => setSelectedPaper(paper)}
-                  className="px-3 py-1.5 rounded-xl bg-purple-950/40 hover:bg-purple-900/60 text-purple-300 border border-purple-500/30 transition-colors flex items-center gap-1.5"
+                  className="px-3 py-1.5 rounded-xl bg-purple-950/40 hover:bg-purple-900/60 text-purple-300 border border-purple-500/30 transition-all hover:scale-105 active:scale-95 flex items-center gap-1.5"
                 >
                   <FileText className="w-3.5 h-3.5" />
                   <span>Details</span>
@@ -112,7 +167,7 @@ export default function ResearchShowcase() {
                 <div className="flex items-center gap-1.5">
                   <button
                     onClick={() => copyBibtex(paper)}
-                    className="p-1.5 rounded-xl border border-slate-800 hover:border-purple-400/50 bg-slate-900 text-slate-300 hover:text-white transition-colors"
+                    className="p-1.5 rounded-xl border border-slate-800 hover:border-purple-400/50 bg-slate-900 text-slate-300 hover:text-white transition-all hover:scale-105 active:scale-95"
                     title="Copy BibTeX Citation"
                   >
                     {copiedId === paper.id ? (
@@ -127,7 +182,7 @@ export default function ResearchShowcase() {
                       href={paper.pdfUrl}
                       target="_blank"
                       rel="noreferrer"
-                      className="px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-cyan-300 border border-cyan-500/30 transition-colors flex items-center gap-1.5"
+                      className="px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-cyan-300 border border-cyan-500/30 transition-all hover:scale-105 active:scale-95 flex items-center gap-1.5"
                     >
                       <Download className="w-3.5 h-3.5" />
                       <span>PDF</span>

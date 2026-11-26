@@ -19,50 +19,38 @@ export default function NetworkHUD() {
 
   // Determine current active mission phase
   const getPhaseName = (p) => {
-    if (p < 0.15) return "00 // INITIAL CONTACT";
+    if (p < 0.15) return "00:00 // INITIAL CONTACT";
     if (p < 0.30) return "01 // IDENTITY TUNNEL";
-    if (p < 0.50) return "02 // CAPABILITIES";
-    if (p < 0.70) return "03 // CASE STUDIES";
-    if (p < 0.85) return "04 // RESEARCH ARCHIVE";
-    if (p < 0.95) return "05 // MILESTONES";
-    return "06 // CONNECTION OK";
+    if (p < 0.50) return "02 // SYSTEM CAPABILITIES";
+    if (p < 0.70) return "03 // ENGINEERING ARCHIVE";
+    if (p < 0.85) return "04 // DIGITAL ARCHIVE";
+    if (p < 0.95) return "05 // SIGNALS OF PROGRESS";
+    return "06 // CONNECTION ESTABLISHED";
   };
 
   const getDepthMeters = (p) => {
     return Math.round(p * 180);
   };
 
-  // Jump to next scene on click
-  const advanceScene = () => {
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const nextY = Math.min(window.scrollY + window.innerHeight * 0.85, docHeight);
-    window.scrollTo({ top: nextY, behavior: "smooth" });
-  };
-
   return (
-    <div className="fixed bottom-2 left-2 right-2 sm:bottom-4 sm:left-4 sm:right-4 z-40 pointer-events-none flex items-center justify-between font-mono text-[10px] sm:text-[11px] text-slate-400 select-none">
+    <div className="fixed bottom-4 left-4 right-4 z-40 pointer-events-none flex items-center justify-between font-mono text-[10px] sm:text-[11px] text-slate-400 select-none">
       
-      {/* Active Scene Phase Indicator Pill (Tap to navigate next) */}
-      <button
-        onClick={advanceScene}
-        className="px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-xl bg-[#07090d]/85 backdrop-blur-md border border-purple-500/30 text-purple-300 shadow-[0_4px_16px_rgba(0,0,0,0.6)] flex items-center gap-2 pointer-events-auto hover:border-cyan-400/50 transition-colors"
-        title="Tap to jump forward in the network journey"
-      >
-        <span className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-cyan-400 animate-pulse shrink-0" />
-        <span className="font-bold tracking-wider truncate max-w-[170px] xs:max-w-none">
-          {getPhaseName(scrollProgress)}
-        </span>
-      </button>
+      {/* Active Scene Phase Indicator Pill */}
+      <div className="px-3 py-1.5 rounded-xl bg-[#07090d]/80 backdrop-blur-md border border-purple-500/25 text-purple-300 shadow-[0_4px_16px_rgba(0,0,0,0.5)] flex items-center gap-2 pointer-events-auto">
+        <span className="h-2 w-2 rounded-full bg-cyan-400 animate-pulse" />
+        <span className="font-bold tracking-wider">{getPhaseName(scrollProgress)}</span>
+      </div>
 
       {/* Depth Coordinate & Network Ping Telemetry */}
-      <div className="flex items-center gap-2 sm:gap-3 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-xl bg-[#07090d]/85 backdrop-blur-md border border-slate-800 text-slate-400 pointer-events-auto">
-        <span className="text-cyan-400 font-semibold">-{getDepthMeters(scrollProgress)}M</span>
-        <span className="text-slate-600 hidden sm:inline">•</span>
-        <span className="hidden sm:inline">TRAVERSAL: {Math.round(scrollProgress * 100)}%</span>
+      <div className="hidden sm:flex items-center gap-3 px-3 py-1.5 rounded-xl bg-[#07090d]/80 backdrop-blur-md border border-slate-800 text-slate-400 pointer-events-auto">
+        <span>Z-DEPTH: -{getDepthMeters(scrollProgress)}M</span>
         <span className="text-slate-600">•</span>
-        <span className="text-emerald-400 font-semibold">[200 OK]</span>
+        <span>TRAVERSAL: {Math.round(scrollProgress * 100)}%</span>
+        <span className="text-slate-600">•</span>
+        <span className="text-emerald-400 font-semibold">[SYS: 200 OK]</span>
       </div>
 
     </div>
   );
 }
+

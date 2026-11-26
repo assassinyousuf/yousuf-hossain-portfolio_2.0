@@ -1,12 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { achievementsList } from "../data/portfolioData";
 import { Trophy, Award, ShieldAlert, Users, CheckCircle2, Terminal, AlertCircle, Copy, Check } from "lucide-react";
 import confetti from "canvas-confetti";
+import { gsap } from "gsap";
 
 export default function AchievementsSection() {
   const [flagInput, setFlagInput] = useState("");
   const [challengeStatus, setChallengeStatus] = useState("idle"); // 'idle' | 'solved' | 'error'
   const [copiedPayload, setCopiedPayload] = useState(false);
+
+  const sectionRef = useRef(null);
+  const headerRef = useRef(null);
+  const bentoGridRef = useRef(null);
+  const ctfSandboxRef = useRef(null);
 
   const handleFlagSubmit = (e) => {
     e.preventDefault();
@@ -29,6 +35,73 @@ export default function AchievementsSection() {
     setTimeout(() => setCopiedPayload(false), 2000);
   };
 
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) return;
+
+    const ctx = gsap.context(() => {
+      // 1. Header entrance
+      gsap.fromTo(
+        headerRef.current,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.85,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: headerRef.current,
+            start: "top 85%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+
+      // 2. Bento Grid Entrance
+      if (bentoGridRef.current) {
+        gsap.fromTo(
+          bentoGridRef.current.children,
+          { opacity: 0, y: 35, scale: 0.96 },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            stagger: 0.12,
+            duration: 0.75,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: bentoGridRef.current,
+              start: "top 80%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      }
+
+      // 3. CTF Sandbox Entrance
+      if (ctfSandboxRef.current) {
+        gsap.fromTo(
+          ctfSandboxRef.current,
+          { opacity: 0, y: 30, scale: 0.98 },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.8,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: ctfSandboxRef.current,
+              start: "top 85%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      }
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   const getIcon = (iconName) => {
     switch (iconName) {
       case "Trophy":
@@ -45,8 +118,11 @@ export default function AchievementsSection() {
   };
 
   return (
-    <section id="achievements" className="relative py-16 sm:py-24 px-4 sm:px-6 md:px-8 bg-transparent border-t border-purple-900/25">
-      
+    <section
+      ref={sectionRef}
+      id="achievements"
+      className="relative py-16 sm:py-24 px-4 sm:px-6 md:px-8 bg-transparent border-t border-purple-900/25"
+    >
       {/* Background Accent Glow */}
       <div className="pointer-events-none absolute right-1/4 top-1/3 w-[350px] h-[350px] rounded-full bg-yellow-600/10 blur-[160px]" />
       <div className="pointer-events-none absolute left-10 bottom-1/4 w-[350px] h-[350px] rounded-full bg-purple-600/10 blur-[150px]" />
@@ -54,7 +130,7 @@ export default function AchievementsSection() {
       <div className="relative z-10 mx-auto max-w-7xl">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-8 sm:mb-12">
+        <div ref={headerRef} className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-8 sm:mb-12">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-yellow-500/30 bg-yellow-950/25 text-yellow-300 font-mono text-xs tracking-widest mb-3">
               <Trophy className="w-3.5 h-3.5 text-yellow-400" />
@@ -73,13 +149,13 @@ export default function AchievementsSection() {
         </div>
 
         {/* 4 Honors Bento Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-8 sm:mb-12">
+        <div ref={bentoGridRef} className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-8 sm:mb-12">
           {achievementsList.map((item) => {
             const Icon = getIcon(item.icon);
             return (
               <div
                 key={item.title}
-                className={`rounded-3xl glass-panel p-5 sm:p-8 border ${item.border} shadow-[0_8px_30px_rgba(0,0,0,0.5)] transition-all duration-300 flex flex-col justify-between group hover:border-yellow-400/60 relative overflow-hidden`}
+                className={`rounded-3xl glass-panel p-5 sm:p-8 border ${item.border} shadow-[0_8px_30px_rgba(0,0,0,0.5)] transition-all duration-300 flex flex-col justify-between group hover:border-yellow-400/60 hover:scale-[1.01] relative overflow-hidden`}
               >
                 <div>
                   <div className="flex items-center justify-between mb-3 sm:mb-4">
@@ -90,7 +166,7 @@ export default function AchievementsSection() {
                     <span className="font-mono text-xs text-slate-400 font-semibold">{item.year}</span>
                   </div>
 
-                  <h3 className="font-display text-lg sm:text-2xl font-bold text-white mb-1">
+                  <h3 className="font-display text-lg sm:text-2xl font-bold text-white mb-1 group-hover:text-yellow-300 transition-colors">
                     {item.title}
                   </h3>
                   <div className="font-mono text-xs text-cyan-400 mb-2.5">
@@ -112,7 +188,10 @@ export default function AchievementsSection() {
         </div>
 
         {/* Dynamic Interactive Mini CTF Sandbox */}
-        <div className="rounded-3xl glass-panel p-5 sm:p-8 border border-purple-500/30 shadow-[0_10px_35px_rgba(0,0,0,0.6)] relative overflow-hidden">
+        <div
+          ref={ctfSandboxRef}
+          className="rounded-3xl glass-panel p-5 sm:p-8 border border-purple-500/30 shadow-[0_10px_35px_rgba(0,0,0,0.6)] relative overflow-hidden"
+        >
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 sm:gap-4 mb-5 pb-4 border-b border-slate-800">
             <div className="flex items-center gap-3">
               <div className="p-2 sm:p-2.5 rounded-xl bg-purple-950/60 border border-purple-500/30 text-purple-300 shrink-0">
@@ -139,7 +218,7 @@ export default function AchievementsSection() {
                 <span>// INTERCEPTED TRANSMISSION PACKET:</span>
                 <button
                   onClick={copyPayload}
-                  className="text-[10px] text-cyan-400 hover:text-white flex items-center gap-1 bg-slate-900 px-2 py-0.5 rounded border border-slate-800"
+                  className="text-[10px] text-cyan-400 hover:text-white flex items-center gap-1 bg-slate-900 px-2 py-0.5 rounded border border-slate-800 transition-colors"
                 >
                   {copiedPayload ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
                   <span>{copiedPayload ? "Copied" : "Copy Payload"}</span>

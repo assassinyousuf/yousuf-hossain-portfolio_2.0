@@ -1,9 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { educationData } from "../data/portfolioData";
 import { GraduationCap, Calculator } from "lucide-react";
+import { gsap } from "gsap";
 
 export default function EducationSection() {
   const [selectedCidr, setSelectedCidr] = useState("/26");
+
+  const sectionRef = useRef(null);
+  const headerRef = useRef(null);
+  const degreeColRef = useRef(null);
+  const subnetColRef = useRef(null);
 
   const subnets = {
     "/24": { mask: "255.255.255.0", hosts: 254, range: "192.168.1.1 - 192.168.1.254", bcast: "192.168.1.255" },
@@ -14,16 +20,85 @@ export default function EducationSection() {
 
   const currentSubnet = subnets[selectedCidr];
 
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) return;
+
+    const ctx = gsap.context(() => {
+      // 1. Header entrance
+      gsap.fromTo(
+        headerRef.current,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.85,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: headerRef.current,
+            start: "top 85%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+
+      // 2. Degree Card entrance (from left)
+      if (degreeColRef.current) {
+        gsap.fromTo(
+          degreeColRef.current,
+          { opacity: 0, x: -30, scale: 0.97 },
+          {
+            opacity: 1,
+            x: 0,
+            scale: 1,
+            duration: 0.8,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: degreeColRef.current,
+              start: "top 80%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      }
+
+      // 3. Subnet Sandbox entrance (from right)
+      if (subnetColRef.current) {
+        gsap.fromTo(
+          subnetColRef.current,
+          { opacity: 0, x: 30, scale: 0.97 },
+          {
+            opacity: 1,
+            x: 0,
+            scale: 1,
+            duration: 0.8,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: subnetColRef.current,
+              start: "top 80%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      }
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section id="education" className="relative py-16 sm:py-24 px-4 sm:px-6 md:px-8 bg-transparent border-t border-purple-900/25">
-      
+    <section
+      ref={sectionRef}
+      id="education"
+      className="relative py-16 sm:py-24 px-4 sm:px-6 md:px-8 bg-transparent border-t border-purple-900/25"
+    >
       {/* Background Accent Glow */}
       <div className="pointer-events-none absolute right-10 top-1/2 w-[350px] h-[350px] rounded-full bg-purple-600/10 blur-[150px]" />
 
       <div className="relative z-10 mx-auto max-w-7xl">
         
         {/* Section Header */}
-        <div className="mb-8 sm:mb-12">
+        <div ref={headerRef} className="mb-8 sm:mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-purple-500/30 bg-purple-950/30 text-purple-300 font-mono text-xs tracking-widest mb-3">
             <GraduationCap className="w-3.5 h-3.5 text-cyan-400" />
             <span>06 // ACADEMICS & CERTIFICATION TRACKS</span>
@@ -39,7 +114,7 @@ export default function EducationSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8">
           
           {/* Degree Card (7 cols) */}
-          <div className="lg:col-span-7 flex flex-col gap-6">
+          <div ref={degreeColRef} className="lg:col-span-7 flex flex-col gap-6">
             <div className="rounded-3xl glass-panel p-5 sm:p-8 border border-purple-500/25 shadow-[0_8px_30px_rgba(0,0,0,0.5)]">
               <div className="flex items-center justify-between mb-4">
                 <span className="px-3 py-1 rounded-full font-mono text-xs font-bold bg-cyan-950/60 text-cyan-300 border border-cyan-500/30">
@@ -90,7 +165,7 @@ export default function EducationSection() {
           </div>
 
           {/* Interactive CCNA VLSM Subnet Calculator (5 cols) */}
-          <div className="lg:col-span-5">
+          <div ref={subnetColRef} className="lg:col-span-5">
             <div className="rounded-3xl glass-panel p-5 sm:p-8 border border-cyan-500/25 shadow-[0_8px_30px_rgba(0,0,0,0.5)] flex flex-col justify-between h-full">
               <div>
                 <div className="flex items-center gap-2 mb-2">
