@@ -21,19 +21,19 @@ export default function SkillsSection() {
       : categories.filter((c) => c.title.toLowerCase().includes(selectedCategory));
 
   return (
-    <section id="skills" className="relative py-20 sm:py-28 px-4 sm:px-6 md:px-8 bg-[#04060e] border-t border-purple-900/25">
+    <section id="skills" className="relative py-16 sm:py-24 px-4 sm:px-6 md:px-8 bg-transparent border-t border-purple-900/25">
       
       {/* Background Radial Glow */}
-      <div className="pointer-events-none absolute left-1/3 top-1/2 w-[400px] h-[400px] rounded-full bg-cyan-600/10 blur-[150px]" />
+      <div className="pointer-events-none absolute left-1/3 top-1/2 w-[350px] h-[350px] rounded-full bg-cyan-600/10 blur-[150px]" />
 
       <div className="relative z-10 mx-auto max-w-7xl">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-8 sm:mb-12">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-purple-500/30 bg-purple-950/30 text-purple-300 font-mono text-xs tracking-widest mb-3">
               <Cpu className="w-3.5 h-3.5 text-cyan-400" />
-              <span>04 // TECHNICAL EXPERTISE & SYSTEM TOOLING</span>
+              <span>02 // TECHNICAL CAPABILITIES</span>
             </div>
             <h2 className="font-display text-2xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
               CATEGORIZED <br />
@@ -43,11 +43,11 @@ export default function SkillsSection() {
             </h2>
           </div>
 
-          {/* Scannable Category Pills */}
-          <div className="flex flex-wrap items-center gap-2 font-mono text-xs">
+          {/* Scannable Category Pills - Horizontal swipeable on mobile */}
+          <div className="flex items-center gap-1.5 sm:gap-2 font-mono text-xs overflow-x-auto pb-1 max-w-full scrollbar-none">
             <button
               onClick={() => setSelectedCategory("all")}
-              className={`px-3 py-1.5 rounded-xl transition-colors ${
+              className={`px-3 py-1.5 rounded-xl transition-colors whitespace-nowrap shrink-0 ${
                 selectedCategory === "all"
                   ? "bg-purple-600 text-white font-semibold"
                   : "bg-slate-900/60 text-slate-400 hover:text-white border border-slate-800"
@@ -59,7 +59,7 @@ export default function SkillsSection() {
               <button
                 key={c.title}
                 onClick={() => setSelectedCategory(c.title.toLowerCase())}
-                className={`px-3 py-1.5 rounded-xl transition-colors ${
+                className={`px-3 py-1.5 rounded-xl transition-colors whitespace-nowrap shrink-0 ${
                   selectedCategory === c.title.toLowerCase()
                     ? "bg-purple-600 text-white font-semibold"
                     : "bg-slate-900/60 text-slate-400 hover:text-white border border-slate-800"
@@ -72,29 +72,29 @@ export default function SkillsSection() {
         </div>
 
         {/* 5-Column / Responsive Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-6">
           {filteredCategories.map((cat) => {
             const Icon = categoryIcons[cat.title] || Network;
             return (
               <div
                 key={cat.title}
-                className="rounded-3xl glass-panel p-6 border border-purple-500/20 hover:border-purple-400/40 shadow-[0_6px_25px_rgba(0,0,0,0.4)] transition-all duration-300 flex flex-col justify-between"
+                className="rounded-3xl glass-panel p-5 sm:p-6 border border-purple-500/20 hover:border-purple-400/40 shadow-[0_6px_25px_rgba(0,0,0,0.4)] transition-all duration-300 flex flex-col justify-between"
               >
                 <div>
                   {/* Category Header */}
-                  <div className="p-3 rounded-2xl w-fit bg-purple-950/40 border border-purple-500/30 mb-4 text-purple-300">
+                  <div className="p-2.5 sm:p-3 rounded-2xl w-fit bg-purple-950/40 border border-purple-500/30 mb-3 sm:mb-4 text-purple-300">
                     <Icon className="w-5 h-5 text-cyan-400" />
                   </div>
 
                   <h3 className="font-display text-base font-bold text-white mb-1.5">
                     {cat.title}
                   </h3>
-                  <p className="font-mono text-[11px] text-slate-400 mb-5 leading-relaxed">
+                  <p className="font-mono text-[11px] text-slate-400 mb-4 sm:mb-5 leading-relaxed">
                     {cat.summary}
                   </p>
 
                   {/* Skills List */}
-                  <ul className="space-y-2.5 font-mono text-xs text-slate-300">
+                  <ul className="space-y-2 font-mono text-xs text-slate-300">
                     {cat.prominent.map((item) => (
                       <li key={item} className="flex items-start gap-2">
                         <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 mt-1.5 shrink-0" />
@@ -104,7 +104,7 @@ export default function SkillsSection() {
                   </ul>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-slate-800/80 font-mono text-[10px] text-purple-400/80 flex items-center justify-between">
+                <div className="mt-5 pt-3 border-t border-slate-800/80 font-mono text-[10px] text-purple-400/80 flex items-center justify-between">
                   <span>{cat.prominent.length} proficiencies</span>
                   <span className="text-emerald-400">Verified</span>
                 </div>

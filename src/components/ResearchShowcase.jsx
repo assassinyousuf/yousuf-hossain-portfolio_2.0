@@ -13,20 +13,20 @@ export default function ResearchShowcase() {
   };
 
   return (
-    <section id="research" className="relative py-20 sm:py-28 px-4 sm:px-6 md:px-8 bg-[#03050a] border-t border-purple-900/25">
+    <section id="research" className="relative py-16 sm:py-24 px-4 sm:px-6 md:px-8 bg-transparent border-t border-purple-900/25">
       
       {/* Background Section Glow */}
-      <div className="pointer-events-none absolute right-10 top-1/4 w-[450px] h-[450px] rounded-full bg-purple-700/10 blur-[160px]" />
-      <div className="pointer-events-none absolute left-10 bottom-1/4 w-[400px] h-[400px] rounded-full bg-cyan-600/10 blur-[150px]" />
+      <div className="pointer-events-none absolute right-10 top-1/4 w-[400px] h-[400px] rounded-full bg-purple-700/10 blur-[160px]" />
+      <div className="pointer-events-none absolute left-10 bottom-1/4 w-[350px] h-[350px] rounded-full bg-cyan-600/10 blur-[150px]" />
 
       <div className="relative z-10 mx-auto max-w-7xl">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-8 sm:mb-12">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-purple-500/30 bg-purple-950/30 text-purple-300 font-mono text-xs tracking-widest mb-3">
               <BookOpen className="w-3.5 h-3.5 text-cyan-400" />
-              <span>03 // PEER-REVIEWED SCIENTIFIC CONTRIBUTIONS</span>
+              <span>04 // DIGITAL ARCHIVE</span>
             </div>
             <h2 className="font-display text-2xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
               PUBLICATIONS & <br />
@@ -36,16 +36,16 @@ export default function ResearchShowcase() {
             </h2>
           </div>
           <p className="font-mono text-xs sm:text-sm text-slate-400 max-w-md">
-            Author & co-author on 5 research works including accepted Taylor & Francis book chapters across zero-trust mobile sandboxing, cross-media steganography, and ad-hoc disaster mesh topologies.
+            Author & co-author on 5 research works including accepted Taylor & Francis book chapters across zero-trust mobile sandboxing, cross-media steganography, and disaster mesh topologies.
           </p>
         </div>
 
         {/* Clean, Scannable Publication Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {publications.map((paper) => (
             <div
               key={paper.id}
-              className="rounded-3xl glass-panel p-6 border border-purple-500/20 hover:border-purple-400/50 shadow-[0_8px_30px_rgba(0,0,0,0.5)] transition-all duration-300 flex flex-col justify-between group relative overflow-hidden"
+              className="rounded-3xl glass-panel p-5 sm:p-6 border border-purple-500/20 hover:border-purple-400/50 shadow-[0_8px_30px_rgba(0,0,0,0.4)] transition-all duration-300 flex flex-col justify-between group relative overflow-hidden"
             >
               <div className="flex flex-col">
                 
@@ -60,12 +60,12 @@ export default function ResearchShowcase() {
                 </div>
 
                 <div className="font-mono text-[11px] text-cyan-400 font-semibold mb-2 flex items-center gap-1.5">
-                  <ShieldCheck className="w-3.5 h-3.5" />
-                  <span>{paper.venueType} · {paper.publisher}</span>
+                  <ShieldCheck className="w-3.5 h-3.5 shrink-0" />
+                  <span className="truncate">{paper.venueType} · {paper.publisher}</span>
                 </div>
 
                 {/* Paper Title */}
-                <h3 className="font-display text-base sm:text-lg font-bold text-white group-hover:text-purple-300 transition-colors line-clamp-3 leading-snug mb-3">
+                <h3 className="font-display text-base sm:text-lg font-bold text-white group-hover:text-purple-300 transition-colors line-clamp-3 leading-snug mb-2.5">
                   {paper.title}
                 </h3>
 
@@ -100,7 +100,7 @@ export default function ResearchShowcase() {
               </div>
 
               {/* Action Buttons: Details Modal, PDF, BibTeX */}
-              <div className="pt-4 border-t border-slate-800/80 flex items-center justify-between gap-2 font-mono text-xs">
+              <div className="pt-3 sm:pt-4 border-t border-slate-800/80 flex items-center justify-between gap-2 font-mono text-xs">
                 <button
                   onClick={() => setSelectedPaper(paper)}
                   className="px-3 py-1.5 rounded-xl bg-purple-950/40 hover:bg-purple-900/60 text-purple-300 border border-purple-500/30 transition-colors flex items-center gap-1.5"
@@ -109,7 +109,7 @@ export default function ResearchShowcase() {
                   <span>Details</span>
                 </button>
 
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1.5">
                   <button
                     onClick={() => copyBibtex(paper)}
                     className="p-1.5 rounded-xl border border-slate-800 hover:border-purple-400/50 bg-slate-900 text-slate-300 hover:text-white transition-colors"
@@ -142,20 +142,20 @@ export default function ResearchShowcase() {
 
         {/* Publication Detail Modal */}
         {selectedPaper && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in">
-            <div className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-3xl bg-[#080c1f] border border-purple-500/40 p-6 sm:p-8 md:p-10 shadow-[0_20px_60px_rgba(0,0,0,0.9)] flex flex-col gap-6 text-slate-200">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-md animate-in fade-in">
+            <div className="relative w-full max-w-3xl max-h-[85vh] overflow-y-auto rounded-3xl bg-[#080c1f] border border-purple-500/40 p-5 sm:p-8 shadow-[0_20px_60px_rgba(0,0,0,0.9)] flex flex-col gap-5 text-slate-200">
               
               {/* Close Button */}
               <button
                 onClick={() => setSelectedPaper(null)}
-                className="absolute top-5 right-5 p-2 rounded-xl bg-slate-900/80 border border-slate-700 text-slate-400 hover:text-white transition-colors"
+                className="absolute top-4 right-4 sm:top-5 sm:right-5 p-2 rounded-xl bg-slate-900/80 border border-slate-700 text-slate-400 hover:text-white transition-colors touch-target flex items-center justify-center"
               >
                 <X className="w-5 h-5" />
               </button>
 
               {/* Modal Header */}
               <div>
-                <div className="flex flex-wrap items-center gap-2 font-mono text-xs mb-2">
+                <div className="flex flex-wrap items-center gap-2 font-mono text-xs mb-2 pr-8">
                   <span className="px-3 py-1 rounded-full bg-purple-950 text-purple-300 border border-purple-500/40 font-bold">
                     {selectedPaper.statusBadge}
                   </span>
@@ -165,13 +165,13 @@ export default function ResearchShowcase() {
                   <span className="text-slate-400">Year: {selectedPaper.year}</span>
                 </div>
 
-                <h3 className="font-display text-xl sm:text-2xl md:text-3xl font-bold text-white leading-snug">
+                <h3 className="font-display text-lg sm:text-2xl font-bold text-white leading-snug">
                   {selectedPaper.title}
                 </h3>
               </div>
 
               {/* Authors & Yousuf's Contribution */}
-              <div className="p-4 rounded-2xl bg-black/40 border border-purple-500/20 font-mono text-xs space-y-2">
+              <div className="p-3.5 sm:p-4 rounded-2xl bg-black/40 border border-purple-500/20 font-mono text-xs space-y-2">
                 <div>
                   <span className="text-purple-400 font-bold">Authors: </span>
                   <span className="text-slate-300">{selectedPaper.authors}</span>
@@ -184,24 +184,24 @@ export default function ResearchShowcase() {
 
               {/* Full Abstract */}
               <div>
-                <h4 className="font-mono text-xs text-cyan-400 uppercase tracking-widest mb-2 flex items-center gap-1.5">
+                <h4 className="font-mono text-xs text-cyan-400 uppercase tracking-widest mb-1.5 flex items-center gap-1.5">
                   <FileText className="w-3.5 h-3.5" /> Full Scientific Abstract
                 </h4>
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans bg-black/20 p-4 rounded-2xl border border-slate-800">
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans bg-black/20 p-3.5 sm:p-4 rounded-2xl border border-slate-800">
                   {selectedPaper.abstract}
                 </p>
               </div>
 
               {/* Keywords */}
               <div>
-                <div className="font-mono text-xs text-slate-400 uppercase tracking-wider mb-2">
+                <div className="font-mono text-xs text-slate-400 uppercase tracking-wider mb-1.5">
                   Keywords & Domains
                 </div>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1.5">
                   {selectedPaper.keywords.map((kw) => (
                     <span
                       key={kw}
-                      className="px-3 py-1 rounded-xl text-xs font-mono bg-purple-950/40 text-purple-300 border border-purple-500/30"
+                      className="px-2.5 py-1 rounded-xl text-xs font-mono bg-purple-950/40 text-purple-300 border border-purple-500/30"
                     >
                       #{kw}
                     </span>
@@ -232,26 +232,26 @@ export default function ResearchShowcase() {
                     )}
                   </button>
                 </div>
-                <pre className="p-4 rounded-2xl bg-[#03050a] border border-slate-800 font-mono text-[11px] text-cyan-300 overflow-x-auto whitespace-pre">
+                <pre className="p-3.5 sm:p-4 rounded-2xl bg-[#03050a] border border-slate-800 font-mono text-[10px] sm:text-[11px] text-cyan-300 overflow-x-auto whitespace-pre">
                   {selectedPaper.bibtex}
                 </pre>
               </div>
 
               {/* Modal Actions */}
-              <div className="pt-4 border-t border-slate-800 flex items-center justify-between gap-4 font-mono text-xs">
+              <div className="pt-3 sm:pt-4 border-t border-slate-800 flex flex-wrap items-center justify-between gap-3 font-mono text-xs">
                 {selectedPaper.pdfUrl && (
                   <a
                     href={selectedPaper.pdfUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold flex items-center gap-2 hover:opacity-95 transition-opacity"
+                    className="px-4 py-2 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold flex items-center gap-2 hover:opacity-95 transition-opacity"
                   >
                     <Download className="w-4 h-4" /> Download Full Paper PDF
                   </a>
                 )}
                 <button
                   onClick={() => setSelectedPaper(null)}
-                  className="px-4 py-2.5 rounded-xl border border-slate-700 bg-slate-900 text-slate-300 hover:text-white"
+                  className="px-4 py-2 rounded-xl border border-slate-700 bg-slate-900 text-slate-300 hover:text-white"
                 >
                   Close Modal
                 </button>

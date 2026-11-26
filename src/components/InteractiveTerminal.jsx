@@ -30,7 +30,7 @@ export default function InteractiveTerminal() {
     const trimmed = cmdStr.trim().toLowerCase();
     if (!trimmed) return;
 
-    const newHistory = [...history, { type: "user", text: `guest@yousuf.surf:~$ ${cmdStr}` }];
+    const newHistory = [...history, { type: "user", text: `yousuf:~$ ${cmdStr}` }];
 
     switch (trimmed) {
       case "help":
@@ -134,19 +134,19 @@ MEMBER:   IEEE & IEEE Computer Society (CS Valid 2026)`,
   const shortcuts = ["whoami", "papers", "projects", "ctf", "contact", "help"];
 
   return (
-    <section id="terminal" className="relative py-20 sm:py-28 px-4 sm:px-6 md:px-8 bg-[#030409] border-t border-purple-900/25">
+    <section id="terminal" className="relative py-16 sm:py-24 px-4 sm:px-6 md:px-8 bg-transparent border-t border-purple-900/25">
       
       {/* Background Section Glow */}
-      <div className="pointer-events-none absolute right-1/4 top-1/3 w-[400px] h-[400px] rounded-full bg-cyan-600/10 blur-[150px]" />
+      <div className="pointer-events-none absolute right-1/4 top-1/3 w-[350px] h-[350px] rounded-full bg-cyan-600/10 blur-[150px]" />
 
       <div className="relative z-10 mx-auto max-w-5xl">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-8 sm:mb-12">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-purple-500/30 bg-purple-950/30 text-purple-300 font-mono text-xs tracking-widest mb-3">
               <TerminalIcon className="w-3.5 h-3.5 text-cyan-400" />
-              <span>08 // INTERACTIVE CONSOLE & DIRECT CONTACT</span>
+              <span>08 // CONNECTION ESTABLISHED</span>
             </div>
             <h2 className="font-display text-2xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
               INTERACTIVE CLI // <br />
@@ -171,7 +171,7 @@ MEMBER:   IEEE & IEEE Computer Society (CS Valid 2026)`,
         <div className="rounded-3xl glass-panel border border-purple-500/30 shadow-[0_12px_45px_rgba(0,0,0,0.7)] overflow-hidden">
           
           {/* Mac/Linux Title Bar */}
-          <div className="px-5 py-3.5 bg-[#060815] border-b border-slate-800 flex items-center justify-between font-mono text-xs text-slate-400">
+          <div className="px-4 sm:px-5 py-3 bg-[#060815] border-b border-slate-800 flex items-center justify-between font-mono text-xs text-slate-400">
             <div className="flex items-center gap-2">
               <div className="flex gap-1.5">
                 <span className="w-3 h-3 rounded-full bg-rose-500/80 inline-block" />
@@ -180,14 +180,14 @@ MEMBER:   IEEE & IEEE Computer Society (CS Valid 2026)`,
               </div>
               <span className="ml-2 text-slate-300 font-bold hidden sm:inline">yousuf@mesh-terminal: ~</span>
             </div>
-            <div className="flex items-center gap-2 text-[11px] text-emerald-400">
+            <div className="flex items-center gap-2 text-[10px] sm:text-[11px] text-emerald-400">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span>DIU CPC RESEARCH NODE // 200 OK</span>
+              <span>RESEARCH NODE // 200 OK</span>
             </div>
           </div>
 
           {/* Terminal Output Log Area */}
-          <div className="p-4 sm:p-6 h-[280px] sm:h-[320px] overflow-y-auto font-mono text-xs leading-relaxed space-y-2 bg-[#020308]/90">
+          <div className="p-3.5 sm:p-6 h-[260px] sm:h-[320px] overflow-y-auto font-mono text-xs leading-relaxed space-y-2 bg-[#020308]/90">
             {history.map((line, idx) => (
               <div key={idx}>
                 {line.type === "system" && (
@@ -207,16 +207,16 @@ MEMBER:   IEEE & IEEE Computer Society (CS Valid 2026)`,
             <div ref={terminalEndRef} />
           </div>
 
-          {/* Quick Command Pills for Mobile / Fast Interaction */}
-          <div className="px-4 py-2 bg-[#060814] border-t border-slate-800/80 flex flex-wrap items-center gap-2">
-            <span className="font-mono text-[10px] text-slate-500 uppercase tracking-wider hidden sm:inline">
-              Quick Exec:
+          {/* Quick Command Pills for Mobile / Fast Interaction - Swipeable on mobile */}
+          <div className="px-3 sm:px-4 py-2 bg-[#060814] border-t border-slate-800/80 flex items-center gap-1.5 sm:gap-2 overflow-x-auto scrollbar-none">
+            <span className="font-mono text-[10px] text-slate-500 uppercase tracking-wider hidden sm:inline shrink-0">
+              Quick:
             </span>
             {shortcuts.map((cmd) => (
               <button
                 key={cmd}
                 onClick={() => executeCommand(cmd)}
-                className="px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-purple-950/60 text-slate-300 hover:text-purple-300 border border-slate-800 hover:border-purple-500/30 font-mono text-[11px] transition-colors"
+                className="px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-purple-950/60 text-slate-300 hover:text-purple-300 border border-slate-800 hover:border-purple-500/30 font-mono text-[11px] transition-colors whitespace-nowrap shrink-0"
               >
                 ${cmd}
               </button>
@@ -224,21 +224,22 @@ MEMBER:   IEEE & IEEE Computer Society (CS Valid 2026)`,
           </div>
 
           {/* Command Input Bar */}
-          <div className="p-3 sm:p-4 bg-[#050713] border-t border-slate-800 flex items-center gap-3">
-            <span className="text-purple-400 font-mono text-xs font-bold pl-2 shrink-0">
-              guest@yousuf.surf:~$
+          <div className="p-2.5 sm:p-4 bg-[#050713] border-t border-slate-800 flex items-center gap-2 sm:gap-3">
+            <span className="text-purple-400 font-mono text-xs font-bold pl-1 sm:pl-2 shrink-0">
+              <span className="sm:hidden">yousuf:~$</span>
+              <span className="hidden sm:inline">guest@yousuf.surf:~$</span>
             </span>
             <input
               type="text"
               value={inputVal}
               onChange={(e) => setInputVal(e.target.value)}
               onKeyDown={handleKeyDown}
-              placeholder="Type command here (e.g. 'help', 'whoami', 'papers')..."
-              className="flex-1 bg-transparent text-white font-mono text-xs focus:outline-none placeholder:text-slate-600"
+              placeholder="Type command (e.g. 'help', 'whoami')..."
+              className="flex-1 bg-transparent text-white font-mono text-xs focus:outline-none placeholder:text-slate-600 min-w-0"
             />
             <button
               onClick={() => executeCommand(inputVal)}
-              className="p-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-white transition-colors shrink-0"
+              className="p-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-white transition-colors shrink-0 touch-target flex items-center justify-center"
               title="Run Command"
             >
               <Send className="w-3.5 h-3.5" />
