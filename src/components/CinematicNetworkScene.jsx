@@ -415,7 +415,7 @@ export default function CinematicNetworkScene() {
   return (
     <div
       ref={mountRef}
-      className="pointer-events-none fixed inset-0 z-0 h-screen w-screen overflow-hidden opacity-75"
+      className="pointer-events-none fixed inset-0 z-0 h-screen w-screen overflow-hidden opacity-45 md:opacity-70"
     />
   );
 }

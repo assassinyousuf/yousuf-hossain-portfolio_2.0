@@ -118,7 +118,7 @@ export default function NetworkMeshCanvas() {
   return (
     <canvas
       ref={canvasRef}
-      className="pointer-events-none fixed inset-0 z-0 h-screen w-screen opacity-50"
+      className="pointer-events-none fixed inset-0 z-0 h-screen w-screen opacity-20"
     />
   );
 }

@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { personalInfo } from "../data/portfolioData";
-import { Terminal as TerminalIcon, Send, Mail, Check } from "lucide-react";
+import { Send, Mail, Check, Copy, ArrowUpRight } from "lucide-react";
 import { gsap } from "gsap";
 
 export default function InteractiveTerminal() {
@@ -9,25 +9,23 @@ export default function InteractiveTerminal() {
   const [history, setHistory] = useState([
     {
       type: "system",
-      text: "YOUSUF.SURF SECURE CLI [v3.1.0] — ACTIVE NODE INITIALIZED.",
-    },
-    {
-      type: "system",
-      text: "Type a command or tap quick command shortcuts below to inspect technical records.",
+      text: "yousuf.surf CLI — Type 'help' or select a command below.",
     },
   ]);
 
   const sectionRef = useRef(null);
   const headerRef = useRef(null);
   const terminalBoxRef = useRef(null);
-  const terminalEndRef = useRef(null);
+  const logContainerRef = useRef(null);
+  const hasInteractedRef = useRef(false);
 
-  const scrollToBottom = () => {
-    terminalEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
+  // Scroll only inside the terminal log box (never hijack window scroll on load)
   useEffect(() => {
-    scrollToBottom();
+    if (!hasInteractedRef.current) return;
+    const container = logContainerRef.current;
+    if (container) {
+      container.scrollTop = container.scrollHeight;
+    }
   }, [history]);
 
   useEffect(() => {
@@ -35,14 +33,13 @@ export default function InteractiveTerminal() {
     if (prefersReducedMotion) return;
 
     const ctx = gsap.context(() => {
-      // 1. Header entrance
       gsap.fromTo(
         headerRef.current,
-        { opacity: 0, y: 30 },
+        { opacity: 0, y: 24 },
         {
           opacity: 1,
           y: 0,
-          duration: 0.85,
+          duration: 0.8,
           ease: "power3.out",
           scrollTrigger: {
             trigger: headerRef.current,
@@ -52,20 +49,18 @@ export default function InteractiveTerminal() {
         }
       );
 
-      // 2. Terminal Window Box entrance
       if (terminalBoxRef.current) {
         gsap.fromTo(
           terminalBoxRef.current,
-          { opacity: 0, y: 40, scale: 0.97 },
+          { opacity: 0, y: 28 },
           {
             opacity: 1,
             y: 0,
-            scale: 1,
-            duration: 0.8,
+            duration: 0.75,
             ease: "power2.out",
             scrollTrigger: {
               trigger: terminalBoxRef.current,
-              start: "top 80%",
+              start: "top 82%",
               toggleActions: "play none none reverse",
             },
           }
@@ -79,6 +74,7 @@ export default function InteractiveTerminal() {
   const executeCommand = (cmdStr) => {
     const trimmed = cmdStr.trim().toLowerCase();
     if (!trimmed) return;
+    hasInteractedRef.current = true;
 
     const newHistory = [...history, { type: "user", text: `yousuf:~$ ${cmdStr}` }];
 
@@ -86,69 +82,60 @@ export default function InteractiveTerminal() {
       case "help":
         newHistory.push({
           type: "output",
-          text: `AVAILABLE COMMANDS:
-  • whoami     - Display researcher dossier and current affiliations
-  • papers     - List 5 Taylor & Francis / Camera Ready publications
-  • ctf        - Output cybersecurity competition victories
-  • projects   - Display flagship technical case studies
-  • contact    - Display verified communication endpoints
-  • clear      - Flush terminal history`,
+          text: `Commands:
+  whoami    Researcher dossier & affiliations
+  papers    List 5 publications
+  ctf       Competition honors
+  projects  Featured case studies
+  contact   Email, GitHub, LinkedIn
+  clear     Clear output`,
         });
         break;
 
       case "whoami":
         newHistory.push({
           type: "output",
-          text: `IDENTITY: Md. Yousuf Hossain (Mehrab)
-POSITION: CSE Student | Cybersecurity & Network Engineering | Researcher
-CAMPUS:   Dhaka International University (7th Semester, Expected 2027)
-AFFIL:    General Secretary @ DIU Computer Programming Club (DIU CPC)
-MEMBER:   IEEE & IEEE Computer Society (CS Valid 2026)`,
+          text: `Md. Yousuf Hossain (Mehrab)
+CSE Undergraduate (7th Sem) · Dhaka International University
+General Secretary, DIU Computer Programming Club
+IEEE & IEEE Computer Society Student Member`,
         });
         break;
 
       case "papers":
         newHistory.push({
           type: "output",
-          text: `ACCEPTED RESEARCH WORKS:
-  [1] VisioLock: Audio-Domain Steganography & Crypto (Taylor & Francis)
-  [2] SafeLink+: Zero-Trust Mobile Link Execution (Taylor & Francis)
-  [3] Smart City IoT Lightweight Deep Learning IDS (Taylor & Francis)
-  [4] Multimodal Offline Emergency Mesh Networking (Camera Ready)
-  [5] Secure NFC Host Card Emulation Ticketing System (Camera Ready)`,
+          text: `[1] VisioLock (Taylor & Francis, Accepted)
+[2] SafeLink+ (Taylor & Francis, Accepted)
+[3] Smart City IoT IDS (Taylor & Francis, Accepted)
+[4] Offline Emergency Mesh Networking (Camera-Ready Submitted)
+[5] Secure NFC HCE Ticketing (Camera-Ready Submitted)`,
         });
         break;
 
       case "ctf":
         newHistory.push({
           type: "output",
-          text: `CYBERSECURITY ACHIEVEMENTS:
-  ★ 1ST PLACE CHAMPION - DIU Intra First CTF (2025)
-  ★ GLOBAL RANK #72 - BCS ICT Fest CTF (2026)
-  ★ GLOBAL RANK #158 - HiCyberCon CTF (2026)`,
+          text: `1st Place Champion — DIU Intra First CTF (2025)
+Global Rank #72 — BCS ICT Fest CTF (2026)
+Global Rank #158 — HiCyberCon CTF (2026)`,
         });
         break;
 
       case "projects":
         newHistory.push({
           type: "output",
-          text: `FLAGSHIP CASE STUDIES:
-  • VisioLock (Cross-Media Steganography & Hardware-Bound Crypto)
-  • GetConnect (Offline Infrastructure-Free Emergency Mesh Relay)
-  • SafeLink+ (Zero-Trust Mobile Sandboxing & Phishing Defense)
-  • Secure NFC Ticketing (Host Card Emulation & Replay Prevention)`,
+          text: `VisioLock · GetConnect Mesh · SafeLink+ · Secure NFC HCE`,
         });
         break;
 
       case "contact":
         newHistory.push({
           type: "output",
-          text: `VERIFIED ENDPOINTS:
-  Email:    ${personalInfo.email}
-  Phone:    ${personalInfo.phone}
-  GitHub:   ${personalInfo.github}
-  LinkedIn: ${personalInfo.linkedin}
-  Website:  ${personalInfo.website}`,
+          text: `Email:    ${personalInfo.email}
+Phone:    ${personalInfo.phone}
+GitHub:   ${personalInfo.github}
+LinkedIn: ${personalInfo.linkedin}`,
         });
         break;
 
@@ -160,7 +147,7 @@ MEMBER:   IEEE & IEEE Computer Society (CS Valid 2026)`,
       default:
         newHistory.push({
           type: "error",
-          text: `Command not recognized: '${trimmed}'. Type 'help' to view available system routines.`,
+          text: `Command not found: '${trimmed}'. Type 'help' to list commands.`,
         });
         break;
     }
@@ -187,120 +174,132 @@ MEMBER:   IEEE & IEEE Computer Society (CS Valid 2026)`,
     <section
       ref={sectionRef}
       id="terminal"
-      className="relative py-16 sm:py-24 px-4 sm:px-6 md:px-8 bg-transparent border-t border-purple-900/25"
+      className="relative py-20 sm:py-28 px-4 sm:px-6 md:px-8 bg-transparent border-t border-white/[0.06]"
     >
-      {/* Background Section Glow */}
-      <div className="pointer-events-none absolute right-1/4 top-1/3 w-[350px] h-[350px] rounded-full bg-cyan-600/10 blur-[150px]" />
-
-      <div className="relative z-10 mx-auto max-w-5xl">
+      <div className="relative z-10 mx-auto max-w-6xl">
         
-        {/* Section Header */}
-        <div ref={headerRef} className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-8 sm:mb-12">
-          <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-purple-500/30 bg-purple-950/30 text-purple-300 font-mono text-xs tracking-widest mb-3">
-              <TerminalIcon className="w-3.5 h-3.5 text-cyan-400" />
-              <span>08 // CONNECTION ESTABLISHED</span>
+        {/* Clean Closing Header & Aligned Single-Row Contact Actions */}
+        <div ref={headerRef} className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-12">
+          <div className="lg:col-span-6">
+            <div className="font-mono text-xs text-sky-400 mb-2">
+              08 · Contact & Console
             </div>
-            <h2 className="font-display text-2xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
-              INTERACTIVE CLI // <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-cyan-300 to-emerald-300">
-                DIRECT COMMUNICATION
-              </span>
+            <h2 className="font-display text-2xl sm:text-4xl font-semibold tracking-tight text-slate-100 mb-3">
+              Let's connect.
             </h2>
+            <p className="font-sans text-sm sm:text-base text-slate-400 max-w-lg leading-relaxed">
+              Open to research collaborations, cybersecurity internships, and network engineering roles.
+            </p>
           </div>
 
-          <div className="flex items-center gap-2 font-mono text-xs self-start md:self-auto">
+          <div className="lg:col-span-6 flex flex-wrap items-center lg:justify-end gap-2.5">
+            <a
+              href={`mailto:${personalInfo.email}`}
+              className="px-4 py-2.5 rounded-lg bg-slate-100 hover:bg-white text-slate-950 font-sans text-xs sm:text-sm font-semibold inline-flex items-center gap-2 transition-colors touch-target"
+            >
+              <Mail className="w-4 h-4" />
+              <span>Email me</span>
+            </a>
+
             <button
               onClick={copyEmail}
-              className="px-4 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-semibold transition-all hover:scale-105 active:scale-95 flex items-center gap-2 shadow-[0_0_15px_rgba(168,85,247,0.3)]"
+              className="px-4 py-2.5 rounded-lg border border-white/[0.12] bg-white/[0.03] hover:border-sky-400/50 text-slate-200 font-sans text-xs sm:text-sm inline-flex items-center gap-2 transition-colors touch-target"
             >
-              {copied ? <Check className="w-4 h-4 text-emerald-300" /> : <Mail className="w-4 h-4" />}
-              <span>{copied ? "Email Copied!" : "Copy Email"}</span>
+              {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4 text-slate-400" />}
+              <span>{copied ? "Copied email" : "Copy email"}</span>
             </button>
+
+            <a
+              href={personalInfo.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              className="px-3.5 py-2.5 rounded-lg border border-white/[0.12] hover:border-white/25 text-slate-300 hover:text-white font-sans text-xs sm:text-sm inline-flex items-center gap-1 transition-colors touch-target"
+            >
+              <span>LinkedIn</span>
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </a>
+
+            <a
+              href={personalInfo.github}
+              target="_blank"
+              rel="noreferrer"
+              className="px-3.5 py-2.5 rounded-lg border border-white/[0.12] hover:border-white/25 text-slate-300 hover:text-white font-sans text-xs sm:text-sm inline-flex items-center gap-1 transition-colors touch-target"
+            >
+              <span>GitHub</span>
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </a>
           </div>
         </div>
 
-        {/* Terminal Window Box */}
+        {/* Restrained Terminal Console */}
         <div
           ref={terminalBoxRef}
-          className="rounded-3xl glass-panel border border-purple-500/30 shadow-[0_12px_45px_rgba(0,0,0,0.7)] overflow-hidden"
+          className="surface-panel rounded-2xl overflow-hidden"
         >
-          {/* Mac/Linux Title Bar */}
-          <div className="px-4 sm:px-5 py-3 bg-[#060815] border-b border-slate-800 flex items-center justify-between font-mono text-xs text-slate-400">
-            <div className="flex items-center gap-2">
-              <div className="flex gap-1.5">
-                <span className="w-3 h-3 rounded-full bg-rose-500/80 inline-block" />
-                <span className="w-3 h-3 rounded-full bg-amber-500/80 inline-block" />
-                <span className="w-3 h-3 rounded-full bg-emerald-500/80 inline-block" />
-              </div>
-              <span className="ml-2 text-slate-300 font-bold hidden sm:inline">yousuf@mesh-terminal: ~</span>
-            </div>
-            <div className="flex items-center gap-2 text-[10px] sm:text-[11px] text-emerald-400">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span>RESEARCH NODE // 200 OK</span>
-            </div>
+          <div className="px-4 py-2.5 bg-[#04060a]/90 border-b border-white/[0.08] flex items-center justify-between font-mono text-xs text-slate-400">
+            <span>yousuf.surf — shell</span>
+            <span className="text-[11px] text-slate-500">interactive console</span>
           </div>
 
-          {/* Terminal Output Log Area */}
-          <div className="p-3.5 sm:p-6 h-[260px] sm:h-[320px] overflow-y-auto font-mono text-xs leading-relaxed space-y-2 bg-[#020308]/90">
+          <div
+            ref={logContainerRef}
+            className="p-4 sm:p-5 h-[220px] sm:h-[260px] overflow-y-auto font-mono text-xs leading-relaxed space-y-2 bg-[#04060a]/80"
+          >
             {history.map((line, idx) => (
               <div key={idx}>
                 {line.type === "system" && (
-                  <div className="text-cyan-400/90 font-semibold">[SYS] {line.text}</div>
+                  <div className="text-sky-400">{line.text}</div>
                 )}
                 {line.type === "user" && (
-                  <div className="text-purple-300 font-bold">{line.text}</div>
+                  <div className="text-slate-100 font-medium">{line.text}</div>
                 )}
                 {line.type === "output" && (
-                  <div className="text-slate-200 whitespace-pre-wrap pl-2 border-l border-purple-500/30 my-1">{line.text}</div>
+                  <div className="text-slate-300 whitespace-pre-wrap pl-3 border-l border-white/[0.1] my-1">
+                    {line.text}
+                  </div>
                 )}
                 {line.type === "error" && (
-                  <div className="text-rose-400 font-semibold pl-2 border-l border-rose-500/40">{line.text}</div>
+                  <div className="text-rose-400 pl-3 border-l border-rose-500/30">
+                    {line.text}
+                  </div>
                 )}
               </div>
             ))}
-            <div ref={terminalEndRef} />
           </div>
 
-          {/* Quick Command Pills for Mobile / Fast Interaction - Swipeable on mobile */}
-          <div className="px-3 sm:px-4 py-2 bg-[#060814] border-t border-slate-800/80 flex items-center gap-1.5 sm:gap-2 overflow-x-auto scrollbar-none">
-            <span className="font-mono text-[10px] text-slate-500 uppercase tracking-wider hidden sm:inline shrink-0">
-              Quick:
-            </span>
+          <div className="px-3 sm:px-4 py-2 bg-[#06080c] border-t border-white/[0.08] flex items-center gap-1.5 overflow-x-auto scrollbar-none">
             {shortcuts.map((cmd) => (
               <button
                 key={cmd}
                 onClick={() => executeCommand(cmd)}
-                className="px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-purple-950/60 text-slate-300 hover:text-purple-300 border border-slate-800 hover:border-purple-500/30 font-mono text-[11px] transition-colors whitespace-nowrap shrink-0"
+                className="px-2.5 py-1 rounded bg-white/[0.04] hover:bg-sky-500/15 text-slate-300 hover:text-sky-300 border border-white/[0.06] font-mono text-[11px] transition-colors whitespace-nowrap shrink-0"
               >
-                ${cmd}
+                {cmd}
               </button>
             ))}
           </div>
 
-          {/* Command Input Bar */}
-          <div className="p-2.5 sm:p-4 bg-[#050713] border-t border-slate-800 flex items-center gap-2 sm:gap-3">
-            <span className="text-purple-400 font-mono text-xs font-bold pl-1 sm:pl-2 shrink-0">
-              <span className="sm:hidden">yousuf:~$</span>
-              <span className="hidden sm:inline">guest@yousuf.surf:~$</span>
+          <div className="p-3 bg-[#04060a] border-t border-white/[0.08] flex items-center gap-2 sm:gap-3">
+            <span className="text-sky-400 font-mono text-xs pl-1 shrink-0">
+              yousuf:~$
             </span>
             <input
               type="text"
               value={inputVal}
               onChange={(e) => setInputVal(e.target.value)}
               onKeyDown={handleKeyDown}
-              placeholder="Type command (e.g. 'help', 'whoami')..."
-              className="flex-1 bg-transparent text-white font-mono text-xs focus:outline-none placeholder:text-slate-600 min-w-0"
+              placeholder="Type a command (e.g. help, papers)..."
+              aria-label="Terminal Command Input"
+              className="flex-1 bg-transparent text-slate-100 font-mono text-xs focus:outline-none placeholder:text-slate-600 min-w-0"
             />
             <button
               onClick={() => executeCommand(inputVal)}
-              className="p-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-white transition-colors shrink-0 touch-target flex items-center justify-center"
-              title="Run Command"
+              className="p-2 rounded-lg bg-white/[0.08] hover:bg-sky-500 hover:text-slate-950 text-slate-200 transition-colors shrink-0 touch-target flex items-center justify-center"
+              aria-label="Execute command"
             >
               <Send className="w-3.5 h-3.5" />
             </button>
           </div>
-
         </div>
 
       </div>
