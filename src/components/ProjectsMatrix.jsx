@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { featuredProjects, secondaryProjects } from "../data/portfolioData";
-import { ArrowUpRight, ChevronDown, ChevronUp, FileText } from "lucide-react";
+import { ArrowUpRight, ChevronDown, ChevronUp } from "lucide-react";
 import { ProjectDiagramRenderer } from "./visuals/ProjectDiagrams";
 import { gsap } from "gsap";
 
@@ -327,17 +327,12 @@ export default function ProjectsMatrix() {
                         <ArrowUpRight className="w-4 h-4" />
                       </a>
 
-                      {project.pdfUrl && (
-                        <a
-                          href={project.pdfUrl}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-medium text-slate-200 hover:text-white border border-white/[0.12] hover:border-sky-400/50 bg-white/[0.03] transition-colors"
-                        >
-                          <FileText className="w-3.5 h-3.5 text-sky-400" />
-                          <span>Read Paper (PDF)</span>
-                        </a>
-                      )}
+                      <a
+                        href={`mailto:itsmemehrab369@gmail.com?subject=${encodeURIComponent(`Manuscript Request: ${project.title}`)}`}
+                        className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white border border-white/[0.12] hover:border-sky-400/50 bg-white/[0.03] transition-colors"
+                      >
+                        <span>Manuscript on request</span>
+                      </a>
                     </div>
                   </div>
                 </article>

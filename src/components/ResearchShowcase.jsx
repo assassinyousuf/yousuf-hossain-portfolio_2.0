@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import { publications } from "../data/portfolioData";
-import { ChevronDown, ChevronUp, Copy, Check, ArrowUpRight } from "lucide-react";
+import { personalInfo, publications } from "../data/portfolioData";
+import { ChevronDown, ChevronUp, Copy, Check, Mail } from "lucide-react";
 import { gsap } from "gsap";
 
 export default function ResearchShowcase() {
@@ -97,15 +97,12 @@ export default function ResearchShowcase() {
             return (
               <article key={paper.id} className="py-8 sm:py-10 grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
                 
-                {/* Paper Cover Thumbnail Preview from Real PDF */}
+                {/* Paper Cover Thumbnail Preview from Real Manuscript */}
                 {paper.coverImage && (
                   <div className="md:col-span-3 lg:col-span-2">
-                    <a
-                      href={paper.pdfUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="block rounded-lg overflow-hidden border border-white/[0.12] hover:border-sky-400/60 bg-white transition-transform duration-300 hover:-translate-y-0.5 max-w-[140px] shadow-[0_10px_30px_rgba(0,0,0,0.45)]"
-                      title={`Open PDF: ${paper.title}`}
+                    <div
+                      className="rounded-lg overflow-hidden border border-white/[0.12] bg-white max-w-[140px] shadow-[0_10px_30px_rgba(0,0,0,0.45)]"
+                      title={`Manuscript preview: ${paper.title}`}
                     >
                       <img
                         src={paper.coverImage}
@@ -113,7 +110,7 @@ export default function ResearchShowcase() {
                         className="w-full h-auto aspect-[3/4] object-cover object-top"
                         loading="lazy"
                       />
-                    </a>
+                    </div>
                   </div>
                 )}
 
@@ -184,17 +181,13 @@ export default function ResearchShowcase() {
                       )}
                     </button>
 
-                    {paper.pdfUrl && (
-                      <a
-                        href={paper.pdfUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center gap-1 text-slate-300 hover:text-white transition-colors py-1"
-                      >
-                        <span>Full Paper (PDF)</span>
-                        <ArrowUpRight className="w-3.5 h-3.5" />
-                      </a>
-                    )}
+                    <a
+                      href={`mailto:${personalInfo.email}?subject=${encodeURIComponent(`Manuscript Request: ${paper.title}`)}`}
+                      className="inline-flex items-center gap-1.5 text-slate-300 hover:text-sky-400 transition-colors py-1"
+                    >
+                      <Mail className="w-3.5 h-3.5" />
+                      <span>Request Manuscript</span>
+                    </a>
                   </div>
 
                   {/* Expandable Abstract, Real Paper Figure & BibTeX */}
