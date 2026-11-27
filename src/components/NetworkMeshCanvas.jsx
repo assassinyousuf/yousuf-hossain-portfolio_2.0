@@ -46,7 +46,7 @@ export default function NetworkMeshCanvas() {
         vx: (Math.random() - 0.5) * 0.6,
         vy: (Math.random() - 0.5) * 0.6,
         radius: Math.random() * 1.8 + 1.0,
-        baseColor: Math.random() > 0.4 ? "rgba(168, 85, 247," : "rgba(6, 182, 212,",
+        baseColor: Math.random() > 0.45 ? "rgba(167, 139, 250," : "rgba(101, 214, 231,",
       });
     }
 
@@ -91,12 +91,12 @@ export default function NetworkMeshCanvas() {
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < maxDist) {
-            const alpha = (1 - dist / maxDist) * 0.22;
+            const alpha = (1 - dist / maxDist) * 0.16;
             ctx.beginPath();
             ctx.moveTo(p1.x, p1.y);
             ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `rgba(168, 85, 247, ${alpha})`;
-            ctx.lineWidth = 0.8;
+            ctx.strokeStyle = `rgba(101, 214, 231, ${alpha})`;
+            ctx.lineWidth = 0.75;
             ctx.stroke();
           }
         }

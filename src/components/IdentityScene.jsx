@@ -75,9 +75,9 @@ export default function IdentityScene() {
         const words = textScrubRef.current.querySelectorAll(".scrub-word");
         gsap.fromTo(
           words,
-          { color: "rgba(148, 163, 184, 0.35)" },
+          { color: "rgba(140, 150, 168, 0.35)" },
           {
-            color: "rgba(241, 245, 249, 1)",
+            color: "rgba(232, 228, 218, 1)",
             stagger: 0.04,
             ease: "none",
             scrollTrigger: {
@@ -120,36 +120,32 @@ export default function IdentityScene() {
       className="relative py-20 sm:py-28 px-4 sm:px-6 md:px-8 bg-transparent"
     >
       <div className="relative z-10 mx-auto max-w-6xl">
-
-        {/* Editorial Section Header */}
+        
         <div ref={headerRef} className="mb-10 sm:mb-12">
-          <div className="font-mono text-xs text-sky-400 mb-2">
+          <div className="font-mono text-xs text-[#65D6E7] mb-2">
             01 · Identity
           </div>
-          <h2 className="font-display text-2xl sm:text-4xl font-semibold tracking-tight text-slate-100">
+          <h2 className="font-display text-2xl sm:text-4xl font-semibold tracking-tight text-[#E8E4DA]">
             Curiosity drives the connection.
           </h2>
         </div>
 
-        {/* Visual Profile Composition + Scroll-Scrub Statement */}
         <div
           ref={visualPairRef}
           className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-14 sm:mb-16"
         >
-          {/* Authentic Portrait + Domain Intersection Graphic */}
           <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4 items-center">
-            <div className="rounded-2xl overflow-hidden border border-white/[0.1] bg-[#0b0f17] aspect-[4/3] max-w-[340px] mx-auto lg:mx-0 shadow-[0_20px_50px_rgba(0,0,0,0.6)]">
+            <div className="rounded-2xl overflow-hidden border border-[var(--border-subtle)] bg-[#151922] aspect-[4/3] max-w-[340px] mx-auto lg:mx-0 shadow-[var(--shadow-surface)]">
               <img
                 src="/profile.jpeg"
                 alt="Md. Yousuf Hossain portrait"
-                className="w-full h-full object-cover object-top grayscale-[15%] contrast-[1.05]"
+                className="w-full h-full object-cover object-top grayscale-[12%] contrast-[1.04]"
                 loading="lazy"
               />
             </div>
             <IdentityDomainVisual />
           </div>
 
-          {/* Scroll-Scrubbed Editorial Narrative */}
           <div className="lg:col-span-7 flex flex-col gap-6">
             <div
               ref={textScrubRef}
@@ -164,7 +160,6 @@ export default function IdentityScene() {
           </div>
         </div>
 
-        {/* Three Clean Editorial Columns */}
         <div
           ref={columnsRef}
           className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10"
@@ -172,15 +167,15 @@ export default function IdentityScene() {
           {focusAreas.map((area, idx) => (
             <div
               key={area.title}
-              className="pt-6 border-t border-white/[0.1] flex flex-col gap-2.5"
+              className="pt-6 border-t border-[var(--border-subtle)] flex flex-col gap-2.5"
             >
-              <span className="font-mono text-[11px] text-slate-500">
+              <span className="font-mono text-[11px] text-[#5C6575]">
                 0{idx + 1}
               </span>
-              <h3 className="font-display text-base sm:text-lg font-semibold text-slate-100">
+              <h3 className="font-display text-base sm:text-lg font-semibold text-[#E8E4DA]">
                 {area.title}
               </h3>
-              <p className="font-sans text-sm text-slate-400 leading-relaxed max-w-prose">
+              <p className="font-sans text-sm text-[#8C96A8] leading-relaxed max-w-prose">
                 {area.detail}
               </p>
             </div>

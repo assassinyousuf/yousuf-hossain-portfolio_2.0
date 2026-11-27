@@ -42,10 +42,10 @@ export default function NetworkHUD() {
   }, []);
 
   return (
-    <div className="fixed bottom-4 right-4 z-40 pointer-events-none hidden sm:flex items-center gap-3 px-3 py-1.5 rounded-full bg-[#06080c]/85 backdrop-blur-md border border-white/[0.08] font-mono text-[11px] text-slate-400 select-none">
-      <span className="h-1.5 w-1.5 rounded-full bg-sky-400" />
-      <span className="text-slate-200">{activeLabel}</span>
-      <span className="text-slate-600">·</span>
+    <div className="fixed bottom-4 right-4 z-40 pointer-events-none hidden sm:flex items-center gap-3 px-3 py-1.5 rounded-full bg-[#151922]/85 backdrop-blur-md border border-[var(--border-subtle)] font-mono text-[11px] text-[#8C96A8] select-none">
+      <span className="h-1.5 w-1.5 rounded-full bg-[#65D6E7]" />
+      <span className="text-[#E8E4DA]">{activeLabel}</span>
+      <span className="text-[#5C6575]">·</span>
       <span className="tabular-nums">{Math.round(scrollProgress * 100)}%</span>
     </div>
   );

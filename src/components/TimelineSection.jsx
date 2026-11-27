@@ -83,11 +83,11 @@ export default function TimelineSection() {
         if (node) {
           gsap.fromTo(
             node,
-            { scale: 0.85, borderColor: "rgba(148,163,184,0.3)" },
+            { scale: 0.85, borderColor: "rgba(140,150,168,0.3)" },
             {
               scale: 1.25,
-              borderColor: "#38bdf8",
-              boxShadow: "0 0 12px rgba(56, 189, 248, 0.7)",
+              borderColor: "#65D6E7",
+              boxShadow: "0 0 12px rgba(101, 214, 231, 0.55)",
               duration: 0.35,
               ease: "back.out(2)",
               scrollTrigger: {
@@ -108,125 +108,108 @@ export default function TimelineSection() {
     <section
       ref={sectionRef}
       id="timeline"
-      className="relative py-20 sm:py-28 px-4 sm:px-6 md:px-8 bg-transparent border-t border-white/[0.06]"
+      className="relative py-20 sm:py-28 px-4 sm:px-6 md:px-8 bg-transparent border-t border-[var(--border-subtle)]"
     >
       <div className="relative z-10 mx-auto max-w-5xl">
-        
+
         {/* Section Header */}
         <div ref={headerRef} className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
           <div>
-            <div className="font-mono text-xs text-sky-400 mb-2">
+            <div className="font-mono text-xs text-[#65D6E7] mb-2">
               07 · Experience & Leadership
             </div>
-            <h2 className="font-display text-2xl sm:text-4xl font-semibold tracking-tight text-slate-100">
+            <h2 className="font-display text-2xl sm:text-4xl font-semibold tracking-tight text-[#E8E4DA]">
               Timeline & Organizational Impact
             </h2>
           </div>
 
           {/* Filter Pills */}
-          <div className="flex items-center gap-1.5 font-sans text-xs self-start md:self-auto">
-            <button
-              onClick={() => setFilter("all")}
-              className={`px-3.5 py-2 rounded-lg transition-colors border ${
-                filter === "all"
-                  ? "bg-sky-500/15 text-sky-300 border-sky-400/40 font-medium"
-                  : "bg-transparent text-slate-400 hover:text-slate-200 border-white/[0.08]"
-              }`}
-            >
-              All
-            </button>
-            <button
-              onClick={() => setFilter("industry")}
-              className={`px-3.5 py-2 rounded-lg transition-colors border ${
-                filter === "industry"
-                  ? "bg-sky-500/15 text-sky-300 border-sky-400/40 font-medium"
-                  : "bg-transparent text-slate-400 hover:text-slate-200 border-white/[0.08]"
-              }`}
-            >
-              Experience
-            </button>
-            <button
-              onClick={() => setFilter("leadership")}
-              className={`px-3.5 py-2 rounded-lg transition-colors border ${
-                filter === "leadership"
-                  ? "bg-sky-500/15 text-sky-300 border-sky-400/40 font-medium"
-                  : "bg-transparent text-slate-400 hover:text-slate-200 border-white/[0.08]"
-              }`}
-            >
-              Leadership
-            </button>
-            <button
-              onClick={() => setFilter("research")}
-              className={`px-3.5 py-2 rounded-lg transition-colors border ${
-                filter === "research"
-                  ? "bg-sky-500/15 text-sky-300 border-sky-400/40 font-medium"
-                  : "bg-transparent text-slate-400 hover:text-slate-200 border-white/[0.08]"
-              }`}
-            >
-              Research
-            </button>
+          <div className="flex flex-wrap items-center gap-1.5 font-sans text-xs self-start md:self-auto">
+            {[
+              { id: "all", label: "All" },
+              { id: "industry", label: "Experience" },
+              { id: "leadership", label: "Leadership" },
+              { id: "research", label: "Research" },
+            ].map((item) => (
+              <button
+                key={item.id}
+                onClick={() => setFilter(item.id)}
+                className={`px-3.5 py-2 rounded-lg transition-colors border ${
+                  filter === item.id
+                    ? "bg-[#65D6E7]/12 text-[#65D6E7] border-[#65D6E7]/45 font-medium"
+                    : "bg-[#151922]/50 text-[#8C96A8] hover:text-[#E8E4DA] border-[var(--border-subtle)]"
+                }`}
+              >
+                {item.label}
+              </button>
+            ))}
           </div>
         </div>
 
         {/* Progressive Animated Vertical Timeline */}
         <div ref={timelineTrackRef} className="relative ml-2 sm:ml-4 pl-6 sm:pl-10 space-y-10 sm:space-y-12">
-          
+
           {/* Inactive Rail */}
-          <div className="absolute left-0 top-2 bottom-2 w-[1px] bg-white/[0.08]" />
+          <div className="absolute left-0 top-2 bottom-2 w-[1px] bg-[#8C96A8]/[0.18]" />
 
           {/* Active Drawn Line */}
           <div
             ref={progressLineRef}
-            className="absolute left-0 top-2 bottom-2 w-[2px] -ml-[0.5px] bg-sky-400 origin-top"
+            className="absolute left-0 top-2 bottom-2 w-[2px] -ml-[0.5px] bg-[#65D6E7] origin-top"
           />
 
-          {filteredEvents.map((event, idx) => (
-            <div
-              key={`${event.role}-${idx}`}
-              ref={(el) => (eventItemsRef.current[idx] = el)}
-              className="relative"
-            >
-              {/* Milestone Node */}
-              <div className="timeline-node absolute -left-[29px] sm:-left-[45px] top-1.5 h-3 w-3 rounded-full bg-[#06080c] border-2 border-slate-600 z-10" />
+          {filteredEvents.map((event, idx) => {
+            const isResearch = event.type.toLowerCase().includes("research");
+            return (
+              <div
+                key={`${event.role}-${idx}`}
+                ref={(el) => (eventItemsRef.current[idx] = el)}
+                className="relative"
+              >
+                {/* Milestone Node */}
+                <div className="timeline-node absolute -left-[29px] sm:-left-[45px] top-1.5 h-3 w-3 rounded-full bg-[#0B0D12] border-2 border-[#5C6575] z-10" />
 
-              {/* Open Typographic Entry (No repetitive nested cards) */}
-              <div className="timeline-content pb-8 border-b border-white/[0.06] last:border-b-0">
-                <div className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs mb-2">
-                  <span className="text-sky-400 font-medium">{event.period}</span>
-                  <span className="text-slate-600">·</span>
-                  <span className="text-slate-400">{event.type}</span>
+                {/* Open Typographic Entry (No repetitive nested cards) */}
+                <div className="timeline-content pb-8 border-b border-[var(--border-subtle)] last:border-b-0">
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs mb-2">
+                    <span className="text-[#65D6E7] font-medium">{event.period}</span>
+                    <span className="text-[#5C6575]">·</span>
+                    <span className={isResearch ? "text-[#A78BFA]" : "text-[#8C96A8]"}>
+                      {event.type}
+                    </span>
+                  </div>
+
+                  <h3 className="font-display text-lg sm:text-xl font-semibold text-[#E8E4DA]">
+                    {event.role}
+                  </h3>
+                  <div className="font-sans text-sm text-[#8C96A8] mt-0.5 mb-3">
+                    {event.organizationUrl ? (
+                      <a
+                        href={event.organizationUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1 text-[#B4BCC9] hover:text-[#65D6E7] transition-colors"
+                      >
+                        <span>{event.organization}</span>
+                        <ArrowUpRight className="w-3.5 h-3.5" />
+                      </a>
+                    ) : (
+                      event.organization
+                    )}
+                  </div>
+
+                  <ul className="space-y-2 font-sans text-sm text-[#B4BCC9] leading-relaxed max-w-prose">
+                    {event.responsibilities.map((resp, rIdx) => (
+                      <li key={rIdx} className="flex items-start gap-2.5">
+                        <span className="h-1.5 w-1.5 rounded-full bg-[#5C6575] mt-2 shrink-0" />
+                        <span>{resp}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-
-                <h3 className="font-display text-lg sm:text-xl font-semibold text-slate-100">
-                  {event.role}
-                </h3>
-                <div className="font-sans text-sm text-slate-400 mt-0.5 mb-3">
-                  {event.organizationUrl ? (
-                    <a
-                      href={event.organizationUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center gap-1 text-slate-300 hover:text-sky-400 transition-colors"
-                    >
-                      <span>{event.organization}</span>
-                      <ArrowUpRight className="w-3.5 h-3.5" />
-                    </a>
-                  ) : (
-                    event.organization
-                  )}
-                </div>
-
-                <ul className="space-y-2 font-sans text-sm text-slate-300 leading-relaxed max-w-prose">
-                  {event.responsibilities.map((resp, rIdx) => (
-                    <li key={rIdx} className="flex items-start gap-2.5">
-                      <span className="h-1.5 w-1.5 rounded-full bg-slate-500 mt-2 shrink-0" />
-                      <span>{resp}</span>
-                    </li>
-                  ))}
-                </ul>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
       </div>

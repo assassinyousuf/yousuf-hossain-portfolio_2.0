@@ -59,25 +59,25 @@ export default function Header() {
         <div
           className={`rounded-xl px-4 py-2.5 sm:px-5 flex items-center justify-between border transition-colors duration-300 ${
             scrolled
-              ? "bg-[#06080c]/90 backdrop-blur-xl border-white/[0.1] shadow-[0_8px_30px_rgba(0,0,0,0.6)]"
-              : "bg-[#06080c]/60 backdrop-blur-md border-white/[0.06]"
+              ? "bg-[#151922]/90 backdrop-blur-xl border-[var(--border-strong)] shadow-[0_10px_30px_rgba(4,6,10,0.65)]"
+              : "bg-[#0B0D12]/70 backdrop-blur-md border-[var(--border-subtle)]"
           }`}
         >
-          {/* Clean Wordmark */}
+          {/* Wordmark */}
           <a
             href="#overview"
-            className="font-display text-sm sm:text-base font-bold tracking-tight text-slate-100 hover:text-sky-400 transition-colors"
+            className="font-display text-sm sm:text-base font-bold tracking-tight text-[#E8E4DA] hover:text-[#65D6E7] transition-colors"
           >
-            yousuf<span className="text-sky-400">.surf</span>
+            yousuf<span className="text-[#65D6E7]">.surf</span>
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-6 text-[13px] font-sans font-medium text-slate-400">
+          <nav className="hidden lg:flex items-center gap-6 text-[13px] font-sans font-medium text-[#8C96A8]">
             {navItems.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
-                className="py-1 hover:text-slate-100 transition-colors"
+                className="py-1 hover:text-[#E8E4DA] transition-colors"
               >
                 {item.label}
               </a>
@@ -90,17 +90,17 @@ export default function Header() {
               onClick={toggleAudio}
               className={`flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-lg border text-xs font-mono transition-colors touch-target ${
                 isPlaying
-                  ? "border-sky-400/50 bg-sky-500/10 text-sky-300"
-                  : "border-white/[0.08] bg-white/[0.03] text-slate-400 hover:text-slate-200 hover:border-white/20"
+                  ? "border-[#65D6E7]/50 bg-[#65D6E7]/10 text-[#65D6E7]"
+                  : "border-[var(--border-subtle)] bg-[#151922]/60 text-[#8C96A8] hover:text-[#E8E4DA] hover:border-[var(--border-strong)]"
               }`}
               title={isPlaying ? "Mute ambient audio" : "Play ambient audio"}
               aria-label="Toggle ambient audio"
             >
               {isPlaying ? (
                 <div className="flex items-end gap-[2px] h-3 w-3">
-                  <span className="w-[2px] bg-sky-400 rounded-sm animate-[eq-1_0.9s_ease-in-out_infinite]" />
-                  <span className="w-[2px] bg-sky-300 rounded-sm animate-[eq-2_0.7s_ease-in-out_infinite]" />
-                  <span className="w-[2px] bg-sky-400 rounded-sm animate-[eq-3_1.1s_ease-in-out_infinite]" />
+                  <span className="w-[2px] bg-[#65D6E7] rounded-sm animate-[eq-1_0.9s_ease-in-out_infinite]" />
+                  <span className="w-[2px] bg-[#A78BFA] rounded-sm animate-[eq-2_0.7s_ease-in-out_infinite]" />
+                  <span className="w-[2px] bg-[#65D6E7] rounded-sm animate-[eq-3_1.1s_ease-in-out_infinite]" />
                 </div>
               ) : (
                 <VolumeX className="w-3.5 h-3.5" />
@@ -115,7 +115,7 @@ export default function Header() {
               download
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-sans font-medium text-slate-950 bg-slate-100 hover:bg-white transition-colors touch-target"
+              className="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-sans font-semibold text-[#0B0D12] bg-[#E8E4DA] hover:bg-[#F5F2EB] transition-colors touch-target"
             >
               <Download className="w-3.5 h-3.5" />
               <span>CV</span>
@@ -123,35 +123,35 @@ export default function Header() {
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 lg:hidden rounded-lg border border-white/[0.08] bg-white/[0.03] text-slate-300 hover:text-white transition-colors touch-target flex items-center justify-center"
+              className="p-2 lg:hidden rounded-lg border border-[var(--border-subtle)] bg-[#151922]/70 text-[#E8E4DA] hover:border-[var(--border-strong)] transition-colors touch-target flex items-center justify-center"
               aria-label="Toggle Navigation Menu"
             >
-              {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+              {mobileMenuOpen ? <X className="w-4 h-4 text-[#65D6E7]" /> : <Menu className="w-4 h-4" />}
             </button>
           </div>
         </div>
 
         {/* Mobile Drawer */}
         {mobileMenuOpen && (
-          <div className="lg:hidden mt-2 p-4 rounded-xl bg-[#090d14]/95 backdrop-blur-2xl border border-white/[0.1] shadow-[0_16px_40px_rgba(0,0,0,0.85)] flex flex-col gap-1">
+          <div className="lg:hidden mt-2 p-4 rounded-xl bg-[#151922]/95 backdrop-blur-2xl border border-[var(--border-strong)] shadow-[0_18px_46px_rgba(4,6,10,0.85)] flex flex-col gap-1">
             <div className="grid grid-cols-2 gap-1">
               {navItems.map((item) => (
                 <a
                   key={item.label}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="py-3 px-3 rounded-lg hover:bg-white/[0.05] text-slate-200 hover:text-sky-400 text-sm font-sans transition-colors"
+                  className="py-3 px-3 rounded-lg hover:bg-white/[0.04] text-[#E8E4DA] hover:text-[#65D6E7] text-sm font-sans transition-colors"
                 >
                   {item.label}
                 </a>
               ))}
             </div>
 
-            <div className="mt-2 pt-3 border-t border-white/[0.08] flex items-center gap-2">
+            <div className="mt-2 pt-3 border-t border-[var(--border-subtle)] flex items-center gap-2">
               <a
                 href={personalInfo.cvUrl}
                 download
-                className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg bg-slate-100 hover:bg-white text-slate-950 font-medium text-xs transition-colors"
+                className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg bg-[#E8E4DA] hover:bg-[#F5F2EB] text-[#0B0D12] font-semibold text-xs transition-colors"
               >
                 <Download className="w-3.5 h-3.5" /> Download CV
               </a>
@@ -159,7 +159,7 @@ export default function Header() {
                 href={personalInfo.github}
                 target="_blank"
                 rel="noreferrer"
-                className="px-4 py-2.5 rounded-lg border border-white/[0.1] text-slate-300 hover:text-white text-xs font-sans"
+                className="px-4 py-2.5 rounded-lg border border-[var(--border-strong)] text-[#E8E4DA] hover:text-[#65D6E7] text-xs font-sans transition-colors"
               >
                 GitHub
               </a>

@@ -69,27 +69,27 @@ export default function ResearchShowcase() {
     <section
       ref={sectionRef}
       id="research"
-      className="relative py-20 sm:py-28 px-4 sm:px-6 md:px-8 bg-transparent border-t border-white/[0.06]"
+      className="relative py-20 sm:py-28 px-4 sm:px-6 md:px-8 bg-transparent border-t border-[var(--border-subtle)]"
     >
       <div className="relative z-10 mx-auto max-w-6xl">
         
-        {/* Clean Editorial Header */}
+        {/* Clean Editorial Header (Soft Violet accent for Research section) */}
         <div ref={headerRef} className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
-            <div className="font-mono text-xs text-sky-400 mb-2">
+            <div className="font-mono text-xs text-[#A78BFA] mb-2">
               04 · Research Archive
             </div>
-            <h2 className="font-display text-2xl sm:text-4xl font-semibold tracking-tight text-slate-100">
+            <h2 className="font-display text-2xl sm:text-4xl font-semibold tracking-tight text-[#E8E4DA]">
               Publications & Scholarship
             </h2>
           </div>
-          <p className="font-sans text-sm text-slate-400 max-w-md leading-relaxed">
-            Peer-reviewed Taylor & Francis book chapters and camera-ready research manuscripts, with real document previews and BibTeX records.
+          <p className="font-sans text-sm text-[#8C96A8] max-w-md leading-relaxed">
+            Peer-reviewed Taylor & Francis book chapters and camera-ready research manuscripts, with cover previews and BibTeX citation records.
           </p>
         </div>
 
-        {/* Visual Research Showcase with Authentic Paper Cover Thumbnails */}
-        <div ref={listRef} className="divide-y divide-white/[0.08] border-y border-white/[0.08]">
+        {/* Visual Research Showcase */}
+        <div ref={listRef} className="divide-y divide-[var(--border-subtle)] border-y border-[var(--border-subtle)]">
           {publications.map((paper, idx) => {
             const isExpanded = expandedId === paper.id;
             const isAccepted = paper.statusType === "accepted";
@@ -97,11 +97,11 @@ export default function ResearchShowcase() {
             return (
               <article key={paper.id} className="py-8 sm:py-10 grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
                 
-                {/* Paper Cover Thumbnail Preview from Real Manuscript */}
+                {/* Paper Cover Thumbnail Matted in Warm Ivory */}
                 {paper.coverImage && (
                   <div className="md:col-span-3 lg:col-span-2">
                     <div
-                      className="rounded-lg overflow-hidden border border-white/[0.12] bg-white max-w-[140px] shadow-[0_10px_30px_rgba(0,0,0,0.45)]"
+                      className="rounded-lg overflow-hidden border border-[var(--border-strong)] bg-[#E8E4DA] max-w-[140px] shadow-[var(--shadow-surface)]"
                       title={`Manuscript preview: ${paper.title}`}
                     >
                       <img
@@ -114,45 +114,45 @@ export default function ResearchShowcase() {
                   </div>
                 )}
 
-                {/* Bibliographic Details & Expandable Abstract */}
                 <div className={paper.coverImage ? "md:col-span-9 lg:col-span-10 flex flex-col gap-3" : "md:col-span-12 flex flex-col gap-3"}>
                   <div className="flex flex-wrap items-center justify-between gap-3">
-                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs text-slate-400">
-                      <span className="text-slate-500 tabular-nums">0{idx + 1}</span>
-                      <span className="text-slate-600">·</span>
+                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs text-[#8C96A8]">
+                      <span className="text-[#5C6575] tabular-nums">0{idx + 1}</span>
+                      <span className="text-[#5C6575]">·</span>
                       <span>{paper.year}</span>
-                      <span className="text-slate-600">·</span>
-                      <span className="text-slate-300">{paper.venueType}</span>
-                      <span className="text-slate-600">·</span>
+                      <span className="text-[#5C6575]">·</span>
+                      <span className="text-[#B4BCC9]">{paper.venueType}</span>
+                      <span className="text-[#5C6575]">·</span>
                       <span>{paper.publisher}</span>
                     </div>
 
+                    {/* Soft Violet for Book Chapters Accepted, Electric Cyan for Submitted */}
                     <span
                       className={`font-mono text-[11px] px-2.5 py-0.5 rounded-full border ${
                         isAccepted
-                          ? "text-emerald-300 border-emerald-500/30 bg-emerald-500/10"
-                          : "text-sky-300 border-sky-400/30 bg-sky-500/10"
+                          ? "text-[#A78BFA] border-[#A78BFA]/35 bg-[#A78BFA]/10"
+                          : "text-[#65D6E7] border-[#65D6E7]/35 bg-[#65D6E7]/10"
                       }`}
                     >
                       {paper.statusBadge}
                     </span>
                   </div>
 
-                  <h3 className="font-display text-lg sm:text-xl font-semibold text-slate-100 leading-snug max-w-4xl">
+                  <h3 className="font-display text-lg sm:text-xl font-semibold text-[#E8E4DA] leading-snug max-w-4xl">
                     {paper.title}
                   </h3>
 
-                  <div className="font-sans text-sm text-slate-400 leading-relaxed max-w-4xl">
+                  <div className="font-sans text-sm text-[#8C96A8] leading-relaxed max-w-4xl">
                     <span>{paper.authors}</span>
-                    <span className="text-slate-600 mx-2">—</span>
-                    <span className="text-slate-300">{paper.role}</span>
+                    <span className="text-[#5C6575] mx-2">—</span>
+                    <span className="text-[#B4BCC9]">{paper.role}</span>
                   </div>
 
                   <div className="pt-2 flex flex-wrap items-center gap-4 sm:gap-6 font-sans text-xs sm:text-sm">
                     <button
                       type="button"
                       onClick={() => togglePaper(paper.id)}
-                      className="inline-flex items-center gap-1.5 font-medium text-sky-400 hover:text-sky-300 transition-colors py-1"
+                      className="inline-flex items-center gap-1.5 font-medium text-[#65D6E7] hover:text-[#8CE1EE] transition-colors py-1"
                       aria-expanded={isExpanded}
                     >
                       <span>{isExpanded ? "Hide abstract" : "Read abstract & graphical view"}</span>
@@ -166,12 +166,12 @@ export default function ResearchShowcase() {
                     <button
                       type="button"
                       onClick={() => copyBibtex(paper)}
-                      className="inline-flex items-center gap-1.5 text-slate-400 hover:text-slate-100 transition-colors py-1"
+                      className="inline-flex items-center gap-1.5 text-[#8C96A8] hover:text-[#E8E4DA] transition-colors py-1"
                     >
                       {copiedId === paper.id ? (
                         <>
-                          <Check className="w-3.5 h-3.5 text-emerald-400" />
-                          <span className="text-emerald-400">BibTeX copied</span>
+                          <Check className="w-3.5 h-3.5 text-[#65D6E7]" />
+                          <span className="text-[#65D6E7]">BibTeX copied</span>
                         </>
                       ) : (
                         <>
@@ -183,22 +183,21 @@ export default function ResearchShowcase() {
 
                     <a
                       href={`mailto:${personalInfo.email}?subject=${encodeURIComponent(`Manuscript Request: ${paper.title}`)}`}
-                      className="inline-flex items-center gap-1.5 text-slate-300 hover:text-sky-400 transition-colors py-1"
+                      className="inline-flex items-center gap-1.5 text-[#B4BCC9] hover:text-[#65D6E7] transition-colors py-1"
                     >
                       <Mail className="w-3.5 h-3.5" />
                       <span>Request Manuscript</span>
                     </a>
                   </div>
 
-                  {/* Expandable Abstract, Real Paper Figure & BibTeX */}
                   {isExpanded && (
-                    <div className="mt-3 pt-5 border-t border-white/[0.06] grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    <div className="mt-3 pt-5 border-t border-[var(--border-subtle)] grid grid-cols-1 lg:grid-cols-12 gap-6">
                       <div className="lg:col-span-7 space-y-4">
                         <div>
-                          <div className="font-mono text-[11px] text-slate-400 mb-1.5">
+                          <div className="font-mono text-[11px] text-[#8C96A8] mb-1.5">
                             Abstract
                           </div>
-                          <p className="font-sans text-sm text-slate-300 leading-relaxed max-w-prose">
+                          <p className="font-sans text-sm text-[#B4BCC9] leading-relaxed max-w-prose">
                             {paper.abstract}
                           </p>
                         </div>
@@ -207,7 +206,7 @@ export default function ResearchShowcase() {
                           {paper.keywords.map((kw) => (
                             <span
                               key={kw}
-                              className="px-2.5 py-0.5 rounded text-[11px] font-mono text-slate-400 bg-white/[0.03] border border-white/[0.06]"
+                              className="px-2.5 py-0.5 rounded text-[11px] font-mono text-[#8C96A8] bg-[#151922] border border-[var(--border-subtle)]"
                             >
                               {kw}
                             </span>
@@ -218,10 +217,10 @@ export default function ResearchShowcase() {
                       <div className="lg:col-span-5 space-y-4">
                         {paper.figureImage && (
                           <div>
-                            <div className="font-mono text-[11px] text-slate-400 mb-1.5">
+                            <div className="font-mono text-[11px] text-[#8C96A8] mb-1.5">
                               System Figure (from manuscript)
                             </div>
-                            <div className="rounded-xl overflow-hidden border border-white/[0.1] bg-slate-100 p-2">
+                            <div className="rounded-xl overflow-hidden border border-[var(--border-strong)] bg-[#E8E4DA] p-2">
                               <img
                                 src={paper.figureImage}
                                 alt={`Architecture diagram from ${paper.title}`}
@@ -233,10 +232,10 @@ export default function ResearchShowcase() {
                         )}
 
                         <div>
-                          <div className="font-mono text-[11px] text-slate-400 mb-1.5">
+                          <div className="font-mono text-[11px] text-[#8C96A8] mb-1.5">
                             BibTeX ({paper.series})
                           </div>
-                          <pre className="p-3.5 rounded-xl bg-[#04060a] border border-white/[0.08] font-mono text-[11px] text-slate-300 overflow-x-auto whitespace-pre leading-relaxed">
+                          <pre className="p-3.5 rounded-xl surface-recessed font-mono text-[11px] text-[#B4BCC9] overflow-x-auto whitespace-pre leading-relaxed">
                             {paper.bibtex}
                           </pre>
                         </div>

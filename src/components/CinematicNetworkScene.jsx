@@ -10,9 +10,9 @@ export default function CinematicNetworkScene() {
 
     const isMobile = window.innerWidth < 768;
 
-    // 1. Scene & Camera Setup
+    // 1. Scene & Camera Setup (Obsidian Fog & Calibrated Lighting)
     const scene = new THREE.Scene();
-    scene.fog = new THREE.FogExp2(0x07090d, 0.024);
+    scene.fog = new THREE.FogExp2(0x0b0d12, 0.025);
 
     const camera = new THREE.PerspectiveCamera(
       45,
@@ -31,22 +31,22 @@ export default function CinematicNetworkScene() {
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1 : 1.5));
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.1;
+    renderer.toneMappingExposure = 1.05;
     container.appendChild(renderer.domElement);
 
     // 2. Cinematic Lighting
-    const ambientLight = new THREE.AmbientLight(0x122a42, 1.2);
+    const ambientLight = new THREE.AmbientLight(0x151922, 1.3);
     scene.add(ambientLight);
 
-    const cyanPointLight = new THREE.PointLight(0x62d5ff, 4, 80);
+    const cyanPointLight = new THREE.PointLight(0x65d6e7, 3.2, 85);
     cyanPointLight.position.set(-12, 8, 15);
     scene.add(cyanPointLight);
 
-    const violetPointLight = new THREE.PointLight(0xa855f7, 4.5, 80);
+    const violetPointLight = new THREE.PointLight(0xa78bfa, 3.4, 85);
     violetPointLight.position.set(12, -8, 12);
     scene.add(violetPointLight);
 
-    const headlight = new THREE.PointLight(0xffffff, 1.5, 40);
+    const headlight = new THREE.PointLight(0xe8e4da, 1.2, 40);
     camera.add(headlight);
     scene.add(camera);
 
@@ -62,12 +62,12 @@ export default function CinematicNetworkScene() {
     // Outer Wireframe Icosahedron
     const icoGeo = new THREE.IcosahedronGeometry(isMobile ? 3.0 : 4.0, 1);
     const icoMat = new THREE.MeshStandardMaterial({
-      color: 0x62d5ff,
+      color: 0x65d6e7,
       wireframe: true,
       transparent: true,
-      opacity: 0.35,
-      roughness: 0.2,
-      metalness: 0.8,
+      opacity: 0.34,
+      roughness: 0.25,
+      metalness: 0.75,
     });
     const coreIcosahedron = new THREE.Mesh(icoGeo, icoMat);
     coreGroup.add(coreIcosahedron);
@@ -75,25 +75,25 @@ export default function CinematicNetworkScene() {
     // Inner Glowing Octahedron
     const octGeo = new THREE.OctahedronGeometry(isMobile ? 1.8 : 2.4, 0);
     const octMat = new THREE.MeshStandardMaterial({
-      color: 0xa855f7,
+      color: 0xa78bfa,
       transparent: true,
-      opacity: 0.65,
-      roughness: 0.1,
-      metalness: 0.9,
-      emissive: 0x581c87,
-      emissiveIntensity: 0.8,
+      opacity: 0.58,
+      roughness: 0.15,
+      metalness: 0.85,
+      emissive: 0x3b2c6e,
+      emissiveIntensity: 0.55,
     });
     const innerOct = new THREE.Mesh(octGeo, octMat);
     coreGroup.add(innerOct);
 
     // Gyroscopic Orbital Toruses
     const ring1Geo = new THREE.TorusGeometry(isMobile ? 4.2 : 5.4, 0.04, 16, 80);
-    const ring1Mat = new THREE.MeshBasicMaterial({ color: 0x62d5ff, transparent: true, opacity: 0.5 });
+    const ring1Mat = new THREE.MeshBasicMaterial({ color: 0x65d6e7, transparent: true, opacity: 0.42 });
     const ring1 = new THREE.Mesh(ring1Geo, ring1Mat);
     coreGroup.add(ring1);
 
     const ring2Geo = new THREE.TorusGeometry(isMobile ? 4.9 : 6.2, 0.035, 16, 80);
-    const ring2Mat = new THREE.MeshBasicMaterial({ color: 0xc084fc, transparent: true, opacity: 0.4 });
+    const ring2Mat = new THREE.MeshBasicMaterial({ color: 0xa78bfa, transparent: true, opacity: 0.34 });
     const ring2 = new THREE.Mesh(ring2Geo, ring2Mat);
     ring2.rotation.x = Math.PI / 2.3;
     coreGroup.add(ring2);
@@ -105,8 +105,8 @@ export default function CinematicNetworkScene() {
     const packetMeshes = [];
     const packetGeo = new THREE.BoxGeometry(0.35, 0.35, 0.35);
     const packetMat = new THREE.MeshStandardMaterial({
-      color: 0x62d5ff,
-      emissive: 0x0284c7,
+      color: 0x65d6e7,
+      emissive: 0x266c7a,
       wireframe: true,
     });
 
@@ -131,9 +131,9 @@ export default function CinematicNetworkScene() {
     for (let i = 0; i < tunnelRingCount; i++) {
       const tGeo = new THREE.TorusGeometry(7.0, 0.03, 8, 48);
       const tMat = new THREE.MeshBasicMaterial({
-        color: i % 2 === 0 ? 0x62d5ff : 0xa855f7,
+        color: i % 2 === 0 ? 0x65d6e7 : 0xa78bfa,
         transparent: true,
-        opacity: 0.25,
+        opacity: 0.22,
       });
       const tMesh = new THREE.Mesh(tGeo, tMat);
       tMesh.position.z = -i * 5;
@@ -148,12 +148,12 @@ export default function CinematicNetworkScene() {
     clusterGroup.position.set(0, 0, -85);
     scene.add(clusterGroup);
 
-    // 4 Nodes: Networking (Cyan), Security (Purple), Systems (Emerald), Dev (Amber)
+    // 4 Nodes harmonized strictly with Obsidian / Cyan / Violet / Ivory palette
     const clusterConfigs = [
-      { name: "Networking", color: 0x62d5ff, pos: [-7, 3, 0], geo: new THREE.OctahedronGeometry(2.0, 1) },
-      { name: "Cybersecurity", color: 0xa855f7, pos: [7, 3, -5], geo: new THREE.IcosahedronGeometry(2.2, 0) },
-      { name: "Systems", color: 0x10b981, pos: [-6, -4, -10], geo: new THREE.DodecahedronGeometry(2.0, 0) },
-      { name: "Development", color: 0xf59e0b, pos: [6, -4, -15], geo: new THREE.TetrahedronGeometry(2.4, 1) },
+      { name: "Networking", color: 0x65d6e7, pos: [-7, 3, 0], geo: new THREE.OctahedronGeometry(2.0, 1) },
+      { name: "Cybersecurity", color: 0xa78bfa, pos: [7, 3, -5], geo: new THREE.IcosahedronGeometry(2.2, 0) },
+      { name: "Systems", color: 0x8c96a8, pos: [-6, -4, -10], geo: new THREE.DodecahedronGeometry(2.0, 0) },
+      { name: "Development", color: 0xe8e4da, pos: [6, -4, -15], geo: new THREE.TetrahedronGeometry(2.4, 1) },
     ];
 
     const clusterMeshes = [];
@@ -162,15 +162,15 @@ export default function CinematicNetworkScene() {
         color: cfg.color,
         wireframe: true,
         transparent: true,
-        opacity: 0.45,
-        roughness: 0.3,
+        opacity: 0.36,
+        roughness: 0.35,
       });
       const cMesh = new THREE.Mesh(cfg.geo, cMat);
       cMesh.position.set(cfg.pos[0], cfg.pos[1], cfg.pos[2]);
 
-      // Inner glowing core dot
-      const dotGeo = new THREE.SphereGeometry(0.5, 12, 12);
-      const dotMat = new THREE.MeshBasicMaterial({ color: cfg.color });
+      // Subtle inner anchor core
+      const dotGeo = new THREE.SphereGeometry(0.38, 12, 12);
+      const dotMat = new THREE.MeshBasicMaterial({ color: cfg.color, transparent: true, opacity: 0.72 });
       const dot = new THREE.Mesh(dotGeo, dotMat);
       cMesh.add(dot);
 
@@ -179,7 +179,7 @@ export default function CinematicNetworkScene() {
     });
 
     // Connecting laser lines between clusters
-    const clusterLineMat = new THREE.LineBasicMaterial({ color: 0x62d5ff, transparent: true, opacity: 0.25 });
+    const clusterLineMat = new THREE.LineBasicMaterial({ color: 0x65d6e7, transparent: true, opacity: 0.2 });
     const clusterLinePoints = [
       new THREE.Vector3(-7, 3, 0),
       new THREE.Vector3(7, 3, -5),
@@ -203,10 +203,10 @@ export default function CinematicNetworkScene() {
     for (let i = 0; i < panelCount; i++) {
       const pGeo = new THREE.PlaneGeometry(2.8, 3.8);
       const pMat = new THREE.MeshBasicMaterial({
-        color: i % 2 === 0 ? 0x62d5ff : 0xa855f7,
+        color: i % 2 === 0 ? 0xa78bfa : 0x65d6e7,
         wireframe: true,
         transparent: true,
-        opacity: 0.3,
+        opacity: 0.24,
         side: THREE.DoubleSide,
       });
       const pMesh = new THREE.Mesh(pGeo, pMat);
@@ -221,13 +221,13 @@ export default function CinematicNetworkScene() {
     // ----------------------------------------------------
     // E. CONTINUOUS PERSPECTIVE RUNWAY & STARFIELD
     // ----------------------------------------------------
-    const floorGrid = new THREE.GridHelper(160, 50, 0x62d5ff, 0x111722);
+    const floorGrid = new THREE.GridHelper(160, 50, 0x65d6e7, 0x151922);
     floorGrid.position.y = -8;
     floorGrid.material.transparent = true;
-    floorGrid.material.opacity = 0.25;
+    floorGrid.material.opacity = 0.2;
     scene.add(floorGrid);
 
-    // Deep cosmic starfield
+    // Deep starfield harmonized with cool slate & electric cyan
     const starCount = isMobile ? 250 : 700;
     const starGeo = new THREE.BufferGeometry();
     const starPositions = new Float32Array(starCount * 3);
@@ -239,10 +239,10 @@ export default function CinematicNetworkScene() {
     }
     starGeo.setAttribute("position", new THREE.BufferAttribute(starPositions, 3));
     const starMat = new THREE.PointsMaterial({
-      color: 0x62d5ff,
+      color: 0x65d6e7,
       size: 0.12,
       transparent: true,
-      opacity: 0.65,
+      opacity: 0.52,
     });
     const starField = new THREE.Points(starGeo, starMat);
     scene.add(starField);

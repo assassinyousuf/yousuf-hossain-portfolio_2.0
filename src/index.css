@@ -5,29 +5,54 @@
   --font-sans: "Hanken Grotesk", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", monospace;
 
-  --color-bg-base: #06080c;
-  --color-bg-elevated: #0b0f17;
-  --color-text-primary: #f1f5f9;
-  --color-text-secondary: #94a3b8;
-  --color-text-muted: #64748b;
-  --color-accent: #38bdf8;
-  --color-accent-muted: rgba(56, 189, 248, 0.14);
-  --color-border-hairline: rgba(148, 163, 184, 0.12);
-  --color-border-hover: rgba(56, 189, 248, 0.35);
+  --color-bg-base: #0B0D12;
+  --color-bg-recessed: #080A0F;
+  --color-bg-elevated: #151922;
+  --color-text-primary: #E8E4DA;
+  --color-text-supporting: #B4BCC9;
+  --color-text-secondary: #8C96A8;
+  --color-text-muted: #5C6575;
+  --color-accent-cyan: #65D6E7;
+  --color-accent-violet: #A78BFA;
 }
 
 :root {
-  --surface-glass: rgba(10, 14, 22, 0.72);
-  --surface-glass-strong: rgba(8, 11, 18, 0.88);
-  --border-subtle: rgba(148, 163, 184, 0.12);
-  --border-active: rgba(56, 189, 248, 0.4);
-  --accent-primary: #38bdf8;
+  /* Core Surfaces */
+  --bg-obsidian: #0B0D12;
+  --bg-recessed: #080A0F;
+  --bg-elevated: #151922;
+  --surface-glass: rgba(21, 25, 34, 0.76);
+  --surface-glass-strong: rgba(15, 18, 26, 0.92);
+  --overlay-scrim: rgba(8, 10, 15, 0.82);
+
+  /* Typography */
+  --text-ivory: #E8E4DA;
+  --text-supporting: #B4BCC9;
+  --text-slate: #8C96A8;
+  --text-faint: #5C6575;
+
+  /* Brand & Technical Accents */
+  --accent-cyan: #65D6E7;
+  --accent-cyan-hover: #8CE1EE;
+  --accent-cyan-soft: rgba(101, 214, 231, 0.12);
+  --accent-violet: #A78BFA;
+  --accent-violet-soft: rgba(167, 139, 250, 0.12);
+
+  /* Borders & States */
+  --border-subtle: rgba(140, 150, 168, 0.15);
+  --border-strong: rgba(140, 150, 168, 0.28);
+  --border-cyan: rgba(101, 214, 231, 0.38);
+  --border-violet: rgba(167, 139, 250, 0.36);
+
+  /* Shadows & Focus */
+  --shadow-surface: 0 18px 46px rgba(4, 6, 10, 0.58);
+  --focus-ring: #65D6E7;
 }
 
 html,
 body {
-  background-color: var(--color-bg-base);
-  color: var(--color-text-primary);
+  background-color: var(--bg-obsidian);
+  color: var(--text-ivory);
   overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -47,22 +72,28 @@ body {
   50% { height: 100%; }
 }
 
-/* Restrained Editorial Surface Panel */
+/* Unified Elevated Dark Surface */
 .surface-panel {
   background: var(--surface-glass);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-surface);
   transition: border-color 0.25s ease, background-color 0.25s ease, transform 0.25s ease;
 }
 
 .surface-panel:hover {
-  border-color: rgba(148, 163, 184, 0.24);
+  border-color: var(--border-strong);
 }
 
-/* Focus Accessibility */
+.surface-recessed {
+  background: var(--bg-recessed);
+  border: 1px solid var(--border-subtle);
+}
+
+/* Accessible Instant Focus Ring */
 :focus-visible {
-  outline: 2px solid var(--accent-primary);
+  outline: 2px solid var(--focus-ring);
   outline-offset: 2px;
 }
 
@@ -83,20 +114,20 @@ body {
   scrollbar-width: none;
 }
 
-/* Custom Minimal Scrollbar */
+/* Minimal Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #06080c;
+  background: var(--bg-obsidian);
 }
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
+  background: #232936;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+  background: #353E52;
 }
 
 /* Safe touch area for mobile buttons */

@@ -84,59 +84,59 @@ export default function EducationSection() {
     <section
       ref={sectionRef}
       id="education"
-      className="relative py-20 sm:py-28 px-4 sm:px-6 md:px-8 bg-transparent border-t border-white/[0.06]"
+      className="relative py-20 sm:py-28 px-4 sm:px-6 md:px-8 bg-transparent border-t border-[var(--border-subtle)]"
     >
       <div className="relative z-10 mx-auto max-w-6xl">
-        
+
         {/* Section Header */}
         <div ref={headerRef} className="mb-12">
-          <div className="font-mono text-xs text-sky-400 mb-2">
+          <div className="font-mono text-xs text-[#65D6E7] mb-2">
             06 · Academics & Certifications
           </div>
-          <h2 className="font-display text-2xl sm:text-4xl font-semibold tracking-tight text-slate-100">
+          <h2 className="font-display text-2xl sm:text-4xl font-semibold tracking-tight text-[#E8E4DA]">
             Education & Credential Tracks
           </h2>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-          
+
           {/* Academic Standing & Memberships (Open Editorial Layout) */}
           <div ref={degreeColRef} className="lg:col-span-7 space-y-6">
             <div>
-              <div className="font-mono text-xs text-slate-400 mb-1.5">
+              <div className="font-mono text-xs text-[#8C96A8] mb-1.5">
                 2023 – 2027 · {educationData.institution}
               </div>
-              <h3 className="font-display text-xl sm:text-2xl font-semibold text-slate-100 mb-2">
+              <h3 className="font-display text-xl sm:text-2xl font-semibold text-[#E8E4DA] mb-2">
                 {educationData.degree}
               </h3>
-              <p className="font-sans text-sm text-slate-300">
+              <p className="font-sans text-sm text-[#B4BCC9]">
                 7th Semester Undergraduate · {educationData.location}
               </p>
             </div>
 
-            <div className="pt-5 border-t border-white/[0.08] flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-sans text-sm">
-              <span className="text-slate-400">{educationData.hsc.exam} ({educationData.hsc.group})</span>
-              <span className="font-mono text-slate-100 font-medium">GPA {educationData.hsc.gpa}</span>
+            <div className="pt-5 border-t border-[var(--border-subtle)] flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-sans text-sm">
+              <span className="text-[#8C96A8]">{educationData.hsc.exam} ({educationData.hsc.group})</span>
+              <span className="font-mono text-[#E8E4DA] font-medium">GPA {educationData.hsc.gpa}</span>
             </div>
 
-            <div className="pt-5 border-t border-white/[0.08] space-y-4">
-              <div className="font-mono text-xs text-slate-400">
+            <div className="pt-5 border-t border-[var(--border-subtle)] space-y-4">
+              <div className="font-mono text-xs text-[#8C96A8]">
                 Professional & Technical Tracks
               </div>
               {educationData.certifications.map((cert) => (
                 <div
                   key={cert.title}
-                  className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 pb-4 border-b border-white/[0.06] last:border-b-0 last:pb-0"
+                  className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 pb-4 border-b border-[var(--border-subtle)] last:border-b-0 last:pb-0"
                 >
                   <div>
-                    <div className="font-sans text-sm font-semibold text-slate-100">
+                    <div className="font-sans text-sm font-semibold text-[#E8E4DA]">
                       {cert.title}
                     </div>
-                    <div className="font-sans text-xs sm:text-sm text-slate-400 mt-0.5 max-w-lg leading-relaxed">
+                    <div className="font-sans text-xs sm:text-sm text-[#8C96A8] mt-0.5 max-w-lg leading-relaxed">
                       {cert.focus}
                     </div>
                   </div>
-                  <span className="font-mono text-[11px] text-sky-400 shrink-0">
+                  <span className="font-mono text-[11px] text-[#65D6E7] shrink-0">
                     {cert.status}
                   </span>
                 </div>
@@ -148,10 +148,10 @@ export default function EducationSection() {
           <div ref={subnetColRef} className="lg:col-span-5">
             <div className="surface-panel rounded-2xl p-6 flex flex-col gap-5">
               <div>
-                <h3 className="font-display text-base font-semibold text-slate-100">
+                <h3 className="font-display text-base font-semibold text-[#E8E4DA]">
                   CCNA Subnet Calculator
                 </h3>
-                <p className="font-sans text-xs sm:text-sm text-slate-400 mt-1">
+                <p className="font-sans text-xs sm:text-sm text-[#8C96A8] mt-1">
                   Interactive IPv4 VLSM breakdown for 192.168.1.0/x.
                 </p>
               </div>
@@ -163,8 +163,8 @@ export default function EducationSection() {
                     onClick={() => setSelectedCidr(cidr)}
                     className={`py-2 rounded-lg transition-colors border text-center touch-target ${
                       selectedCidr === cidr
-                        ? "bg-sky-500/15 text-sky-300 font-semibold border-sky-400/40"
-                        : "bg-white/[0.02] text-slate-400 border-white/[0.08] hover:text-slate-200"
+                        ? "bg-[#65D6E7]/12 text-[#65D6E7] font-semibold border-[#65D6E7]/45"
+                        : "bg-[#151922]/70 text-[#8C96A8] border-[var(--border-subtle)] hover:text-[#E8E4DA]"
                     }`}
                   >
                     {cidr}
@@ -172,22 +172,22 @@ export default function EducationSection() {
                 ))}
               </div>
 
-              <div className="p-4 rounded-xl bg-[#04060a] border border-white/[0.08] font-mono text-xs space-y-2.5">
+              <div className="p-4 rounded-xl surface-recessed font-mono text-xs space-y-2.5">
                 <div className="flex justify-between gap-2">
-                  <span className="text-slate-400">Subnet mask</span>
-                  <span className="text-slate-100 font-medium">{currentSubnet.mask}</span>
+                  <span className="text-[#8C96A8]">Subnet mask</span>
+                  <span className="text-[#E8E4DA] font-medium">{currentSubnet.mask}</span>
                 </div>
                 <div className="flex justify-between gap-2">
-                  <span className="text-slate-400">Usable hosts</span>
-                  <span className="text-sky-300 font-medium">{currentSubnet.hosts}</span>
+                  <span className="text-[#8C96A8]">Usable hosts</span>
+                  <span className="text-[#65D6E7] font-medium">{currentSubnet.hosts}</span>
                 </div>
                 <div className="flex justify-between gap-2">
-                  <span className="text-slate-400">Host range</span>
-                  <span className="text-slate-200">{currentSubnet.range}</span>
+                  <span className="text-[#8C96A8]">Host range</span>
+                  <span className="text-[#B4BCC9]">{currentSubnet.range}</span>
                 </div>
                 <div className="flex justify-between gap-2">
-                  <span className="text-slate-400">Broadcast</span>
-                  <span className="text-slate-300">{currentSubnet.bcast}</span>
+                  <span className="text-[#8C96A8]">Broadcast</span>
+                  <span className="text-[#8C96A8]">{currentSubnet.bcast}</span>
                 </div>
               </div>
             </div>
