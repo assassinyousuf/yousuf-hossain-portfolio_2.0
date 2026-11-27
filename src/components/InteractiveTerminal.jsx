@@ -126,7 +126,7 @@ Global Rank #158 — HiCyberCon CTF (2026)`,
       case "projects":
         newHistory.push({
           type: "output",
-          text: `VisioLock · GetConnect Mesh · SafeLink+ · Secure NFC HCE`,
+          text: `VisioLock · SafeLink+ · GetConnect Mesh · Smart City IDS · Secure NFC HCE`,
         });
         break;
 
@@ -179,8 +179,8 @@ LinkedIn: ${personalInfo.linkedin}`,
     >
       <div className="relative z-10 mx-auto max-w-6xl">
         
-        {/* Clean Closing Header & Aligned Single-Row Contact Actions */}
-        <div ref={headerRef} className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-12">
+        {/* Closing Header & Direct Contact */}
+        <div ref={headerRef} className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-10">
           <div className="lg:col-span-6">
             <div className="font-mono text-xs text-sky-400 mb-2">
               08 · Contact & Console
@@ -232,74 +232,122 @@ LinkedIn: ${personalInfo.linkedin}`,
           </div>
         </div>
 
-        {/* Restrained Terminal Console */}
+        {/* Visual Node Routing Schematic + Interactive Shell Split */}
         <div
           ref={terminalBoxRef}
-          className="surface-panel rounded-2xl overflow-hidden"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch"
         >
-          <div className="px-4 py-2.5 bg-[#04060a]/90 border-b border-white/[0.08] flex items-center justify-between font-mono text-xs text-slate-400">
-            <span>yousuf.surf — shell</span>
-            <span className="text-[11px] text-slate-500">interactive console</span>
-          </div>
+          {/* Endpoint Routing Graphic */}
+          <div className="lg:col-span-4 surface-panel rounded-2xl p-5 flex flex-col justify-between">
+            <div className="font-mono text-[11px] text-slate-400 border-b border-white/[0.08] pb-3 mb-3">
+              Endpoint Routing Map
+            </div>
 
-          <div
-            ref={logContainerRef}
-            className="p-4 sm:p-5 h-[220px] sm:h-[260px] overflow-y-auto font-mono text-xs leading-relaxed space-y-2 bg-[#04060a]/80"
-          >
-            {history.map((line, idx) => (
-              <div key={idx}>
-                {line.type === "system" && (
-                  <div className="text-sky-400">{line.text}</div>
-                )}
-                {line.type === "user" && (
-                  <div className="text-slate-100 font-medium">{line.text}</div>
-                )}
-                {line.type === "output" && (
-                  <div className="text-slate-300 whitespace-pre-wrap pl-3 border-l border-white/[0.1] my-1">
-                    {line.text}
-                  </div>
-                )}
-                {line.type === "error" && (
-                  <div className="text-rose-400 pl-3 border-l border-rose-500/30">
-                    {line.text}
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-
-          <div className="px-3 sm:px-4 py-2 bg-[#06080c] border-t border-white/[0.08] flex items-center gap-1.5 overflow-x-auto scrollbar-none">
-            {shortcuts.map((cmd) => (
-              <button
-                key={cmd}
-                onClick={() => executeCommand(cmd)}
-                className="px-2.5 py-1 rounded bg-white/[0.04] hover:bg-sky-500/15 text-slate-300 hover:text-sky-300 border border-white/[0.06] font-mono text-[11px] transition-colors whitespace-nowrap shrink-0"
-              >
-                {cmd}
-              </button>
-            ))}
-          </div>
-
-          <div className="p-3 bg-[#04060a] border-t border-white/[0.08] flex items-center gap-2 sm:gap-3">
-            <span className="text-sky-400 font-mono text-xs pl-1 shrink-0">
-              yousuf:~$
-            </span>
-            <input
-              type="text"
-              value={inputVal}
-              onChange={(e) => setInputVal(e.target.value)}
-              onKeyDown={handleKeyDown}
-              placeholder="Type a command (e.g. help, papers)..."
-              aria-label="Terminal Command Input"
-              className="flex-1 bg-transparent text-slate-100 font-mono text-xs focus:outline-none placeholder:text-slate-600 min-w-0"
-            />
-            <button
-              onClick={() => executeCommand(inputVal)}
-              className="p-2 rounded-lg bg-white/[0.08] hover:bg-sky-500 hover:text-slate-950 text-slate-200 transition-colors shrink-0 touch-target flex items-center justify-center"
-              aria-label="Execute command"
+            <svg
+              viewBox="0 0 280 185"
+              className="w-full h-auto select-none"
+              role="img"
+              aria-label="Network endpoint diagram connecting yousuf.surf to Email, GitHub, LinkedIn, and CodencoIT"
             >
-              <Send className="w-3.5 h-3.5" />
-            </button>
+              <line x1="65" y1="92" x2="145" y2="30" stroke="rgba(56,189,248,0.45)" strokeWidth="1.2" />
+              <line x1="65" y1="92" x2="145" y2="72" stroke="rgba(148,163,184,0.3)" strokeWidth="1" />
+              <line x1="65" y1="92" x2="145" y2="114" stroke="rgba(148,163,184,0.3)" strokeWidth="1" />
+              <line x1="65" y1="92" x2="145" y2="156" stroke="rgba(56,189,248,0.45)" strokeWidth="1.2" />
+
+              <circle cx="42" cy="92" r="24" fill="#06080c" stroke="#38bdf8" strokeWidth="1.3" />
+              <text x="42" y="90" textAnchor="middle" className="fill-slate-100 font-mono text-[8.5px] font-semibold">
+                NODE
+              </text>
+              <text x="42" y="100" textAnchor="middle" className="fill-sky-400 font-mono text-[7px]">
+                yousuf
+              </text>
+
+              {[
+                { y: 16, label: "Direct Mail", val: "itsmemehrab369" },
+                { y: 58, label: "GitHub", val: "@assassinyousuf" },
+                { y: 100, label: "LinkedIn", val: "mdyousufhossainmehrab" },
+                { y: 142, label: "Internship", val: "CodencoIT" },
+              ].map((ep) => (
+                <g key={ep.label} transform={`translate(145, ${ep.y})`}>
+                  <rect width="124" height="28" rx="6" fill="#04060a" stroke="rgba(148,163,184,0.22)" />
+                  <text x="10" y="12" className="fill-sky-400 font-mono text-[7.5px]">{ep.label}</text>
+                  <text x="10" y="22" className="fill-slate-200 font-mono text-[8px]">{ep.val}</text>
+                </g>
+              ))}
+            </svg>
+
+            <div className="pt-3 border-t border-white/[0.08] font-mono text-[11px] text-slate-400 flex justify-between">
+              <span>Location</span>
+              <span className="text-slate-200">{personalInfo.location}</span>
+            </div>
+          </div>
+
+          {/* Interactive Shell Console */}
+          <div className="lg:col-span-8 surface-panel rounded-2xl overflow-hidden flex flex-col">
+            <div className="px-4 py-2.5 bg-[#04060a]/90 border-b border-white/[0.08] flex items-center justify-between font-mono text-xs text-slate-400">
+              <span>yousuf.surf — shell</span>
+              <span className="text-[11px] text-slate-500">interactive console</span>
+            </div>
+
+            <div
+              ref={logContainerRef}
+              className="p-4 sm:p-5 h-[210px] sm:h-[230px] overflow-y-auto font-mono text-xs leading-relaxed space-y-2 bg-[#04060a]/80 flex-1"
+            >
+              {history.map((line, idx) => (
+                <div key={idx}>
+                  {line.type === "system" && (
+                    <div className="text-sky-400">{line.text}</div>
+                  )}
+                  {line.type === "user" && (
+                    <div className="text-slate-100 font-medium">{line.text}</div>
+                  )}
+                  {line.type === "output" && (
+                    <div className="text-slate-300 whitespace-pre-wrap pl-3 border-l border-white/[0.1] my-1">
+                      {line.text}
+                    </div>
+                  )}
+                  {line.type === "error" && (
+                    <div className="text-rose-400 pl-3 border-l border-rose-500/30">
+                      {line.text}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            <div className="px-3 sm:px-4 py-2 bg-[#06080c] border-t border-white/[0.08] flex items-center gap-1.5 overflow-x-auto scrollbar-none">
+              {shortcuts.map((cmd) => (
+                <button
+                  key={cmd}
+                  onClick={() => executeCommand(cmd)}
+                  className="px-2.5 py-1 rounded bg-white/[0.04] hover:bg-sky-500/15 text-slate-300 hover:text-sky-300 border border-white/[0.06] font-mono text-[11px] transition-colors whitespace-nowrap shrink-0"
+                >
+                  {cmd}
+                </button>
+              ))}
+            </div>
+
+            <div className="p-3 bg-[#04060a] border-t border-white/[0.08] flex items-center gap-2 sm:gap-3">
+              <span className="text-sky-400 font-mono text-xs pl-1 shrink-0">
+                yousuf:~$
+              </span>
+              <input
+                type="text"
+                value={inputVal}
+                onChange={(e) => setInputVal(e.target.value)}
+                onKeyDown={handleKeyDown}
+                placeholder="Type a command (e.g. help, papers)..."
+                aria-label="Terminal Command Input"
+                className="flex-1 bg-transparent text-slate-100 font-mono text-xs focus:outline-none placeholder:text-slate-600 min-w-0"
+              />
+              <button
+                onClick={() => executeCommand(inputVal)}
+                className="p-2 rounded-lg bg-white/[0.08] hover:bg-sky-500 hover:text-slate-950 text-slate-200 transition-colors shrink-0 touch-target flex items-center justify-center"
+                aria-label="Execute command"
+              >
+                <Send className="w-3.5 h-3.5" />
+              </button>
+            </div>
           </div>
         </div>
 

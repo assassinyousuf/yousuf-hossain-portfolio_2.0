@@ -4,6 +4,25 @@ import { CheckCircle2, AlertCircle, Copy, Check } from "lucide-react";
 import confetti from "canvas-confetti";
 import { gsap } from "gsap";
 
+function TrophyEmblem({ rank }) {
+  return (
+    <svg viewBox="0 0 48 48" className="w-10 h-10 shrink-0" aria-hidden="true">
+      <circle cx="24" cy="24" r="21" fill="rgba(56,189,248,0.06)" stroke="rgba(56,189,248,0.28)" strokeWidth="1" />
+      <path
+        d="M16 15h16v6c0 5-3.5 8.5-8 8.5S16 26 16 21v-6z"
+        fill="none"
+        stroke="#38bdf8"
+        strokeWidth="1.4"
+      />
+      <path d="M16 17h-3.5c0 4 1.5 5.5 3.5 5.5M32 17h3.5c0 4-1.5 5.5-3.5 5.5" fill="none" stroke="rgba(148,163,184,0.6)" strokeWidth="1.2" />
+      <path d="M24 29.5v4.5M19 34h10" stroke="#38bdf8" strokeWidth="1.4" strokeLinecap="round" />
+      {rank === "1" && (
+        <circle cx="24" cy="21" r="2" fill="#38bdf8" />
+      )}
+    </svg>
+  );
+}
+
 export default function AchievementsSection() {
   const [flagInput, setFlagInput] = useState("");
   const [challengeStatus, setChallengeStatus] = useState("idle"); // 'idle' | 'solved' | 'error'
@@ -16,6 +35,12 @@ export default function AchievementsSection() {
 
   const competitionHonors = achievementsList.filter((a) => a.category !== "Organizational Leadership");
   const leadershipHonors = achievementsList.filter((a) => a.category === "Organizational Leadership");
+
+  const getRankLabel = (title) => {
+    if (title.includes("Intra")) return { num: "#1", scope: "Champion" };
+    if (title.includes("BCS")) return { num: "#72", scope: "National Team" };
+    return { num: "#158", scope: "Global Standing" };
+  };
 
   const handleFlagSubmit = (e) => {
     e.preventDefault();
@@ -119,46 +144,63 @@ export default function AchievementsSection() {
             </h2>
           </div>
           <p className="font-sans text-sm text-slate-400 max-w-md leading-relaxed">
-            Verified standings in national and international Capture-The-Flag tournaments alongside technical student organization governance.
+            Verified Capture-The-Flag leaderboard standings and elected student governance roles.
           </p>
         </div>
 
-        {/* Separated Competition Rankings vs Leadership Appointment */}
+        {/* Visual CTF Leaderboard Composition + Governance Feature */}
         <div ref={gridRef} className="space-y-8 mb-12">
           
-          {/* Competition Rankings (3-column restrained surface cards) */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {competitionHonors.map((item) => (
-              <div
-                key={item.title}
-                className="surface-panel rounded-2xl p-6 flex flex-col justify-between gap-5"
-              >
-                <div>
-                  <div className="flex items-center justify-between font-mono text-xs mb-3">
-                    <span className="text-sky-400 font-medium">{item.badge}</span>
-                    <span className="text-slate-500 tabular-nums">{item.year}</span>
+          {/* Scoreboard Visual Rows */}
+          <div className="surface-panel rounded-2xl overflow-hidden">
+            <div className="px-5 sm:px-6 py-3 border-b border-white/[0.08] bg-[#04060a]/70 flex items-center justify-between font-mono text-[11px] text-slate-400">
+              <span>CTF COMPETITION STANDINGS</span>
+              <span>VERIFIED SCOREBOARDS</span>
+            </div>
+
+            <div className="divide-y divide-white/[0.08]">
+              {competitionHonors.map((item) => {
+                const rank = getRankLabel(item.title);
+                return (
+                  <div
+                    key={item.title}
+                    className="p-5 sm:p-6 grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6 items-center"
+                  >
+                    {/* Visual Rank + Trophy Emblem */}
+                    <div className="md:col-span-3 flex items-center gap-4">
+                      <TrophyEmblem rank={rank.num === "#1" ? "1" : "0"} />
+                      <div>
+                        <div className="font-display text-2xl sm:text-3xl font-semibold text-slate-50 tabular-nums leading-none">
+                          {rank.num}
+                        </div>
+                        <div className="font-mono text-[11px] text-sky-400 mt-1">
+                          {rank.scope} · {item.year}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Tournament Details */}
+                    <div className="md:col-span-6 space-y-1">
+                      <h3 className="font-display text-base sm:text-lg font-semibold text-slate-100">
+                        {item.title}
+                      </h3>
+                      <p className="font-sans text-xs sm:text-sm text-slate-300 leading-relaxed">
+                        {item.desc}
+                      </p>
+                    </div>
+
+                    {/* Verification Note */}
+                    <div className="md:col-span-3 md:text-right font-mono text-[11px] text-slate-400">
+                      <span className="block text-slate-300">{item.category}</span>
+                      <span className="block mt-0.5 text-slate-500">{item.proof}</span>
+                    </div>
                   </div>
-
-                  <h3 className="font-display text-lg font-semibold text-slate-100 mb-1.5">
-                    {item.title}
-                  </h3>
-                  <div className="font-mono text-[11px] text-slate-400 mb-3">
-                    {item.category}
-                  </div>
-
-                  <p className="font-sans text-sm text-slate-300 leading-relaxed">
-                    {item.desc}
-                  </p>
-                </div>
-
-                <div className="pt-3 border-t border-white/[0.06] font-mono text-[11px] text-slate-400">
-                  {item.proof}
-                </div>
-              </div>
-            ))}
+                );
+              })}
+            </div>
           </div>
 
-          {/* Executive Leadership Feature Row (Visually distinct from tournament standings) */}
+          {/* Executive Leadership Feature Row */}
           {leadershipHonors.map((item) => (
             <div
               key={item.title}
@@ -185,7 +227,7 @@ export default function AchievementsSection() {
 
         </div>
 
-        {/* Restrained Interactive CTF Challenge */}
+        {/* Compact Interactive CTF Challenge */}
         <div
           ref={ctfSandboxRef}
           className="surface-panel rounded-2xl p-6 sm:p-7"

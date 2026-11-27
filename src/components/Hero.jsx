@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { personalInfo, stats } from "../data/portfolioData";
 import { ArrowDown, ArrowUpRight, Download, Mail } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./Icons";
+import HeroTopologyVisual from "./visuals/HeroTopologyVisual";
 import { gsap } from "gsap";
 
 export default function Hero() {
@@ -13,7 +14,7 @@ export default function Hero() {
   const nameRef = useRef(null);
   const bioRef = useRef(null);
   const ctaRef = useRef(null);
-  const portraitRef = useRef(null);
+  const visualRef = useRef(null);
   const statsRef = useRef(null);
   const scrollIndicatorRef = useRef(null);
 
@@ -55,10 +56,10 @@ export default function Hero() {
           "-=0.4"
         )
         .fromTo(
-          portraitRef.current,
-          { opacity: 0, scale: 0.96 },
-          { opacity: 1, scale: 1, duration: 1.0, ease: "power2.out" },
-          "-=0.8"
+          visualRef.current,
+          { opacity: 0, scale: 0.96, y: 18 },
+          { opacity: 1, scale: 1, y: 0, duration: 0.95, ease: "power2.out" },
+          "-=0.75"
         )
         .fromTo(
           ctaRef.current ? ctaRef.current.children : [],
@@ -103,10 +104,10 @@ export default function Hero() {
       className="relative min-h-[92vh] pt-28 pb-16 sm:pt-36 sm:pb-20 flex flex-col justify-center px-4 sm:px-6 md:px-8 bg-transparent"
     >
       <div className="relative z-10 mx-auto max-w-6xl w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-10 items-center">
           
           {/* Left Column: Editorial Identity & Positioning */}
-          <div className="lg:col-span-8 flex flex-col gap-5 sm:gap-6">
+          <div className="lg:col-span-7 flex flex-col gap-5 sm:gap-6">
             
             {/* Quiet Context Line */}
             <div
@@ -117,7 +118,7 @@ export default function Hero() {
             </div>
 
             {/* Editorial Headline */}
-            <h1 className="font-display text-3xl sm:text-5xl lg:text-[3.4rem] font-semibold tracking-[-0.025em] text-slate-50 leading-[1.12] min-w-0">
+            <h1 className="font-display text-3xl sm:text-5xl lg:text-[3.35rem] font-semibold tracking-[-0.025em] text-slate-50 leading-[1.12] min-w-0">
               <span ref={titleLine1Ref} className="inline-block">
                 Building secure systems.
               </span>{" "}
@@ -131,7 +132,7 @@ export default function Hero() {
               </span>
             </h1>
 
-            {/* Subtitle & Academic Context */}
+            {/* Subtitle & Academic / Internship Context */}
             <div ref={nameRef} className="flex flex-col gap-1">
               <p className="font-sans text-sm sm:text-base font-medium text-slate-200">
                 {personalInfo.subtitle}
@@ -220,18 +221,9 @@ export default function Hero() {
 
           </div>
 
-          {/* Right Column: Clean Editorial Portrait (No nested boxes) */}
-          <div ref={portraitRef} className="lg:col-span-4 flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-[240px] sm:max-w-[280px]">
-              <div className="rounded-2xl overflow-hidden border border-white/[0.1] bg-[#0b0f17] aspect-[4/5] shadow-[0_24px_60px_rgba(0,0,0,0.65)]">
-                <img
-                  src="/profile.jpeg"
-                  alt="Md. Yousuf Hossain"
-                  className="w-full h-full object-cover object-center grayscale-[20%] contrast-[1.06] hover:grayscale-0 transition-[filter] duration-500"
-                  loading="eager"
-                />
-              </div>
-            </div>
+          {/* Right Column: Interactive Systems Architecture Topology */}
+          <div ref={visualRef} className="lg:col-span-5 flex justify-center lg:justify-end">
+            <HeroTopologyVisual />
           </div>
 
         </div>

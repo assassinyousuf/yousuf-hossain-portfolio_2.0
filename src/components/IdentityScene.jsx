@@ -1,9 +1,11 @@
 import React, { useEffect, useRef } from "react";
+import IdentityDomainVisual from "./visuals/IdentityDomainVisual";
 import { gsap } from "gsap";
 
 export default function IdentityScene() {
   const sectionRef = useRef(null);
   const headerRef = useRef(null);
+  const visualPairRef = useRef(null);
   const textScrubRef = useRef(null);
   const columnsRef = useRef(null);
 
@@ -35,7 +37,6 @@ export default function IdentityScene() {
     if (prefersReducedMotion) return;
 
     const ctx = gsap.context(() => {
-      // 1. Header Reveal
       gsap.fromTo(
         headerRef.current,
         { opacity: 0, y: 24 },
@@ -52,7 +53,24 @@ export default function IdentityScene() {
         }
       );
 
-      // 2. Word-by-Word Editorial Text Scrub Reveal
+      if (visualPairRef.current) {
+        gsap.fromTo(
+          visualPairRef.current,
+          { opacity: 0, y: 24 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: visualPairRef.current,
+              start: "top 82%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      }
+
       if (textScrubRef.current) {
         const words = textScrubRef.current.querySelectorAll(".scrub-word");
         gsap.fromTo(
@@ -72,7 +90,6 @@ export default function IdentityScene() {
         );
       }
 
-      // 3. Staggered Focus Columns Entrance
       if (columnsRef.current) {
         gsap.fromTo(
           columnsRef.current.children,
@@ -103,8 +120,8 @@ export default function IdentityScene() {
       className="relative py-20 sm:py-28 px-4 sm:px-6 md:px-8 bg-transparent"
     >
       <div className="relative z-10 mx-auto max-w-6xl">
-        
-        {/* Clean Editorial Section Header */}
+
+        {/* Editorial Section Header */}
         <div ref={headerRef} className="mb-10 sm:mb-12">
           <div className="font-mono text-xs text-sky-400 mb-2">
             01 · Identity
@@ -114,19 +131,40 @@ export default function IdentityScene() {
           </h2>
         </div>
 
-        {/* Scroll-Scrubbed Editorial Statement */}
+        {/* Visual Profile Composition + Scroll-Scrub Statement */}
         <div
-          ref={textScrubRef}
-          className="font-sans text-xl sm:text-2xl md:text-[1.75rem] font-normal leading-[1.45] max-w-4xl mb-14 sm:mb-16"
+          ref={visualPairRef}
+          className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-14 sm:mb-16"
         >
-          {missionWords.map((word, idx) => (
-            <span key={idx} className="scrub-word inline-block mr-1.5 sm:mr-2">
-              {word}
-            </span>
-          ))}
+          {/* Authentic Portrait + Domain Intersection Graphic */}
+          <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4 items-center">
+            <div className="rounded-2xl overflow-hidden border border-white/[0.1] bg-[#0b0f17] aspect-[4/3] max-w-[340px] mx-auto lg:mx-0 shadow-[0_20px_50px_rgba(0,0,0,0.6)]">
+              <img
+                src="/profile.jpeg"
+                alt="Md. Yousuf Hossain portrait"
+                className="w-full h-full object-cover object-top grayscale-[15%] contrast-[1.05]"
+                loading="lazy"
+              />
+            </div>
+            <IdentityDomainVisual />
+          </div>
+
+          {/* Scroll-Scrubbed Editorial Narrative */}
+          <div className="lg:col-span-7 flex flex-col gap-6">
+            <div
+              ref={textScrubRef}
+              className="font-sans text-xl sm:text-2xl lg:text-[1.65rem] font-normal leading-[1.45]"
+            >
+              {missionWords.map((word, idx) => (
+                <span key={idx} className="scrub-word inline-block mr-1.5 sm:mr-2">
+                  {word}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
 
-        {/* Three Clean Editorial Columns (No repetitive enclosed cards) */}
+        {/* Three Clean Editorial Columns */}
         <div
           ref={columnsRef}
           className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10"
