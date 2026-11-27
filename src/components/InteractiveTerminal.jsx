@@ -96,6 +96,7 @@ export default function InteractiveTerminal() {
         newHistory.push({
           type: "output",
           text: `Md. Yousuf Hossain (Mehrab)
+Support Engineer (Intern) @ CodencoIT (https://codencoit.com/)
 CSE Undergraduate (7th Sem) · Dhaka International University
 General Secretary, DIU Computer Programming Club
 IEEE & IEEE Computer Society Student Member`,

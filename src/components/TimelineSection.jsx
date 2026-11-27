@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { timelineEvents } from "../data/portfolioData";
+import { ArrowUpRight } from "lucide-react";
 import { gsap } from "gsap";
 
 export default function TimelineSection() {
@@ -135,6 +136,16 @@ export default function TimelineSection() {
               All
             </button>
             <button
+              onClick={() => setFilter("industry")}
+              className={`px-3.5 py-2 rounded-lg transition-colors border ${
+                filter === "industry"
+                  ? "bg-sky-500/15 text-sky-300 border-sky-400/40 font-medium"
+                  : "bg-transparent text-slate-400 hover:text-slate-200 border-white/[0.08]"
+              }`}
+            >
+              Experience
+            </button>
+            <button
               onClick={() => setFilter("leadership")}
               className={`px-3.5 py-2 rounded-lg transition-colors border ${
                 filter === "leadership"
@@ -190,7 +201,19 @@ export default function TimelineSection() {
                   {event.role}
                 </h3>
                 <div className="font-sans text-sm text-slate-400 mt-0.5 mb-3">
-                  {event.organization}
+                  {event.organizationUrl ? (
+                    <a
+                      href={event.organizationUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1 text-slate-300 hover:text-sky-400 transition-colors"
+                    >
+                      <span>{event.organization}</span>
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </a>
+                  ) : (
+                    event.organization
+                  )}
                 </div>
 
                 <ul className="space-y-2 font-sans text-sm text-slate-300 leading-relaxed max-w-prose">

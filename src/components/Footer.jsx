@@ -15,7 +15,16 @@ export default function Footer() {
               {personalInfo.name}
             </div>
             <p className="font-sans text-xs sm:text-sm text-slate-400 leading-relaxed">
-              CSE Undergraduate · Cybersecurity & Network Engineering Researcher · Dhaka International University.
+              Support Engineer Intern at{" "}
+              <a
+                href={personalInfo.currentRole.url}
+                target="_blank"
+                rel="noreferrer"
+                className="text-slate-200 hover:text-sky-400 transition-colors"
+              >
+                {personalInfo.currentRole.company}
+              </a>{" "}
+              · CSE Undergraduate & Researcher at Dhaka International University.
             </p>
           </div>
 

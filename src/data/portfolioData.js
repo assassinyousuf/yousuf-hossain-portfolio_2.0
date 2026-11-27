@@ -3,7 +3,12 @@ export const personalInfo = {
   alias: "Mehrab",
   handle: "assassinyousuf",
   tagline: "Building secure systems. Exploring networks. Researching technology.",
-  subtitle: "CSE Student | Cybersecurity & Network Engineering | Researcher",
+  subtitle: "Support Engineer Intern @ CodencoIT | Cybersecurity & Network Engineering | Researcher",
+  currentRole: {
+    title: "Support Engineer (Intern)",
+    company: "CodencoIT",
+    url: "https://codencoit.com/",
+  },
   location: "Dhaka, Bangladesh",
   institution: "Dhaka International University",
   degree: "B.Sc. in Computer Science and Engineering",
@@ -14,7 +19,7 @@ export const personalInfo = {
   github: "https://github.com/assassinyousuf",
   linkedin: "https://www.linkedin.com/in/mdyousufhossainmehrab/",
   cvUrl: "/Md__Yousuf_Hossain_CV.pdf",
-  bio: "Computer Science and Engineering scholar specializing in zero-trust mobile execution security, infrastructure-free ad-hoc mesh networks, and real-time deep learning intrusion detection. Author and co-author on 5 peer-reviewed research publications (including Taylor & Francis book chapters) and active competitive CTF champion.",
+  bio: "Computer Science and Engineering undergraduate currently working as a Support Engineer Intern at CodencoIT, specializing in zero-trust mobile execution security, infrastructure-free ad-hoc mesh networks, and real-time deep learning intrusion detection. Author and co-author on 5 peer-reviewed research publications (including Taylor & Francis book chapters) and active competitive CTF champion.",
 };
 
 export const stats = [
@@ -366,6 +371,16 @@ export const achievementsList = [
 ];
 
 export const timelineEvents = [
+  {
+    period: "Present",
+    role: "Support Engineer (Intern)",
+    organization: "CodencoIT",
+    organizationUrl: "https://codencoit.com/",
+    type: "Industry Experience",
+    responsibilities: [
+      "Currently working as a Support Engineer Intern at CodencoIT."
+    ]
+  },
   {
     period: "2026 – Present",
     role: "General Secretary",

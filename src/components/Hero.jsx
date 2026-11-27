@@ -137,7 +137,15 @@ export default function Hero() {
                 {personalInfo.subtitle}
               </p>
               <p className="font-mono text-xs text-slate-400">
-                {personalInfo.institution} · {personalInfo.status}
+                {personalInfo.institution} · {personalInfo.status} · Intern at{" "}
+                <a
+                  href={personalInfo.currentRole.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-sky-400 hover:text-sky-300 underline underline-offset-4 transition-colors"
+                >
+                  {personalInfo.currentRole.company}
+                </a>
               </p>
             </div>
 
