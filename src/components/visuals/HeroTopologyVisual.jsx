@@ -1,40 +1,49 @@
 import React, { useState } from "react";
+import { ArrowUpRight } from "lucide-react";
 
 const NODES = [
   {
     id: "visiolock",
+    code: "PRJ-01",
     label: "VisioLock",
-    domain: "Acoustic Stego",
+    domain: "Acoustic Steganography",
     spec: "I2A3 · SAIC-ACT · RS(255,239) · FSK WAV",
-    x: 92,
-    y: 78,
-    accent: "cyan",
-  },
-  {
-    id: "safelink",
-    label: "SafeLink+",
-    domain: "Zero-Trust Sandbox",
-    spec: "Hidden WebView · JS Probes · RiskEngine",
-    x: 288,
-    y: 78,
+    metric: "< 0.05 BER ≥ 9 dB SNR",
+    x: 94,
+    y: 76,
     accent: "violet",
   },
   {
+    id: "safelink",
+    code: "PRJ-02",
+    label: "SafeLink+",
+    domain: "Zero-Trust Sandbox",
+    spec: "Hidden WebView · JS Probes · RiskEngine",
+    metric: "Ephemeral session wipe",
+    x: 286,
+    y: 76,
+    accent: "cyan",
+  },
+  {
     id: "mesh",
+    code: "PRJ-03",
     label: "GetConnect",
-    domain: "Offline Mesh",
+    domain: "Offline Hybrid Mesh",
     spec: "BLE Discovery · Wi-Fi Direct TCP:8080",
-    x: 92,
-    y: 238,
+    metric: "93.2% text · 92.6% PDR",
+    x: 94,
+    y: 230,
     accent: "cyan",
   },
   {
     id: "ids",
+    code: "PRJ-04/05",
     label: "Edge IDS & HCE",
-    domain: "Telemetry & NFC",
+    domain: "IoT DL & NFC Replay",
     spec: "1D-CNN+GRU · AES-256-CBC · 60s Nonce",
-    x: 288,
-    y: 238,
+    metric: "~98.9% acc · 6.5ms latency",
+    x: 286,
+    y: 230,
     accent: "violet",
   },
 ];
@@ -42,16 +51,26 @@ const NODES = [
 export default function HeroTopologyVisual() {
   const [activeId, setActiveId] = useState("visiolock");
   const activeNode = NODES.find((n) => n.id === activeId) || NODES[0];
+  const isViolet = activeNode.accent === "violet";
 
   return (
-    <div className="surface-panel rounded-2xl p-5 sm:p-6 w-full max-w-[400px] mx-auto lg:ml-auto">
-      <div className="flex items-center justify-between border-b border-[var(--border-subtle)] pb-3 mb-4 font-mono text-[11px]">
-        <span className="text-[#8C96A8]">Systems Architecture</span>
-        <span className="text-[#65D6E7]">4 Core Tracks</span>
+    <div className="relative surface-panel tech-grid-bg rounded-2xl p-5 sm:p-6 w-full max-w-[430px] mx-auto lg:ml-auto">
+      {/* Precision Architectural Corner Registration Ticks */}
+      <span aria-hidden="true" className="absolute top-2.5 left-2.5 h-2.5 w-2.5 border-t border-l border-[#65D6E7]/45" />
+      <span aria-hidden="true" className="absolute top-2.5 right-2.5 h-2.5 w-2.5 border-t border-r border-[#65D6E7]/45" />
+      <span aria-hidden="true" className="absolute bottom-2.5 left-2.5 h-2.5 w-2.5 border-b border-l border-[#65D6E7]/45" />
+      <span aria-hidden="true" className="absolute bottom-2.5 right-2.5 h-2.5 w-2.5 border-b border-r border-[#65D6E7]/45" />
+
+      <div className="flex items-center justify-between border-b border-[var(--border-subtle)] pb-3 mb-3.5 font-mono text-[11px]">
+        <span className="text-[#8A94A6] inline-flex items-center gap-2">
+          <span className="h-1.5 w-1.5 rounded-full bg-[#65D6E7]" />
+          SYSTEM ARCHITECTURE
+        </span>
+        <span className="text-[#65D6E7]">05 RESEARCH SYSTEMS</span>
       </div>
 
       <svg
-        viewBox="0 0 380 310"
+        viewBox="0 0 380 300"
         className="w-full h-auto select-none"
         role="img"
         aria-label="Interactive network and security system architecture diagram"
@@ -63,15 +82,15 @@ export default function HeroTopologyVisual() {
           </radialGradient>
         </defs>
 
-        <circle cx="190" cy="158" r="118" fill="none" stroke="rgba(140, 150, 168, 0.1)" strokeDasharray="3 5" />
-        <circle cx="190" cy="158" r="72" fill="none" stroke="rgba(101, 214, 231, 0.15)" />
-        <circle cx="190" cy="158" r="56" fill="url(#hubGlow)" />
+        <circle cx="190" cy="153" r="114" fill="none" stroke="rgba(148, 163, 184, 0.12)" strokeDasharray="3 5" />
+        <circle cx="190" cy="153" r="70" fill="none" stroke="rgba(101, 214, 231, 0.16)" />
+        <circle cx="190" cy="153" r="54" fill="url(#hubGlow)" />
 
         {/* Cross-connect mesh edges */}
-        <line x1="92" y1="78" x2="288" y2="78" stroke="rgba(140, 150, 168, 0.14)" strokeWidth="1" />
-        <line x1="92" y1="238" x2="288" y2="238" stroke="rgba(140, 150, 168, 0.14)" strokeWidth="1" />
-        <line x1="92" y1="78" x2="92" y2="238" stroke="rgba(140, 150, 168, 0.14)" strokeWidth="1" />
-        <line x1="288" y1="78" x2="288" y2="238" stroke="rgba(140, 150, 168, 0.14)" strokeWidth="1" />
+        <line x1="94" y1="76" x2="286" y2="76" stroke="rgba(148, 163, 184, 0.15)" strokeWidth="1" />
+        <line x1="94" y1="230" x2="286" y2="230" stroke="rgba(148, 163, 184, 0.15)" strokeWidth="1" />
+        <line x1="94" y1="76" x2="94" y2="230" stroke="rgba(148, 163, 184, 0.15)" strokeWidth="1" />
+        <line x1="286" y1="76" x2="286" y2="230" stroke="rgba(148, 163, 184, 0.15)" strokeWidth="1" />
 
         {/* Hub-to-node links */}
         {NODES.map((node) => {
@@ -81,33 +100,33 @@ export default function HeroTopologyVisual() {
             <line
               key={`link-${node.id}`}
               x1="190"
-              y1="158"
+              y1="153"
               x2={node.x}
               y2={node.y}
-              stroke={isActive ? activeStroke : "rgba(140, 150, 168, 0.22)"}
-              strokeWidth={isActive ? "1.7" : "1"}
+              stroke={isActive ? activeStroke : "rgba(148, 163, 184, 0.22)"}
+              strokeWidth={isActive ? "1.6" : "1"}
               strokeDasharray={isActive ? "none" : "3 3"}
             />
           );
         })}
 
         {/* Central Core Node */}
-        <g transform="translate(190,158)">
+        <g transform="translate(190,153)">
           <rect
-            x="-34"
+            x="-36"
             y="-22"
-            width="68"
+            width="72"
             height="44"
-            rx="10"
-            fill="#0B0D12"
+            rx="8"
+            fill="#07090D"
             stroke="#65D6E7"
-            strokeWidth="1.2"
+            strokeWidth="1.15"
           />
           <text
             x="0"
             y="-3"
             textAnchor="middle"
-            className="fill-[#E8E4DA] font-mono text-[10px] font-semibold"
+            className="fill-[#EDE9DF] font-mono text-[10px] font-semibold"
           >
             CORE
           </text>
@@ -140,32 +159,32 @@ export default function HeroTopologyVisual() {
               }}
             >
               <rect
-                x="-73"
+                x="-76"
                 y="-26"
-                width="146"
+                width="152"
                 height="52"
-                rx="10"
-                fill={isActive ? "#151922" : "rgba(11, 13, 18, 0.92)"}
-                stroke={isActive ? accentHex : "rgba(140, 150, 168, 0.24)"}
-                strokeWidth={isActive ? "1.5" : "1"}
+                rx="8"
+                fill={isActive ? "#141923" : "rgba(7, 9, 13, 0.92)"}
+                stroke={isActive ? accentHex : "rgba(148, 163, 184, 0.22)"}
+                strokeWidth={isActive ? "1.4" : "1"}
               />
               <circle
-                cx="-58"
+                cx="-60"
                 cy="0"
-                r="3.8"
-                fill={isActive ? accentHex : "#5C6575"}
+                r="3.5"
+                fill={isActive ? accentHex : "#5A6476"}
               />
               <text
-                x="-46"
+                x="-48"
                 y="-4"
-                className="fill-[#E8E4DA] font-sans text-[11px] font-semibold"
+                className="fill-[#EDE9DF] font-sans text-[11px] font-semibold"
               >
                 {node.label}
               </text>
               <text
-                x="-46"
+                x="-48"
                 y="11"
-                className="fill-[#8C96A8] font-mono text-[8px]"
+                className="fill-[#8A94A6] font-mono text-[8px]"
               >
                 {node.domain}
               </text>
@@ -174,16 +193,25 @@ export default function HeroTopologyVisual() {
         })}
       </svg>
 
-      {/* Active Route Spec Readout */}
-      <div className="mt-3 pt-3 border-t border-[var(--border-subtle)] flex flex-col gap-1">
+      {/* Active Node Telemetry Readout */}
+      <div className="mt-3 pt-3 border-t border-[var(--border-subtle)] space-y-1.5">
         <div className="flex items-center justify-between font-mono text-[11px]">
-          <span className={activeNode.accent === "violet" ? "text-[#A78BFA] font-medium" : "text-[#65D6E7] font-medium"}>
-            {activeNode.label}
+          <span className={isViolet ? "text-[#A78BFA] font-medium" : "text-[#65D6E7] font-medium"}>
+            {activeNode.code} · {activeNode.label}
           </span>
-          <span className="text-[#8C96A8]">{activeNode.domain}</span>
+          <span className="text-[#EDE9DF]">{activeNode.metric}</span>
         </div>
-        <div className="font-mono text-[11px] text-[#B4BCC9] truncate">
-          {activeNode.spec}
+        <div className="flex items-center justify-between gap-2">
+          <span className="font-mono text-[11px] text-[#8A94A6] truncate">
+            {activeNode.spec}
+          </span>
+          <a
+            href="#projects"
+            className="font-mono text-[11px] text-[#65D6E7] hover:text-[#8DE2EF] inline-flex items-center gap-0.5 shrink-0"
+          >
+            <span>Inspect</span>
+            <ArrowUpRight className="w-3 h-3" />
+          </a>
         </div>
       </div>
     </div>

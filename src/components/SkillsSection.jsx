@@ -3,11 +3,11 @@ import { categorizedSkills } from "../data/portfolioData";
 import { gsap } from "gsap";
 
 const DOMAIN_POSITIONS = [
-  { key: "networking", x: 115, y: 75, short: "Networking" },
-  { key: "cybersecurity", x: 305, y: 75, short: "Cybersecurity" },
-  { key: "systems", x: 75, y: 215, short: "Systems" },
-  { key: "programming", x: 210, y: 268, short: "Programming" },
-  { key: "tools", x: 345, y: 215, short: "Tools & DevOps" },
+  { key: "networking", code: "D-01", x: 112, y: 74, short: "Networking" },
+  { key: "cybersecurity", code: "D-02", x: 308, y: 74, short: "Cybersecurity" },
+  { key: "systems", code: "D-03", x: 74, y: 214, short: "Systems" },
+  { key: "programming", code: "D-04", x: 210, y: 266, short: "Programming" },
+  { key: "tools", code: "D-05", x: 346, y: 214, short: "Tools & DevOps" },
 ];
 
 export default function SkillsSection() {
@@ -17,6 +17,10 @@ export default function SkillsSection() {
   const visualRef = useRef(null);
 
   const activeCategory = categorizedSkills[selectedKey] || categorizedSkills.networking;
+  const totalCapabilities = Object.values(categorizedSkills).reduce(
+    (sum, cat) => sum + cat.prominent.length,
+    0
+  );
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -25,11 +29,11 @@ export default function SkillsSection() {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         headerRef.current,
-        { opacity: 0, y: 24 },
+        { opacity: 0, y: 20 },
         {
           opacity: 1,
           y: 0,
-          duration: 0.8,
+          duration: 0.75,
           ease: "power3.out",
           scrollTrigger: {
             trigger: headerRef.current,
@@ -42,11 +46,11 @@ export default function SkillsSection() {
       if (visualRef.current) {
         gsap.fromTo(
           visualRef.current,
-          { opacity: 0, y: 26 },
+          { opacity: 0, y: 22 },
           {
             opacity: 1,
             y: 0,
-            duration: 0.8,
+            duration: 0.75,
             ease: "power2.out",
             scrollTrigger: {
               trigger: visualRef.current,
@@ -65,33 +69,38 @@ export default function SkillsSection() {
     <section
       ref={sectionRef}
       id="skills"
-      className="relative py-20 sm:py-28 px-4 sm:px-6 md:px-8 bg-transparent border-t border-[var(--border-subtle)]"
+      className="relative py-20 sm:py-28 px-4 sm:px-6 md:px-8 section-band border-y border-[var(--border-subtle)]"
     >
       <div className="relative z-10 mx-auto max-w-6xl">
         
-        <div ref={headerRef} className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-          <div>
-            <div className="font-mono text-xs text-[#65D6E7] mb-2">
-              02 · Capabilities
-            </div>
-            <h2 className="font-display text-2xl sm:text-4xl font-semibold tracking-tight text-[#E8E4DA]">
+        <div ref={headerRef} className="mb-12 sm:mb-14">
+          <div className="flex items-center gap-4 font-mono text-xs mb-4">
+            <span className="text-[#65D6E7] tracking-wider">02 / CAPABILITIES</span>
+            <span className="h-[1px] flex-1 bg-[var(--border-subtle)]" />
+            <span className="text-[#8A94A6] hidden sm:inline">
+              5 DOMAINS · {totalCapabilities} DISCIPLINES
+            </span>
+          </div>
+
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <h2 className="font-display text-2xl sm:text-4xl font-medium tracking-[-0.025em] text-[#EDE9DF]">
               Technical Ecosystem
             </h2>
+            <p className="font-sans text-sm text-[#8A94A6] max-w-md leading-relaxed">
+              Connected engineering domains spanning enterprise routing, defensive security, Linux systems, and software tooling.
+            </p>
           </div>
-          <p className="font-sans text-sm text-[#8C96A8] max-w-md leading-relaxed">
-            Interactive map of connected engineering domains spanning enterprise routing, defensive security, Linux systems, and software tooling.
-          </p>
         </div>
 
         <div
           ref={visualRef}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start"
         >
-          {/* SVG Interactive Constellation Diagram */}
-          <div className="lg:col-span-6 surface-panel rounded-2xl p-5 sm:p-6">
+          {/* Left: Interactive Domain Constellation */}
+          <div className="lg:col-span-5 surface-panel tech-grid-bg rounded-2xl p-5 sm:p-6">
             <div className="flex items-center justify-between border-b border-[var(--border-subtle)] pb-3 mb-3 font-mono text-[11px]">
-              <span className="text-[#8C96A8]">Domain Constellation</span>
-              <span className="text-[#65D6E7]">Select a hub to inspect</span>
+              <span className="text-[#8A94A6]">DOMAIN TOPOLOGY</span>
+              <span className="text-[#65D6E7]">INSPECT HUB</span>
             </div>
 
             <svg
@@ -105,15 +114,15 @@ export default function SkillsSection() {
                 cy="158"
                 r="116"
                 fill="none"
-                stroke="rgba(140, 150, 168, 0.1)"
+                stroke="rgba(148, 163, 184, 0.12)"
                 strokeDasharray="3 5"
               />
 
-              {/* Secondary cross-domain links */}
-              <line x1="115" y1="75" x2="305" y2="75" stroke="rgba(167, 139, 250, 0.18)" strokeWidth="1" />
-              <line x1="75" y1="215" x2="345" y2="215" stroke="rgba(140, 150, 168, 0.15)" strokeWidth="1" />
-              <line x1="115" y1="75" x2="75" y2="215" stroke="rgba(140, 150, 168, 0.15)" strokeWidth="1" />
-              <line x1="305" y1="75" x2="345" y2="215" stroke="rgba(167, 139, 250, 0.18)" strokeWidth="1" />
+              {/* Cross-domain links */}
+              <line x1="112" y1="74" x2="308" y2="74" stroke="rgba(167, 139, 250, 0.2)" strokeWidth="1" />
+              <line x1="74" y1="214" x2="346" y2="214" stroke="rgba(148, 163, 184, 0.14)" strokeWidth="1" />
+              <line x1="112" y1="74" x2="74" y2="214" stroke="rgba(148, 163, 184, 0.14)" strokeWidth="1" />
+              <line x1="308" y1="74" x2="346" y2="214" stroke="rgba(167, 139, 250, 0.2)" strokeWidth="1" />
 
               {DOMAIN_POSITIONS.map((dom) => {
                 const isSelected = dom.key === selectedKey;
@@ -124,8 +133,8 @@ export default function SkillsSection() {
                     y1="158"
                     x2={dom.x}
                     y2={dom.y}
-                    stroke={isSelected ? "#65D6E7" : "rgba(140, 150, 168, 0.22)"}
-                    strokeWidth={isSelected ? "1.7" : "1"}
+                    stroke={isSelected ? "#65D6E7" : "rgba(148, 163, 184, 0.22)"}
+                    strokeWidth={isSelected ? "1.6" : "1"}
                   />
                 );
               })}
@@ -133,14 +142,14 @@ export default function SkillsSection() {
               <g transform="translate(210, 158)">
                 <circle
                   r="34"
-                  fill="#0B0D12"
+                  fill="#07090D"
                   stroke="#65D6E7"
-                  strokeWidth="1.2"
+                  strokeWidth="1.15"
                 />
                 <text
                   y="-3"
                   textAnchor="middle"
-                  className="fill-[#E8E4DA] font-mono text-[9.5px] font-semibold"
+                  className="fill-[#EDE9DF] font-mono text-[9.5px] font-semibold"
                 >
                   STACK
                 </text>
@@ -149,7 +158,7 @@ export default function SkillsSection() {
                   textAnchor="middle"
                   className="fill-[#65D6E7] font-mono text-[8px]"
                 >
-                  5 Domains
+                  5 Hubs
                 </text>
               </g>
 
@@ -174,21 +183,21 @@ export default function SkillsSection() {
                       y="-20"
                       width="116"
                       height="40"
-                      rx="10"
-                      fill={isSelected ? "#151922" : "rgba(11, 13, 18, 0.92)"}
-                      stroke={isSelected ? "#65D6E7" : "rgba(140, 150, 168, 0.25)"}
-                      strokeWidth={isSelected ? "1.5" : "1"}
+                      rx="8"
+                      fill={isSelected ? "#141923" : "rgba(7, 9, 13, 0.92)"}
+                      stroke={isSelected ? "#65D6E7" : "rgba(148, 163, 184, 0.24)"}
+                      strokeWidth={isSelected ? "1.4" : "1"}
                     />
                     <circle
                       cx="-42"
                       cy="0"
-                      r="3.5"
-                      fill={isSelected ? "#65D6E7" : "#5C6575"}
+                      r="3.2"
+                      fill={isSelected ? "#65D6E7" : "#5A6476"}
                     />
                     <text
                       x="-31"
                       y="3"
-                      className="fill-[#E8E4DA] font-sans text-[11px] font-semibold"
+                      className="fill-[#EDE9DF] font-sans text-[11px] font-semibold"
                     >
                       {dom.short}
                     </text>
@@ -198,55 +207,89 @@ export default function SkillsSection() {
             </svg>
           </div>
 
-          {/* Domain Blueprint Detail Panel */}
-          <div className="lg:col-span-6 flex flex-col gap-6">
-            <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none">
-              {DOMAIN_POSITIONS.map((dom) => (
-                <button
-                  key={dom.key}
-                  type="button"
-                  onClick={() => setSelectedKey(dom.key)}
-                  className={`px-3 py-1.5 rounded-lg font-sans text-xs transition-colors whitespace-nowrap shrink-0 border ${
-                    selectedKey === dom.key
-                      ? "bg-[#65D6E7]/15 text-[#65D6E7] border-[#65D6E7]/40 font-medium"
-                      : "bg-transparent text-[#8C96A8] hover:text-[#E8E4DA] border-[var(--border-subtle)]"
-                  }`}
-                >
-                  {dom.short}
-                </button>
-              ))}
+          {/* Right: Borderless Structured Specification Sheet */}
+          <div className="lg:col-span-7 flex flex-col gap-6">
+            {/* Clean Tab Rail */}
+            <div className="flex flex-nowrap lg:flex-wrap items-center gap-x-1 border-b border-[var(--border-subtle)] overflow-x-auto scrollbar-none">
+              {DOMAIN_POSITIONS.map((dom) => {
+                const isSelected = selectedKey === dom.key;
+                return (
+                  <button
+                    key={dom.key}
+                    type="button"
+                    onClick={() => setSelectedKey(dom.key)}
+                    className={`px-2.5 py-2.5 font-sans text-xs whitespace-nowrap shrink-0 border-b-2 transition-colors ${
+                      isSelected
+                        ? "border-[#65D6E7] text-[#EDE9DF] font-semibold"
+                        : "border-transparent text-[#8A94A6] hover:text-[#EDE9DF]"
+                    }`}
+                  >
+                    <span className="font-mono text-[10px] text-[#5A6476] mr-1">{dom.code}</span>
+                    {dom.short}
+                  </button>
+                );
+              })}
             </div>
 
-            <div className="surface-panel rounded-2xl p-6 sm:p-7">
-              <div className="flex items-baseline justify-between gap-4 border-b border-[var(--border-subtle)] pb-4 mb-5">
+            {/* Active Domain Specification Ledger */}
+            <div>
+              <div className="flex flex-wrap items-baseline justify-between gap-4 pb-5 border-b border-[var(--border-subtle)]">
                 <div>
-                  <h3 className="font-display text-xl sm:text-2xl font-semibold text-[#E8E4DA]">
+                  <h3 className="font-display text-xl sm:text-2xl font-medium text-[#EDE9DF]">
                     {activeCategory.title}
                   </h3>
-                  <p className="font-sans text-xs sm:text-sm text-[#8C96A8] mt-1">
+                  <p className="font-sans text-sm text-[#8A94A6] mt-1">
                     {activeCategory.summary}
                   </p>
                 </div>
                 <span className="font-mono text-xs text-[#65D6E7] shrink-0">
-                  {activeCategory.prominent.length} focus areas
+                  {activeCategory.prominent.length} tracked focus areas
                 </span>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 divide-y divide-[var(--border-subtle)] sm:divide-y-0">
                 {activeCategory.prominent.map((item, idx) => (
                   <div
                     key={item}
-                    className="p-3 rounded-xl surface-recessed flex items-start gap-2.5"
+                    className="py-3.5 sm:border-b sm:border-[var(--border-subtle)] flex items-baseline gap-3"
                   >
-                    <span className="font-mono text-[10px] text-[#65D6E7] mt-0.5 shrink-0 tabular-nums">
+                    <span className="font-mono text-[11px] text-[#65D6E7] shrink-0 tabular-nums">
                       0{idx + 1}
                     </span>
-                    <span className="font-sans text-xs sm:text-sm text-[#E8E4DA] leading-snug">
+                    <span className="font-sans text-sm text-[#EDE9DF] leading-snug">
                       {item}
                     </span>
                   </div>
                 ))}
               </div>
+            </div>
+
+            {/* Cross-Domain Summary Strip */}
+            <div className="pt-2 grid grid-cols-2 sm:grid-cols-5 gap-3">
+              {DOMAIN_POSITIONS.map((dom) => {
+                const count = categorizedSkills[dom.key]?.prominent.length || 0;
+                const active = selectedKey === dom.key;
+                return (
+                  <button
+                    key={`summary-${dom.key}`}
+                    type="button"
+                    onClick={() => setSelectedKey(dom.key)}
+                    className={`text-left p-2.5 rounded-lg border transition-colors ${
+                      active
+                        ? "border-[#65D6E7]/45 bg-[#65D6E7]/[0.06]"
+                        : "border-[var(--border-subtle)] bg-[#07090D]/55 hover:border-[var(--border-strong)]"
+                    }`}
+                  >
+                    <div className="font-mono text-[10px] text-[#5A6476]">{dom.code}</div>
+                    <div className="font-sans text-xs font-medium text-[#EDE9DF] truncate mt-0.5">
+                      {dom.short}
+                    </div>
+                    <div className="font-mono text-[10px] text-[#65D6E7] mt-0.5">
+                      {count} items
+                    </div>
+                  </button>
+                );
+              })}
             </div>
           </div>
         </div>

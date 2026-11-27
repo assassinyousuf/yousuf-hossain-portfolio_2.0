@@ -19,7 +19,7 @@ import Footer from "./components/Footer";
 export default function App() {
   return (
     <SmoothScroll>
-      <div className="relative min-h-screen bg-[#0B0D12] text-[#E8E4DA] selection:bg-[#65D6E7]/20 selection:text-[#65D6E7] overflow-x-clip">
+      <div className="relative min-h-screen bg-[#0B0D12] text-[#EDE9DF] selection:bg-[#65D6E7]/20 selection:text-[#65D6E7] overflow-x-clip">
         
         {/* Cinematic 3D Scroll-Choreographed WebGL Network Scene */}
         <CinematicNetworkScene />

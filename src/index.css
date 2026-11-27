@@ -6,12 +6,13 @@
   --font-mono: "JetBrains Mono", monospace;
 
   --color-bg-base: #0B0D12;
-  --color-bg-recessed: #080A0F;
-  --color-bg-elevated: #151922;
-  --color-text-primary: #E8E4DA;
-  --color-text-supporting: #B4BCC9;
-  --color-text-secondary: #8C96A8;
-  --color-text-muted: #5C6575;
+  --color-bg-recessed: #07090D;
+  --color-bg-band: #0F131B;
+  --color-bg-elevated: #141923;
+  --color-text-primary: #EDE9DF;
+  --color-text-supporting: #BAC2CF;
+  --color-text-secondary: #8A94A6;
+  --color-text-muted: #5A6476;
   --color-accent-cyan: #65D6E7;
   --color-accent-violet: #A78BFA;
 }
@@ -19,33 +20,34 @@
 :root {
   /* Core Surfaces */
   --bg-obsidian: #0B0D12;
-  --bg-recessed: #080A0F;
-  --bg-elevated: #151922;
-  --surface-glass: rgba(21, 25, 34, 0.76);
-  --surface-glass-strong: rgba(15, 18, 26, 0.92);
-  --overlay-scrim: rgba(8, 10, 15, 0.82);
+  --bg-recessed: #07090D;
+  --bg-band: rgba(15, 19, 27, 0.72);
+  --bg-elevated: #141923;
+  --surface-glass: rgba(17, 21, 30, 0.78);
+  --surface-glass-strong: rgba(12, 15, 22, 0.92);
+  --overlay-scrim: rgba(7, 9, 13, 0.84);
 
   /* Typography */
-  --text-ivory: #E8E4DA;
-  --text-supporting: #B4BCC9;
-  --text-slate: #8C96A8;
-  --text-faint: #5C6575;
+  --text-ivory: #EDE9DF;
+  --text-supporting: #BAC2CF;
+  --text-slate: #8A94A6;
+  --text-faint: #5A6476;
 
   /* Brand & Technical Accents */
   --accent-cyan: #65D6E7;
-  --accent-cyan-hover: #8CE1EE;
-  --accent-cyan-soft: rgba(101, 214, 231, 0.12);
+  --accent-cyan-hover: #8DE2EF;
+  --accent-cyan-soft: rgba(101, 214, 231, 0.10);
   --accent-violet: #A78BFA;
-  --accent-violet-soft: rgba(167, 139, 250, 0.12);
+  --accent-violet-soft: rgba(167, 139, 250, 0.11);
 
   /* Borders & States */
-  --border-subtle: rgba(140, 150, 168, 0.15);
-  --border-strong: rgba(140, 150, 168, 0.28);
-  --border-cyan: rgba(101, 214, 231, 0.38);
+  --border-subtle: rgba(148, 163, 184, 0.14);
+  --border-strong: rgba(148, 163, 184, 0.26);
+  --border-cyan: rgba(101, 214, 231, 0.36);
   --border-violet: rgba(167, 139, 250, 0.36);
 
   /* Shadows & Focus */
-  --shadow-surface: 0 18px 46px rgba(4, 6, 10, 0.58);
+  --shadow-surface: 0 20px 50px rgba(3, 5, 9, 0.56);
   --focus-ring: #65D6E7;
 }
 
@@ -72,11 +74,11 @@ body {
   50% { height: 100%; }
 }
 
-/* Unified Elevated Dark Surface */
+/* Architectural Engineering Surface */
 .surface-panel {
   background: var(--surface-glass);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--border-subtle);
   box-shadow: var(--shadow-surface);
   transition: border-color 0.25s ease, background-color 0.25s ease, transform 0.25s ease;
@@ -89,6 +91,27 @@ body {
 .surface-recessed {
   background: var(--bg-recessed);
   border: 1px solid var(--border-subtle);
+}
+
+.section-band {
+  background: linear-gradient(180deg, rgba(15, 19, 27, 0.68) 0%, rgba(11, 13, 18, 0.52) 100%);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Subtle Architectural Grid Overlay for Technical Plates */
+.tech-grid-bg {
+  background-image:
+    linear-gradient(to right, rgba(148, 163, 184, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 163, 184, 0.045) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Archival Specimen Matting for White-Background Paper Figures */
+.specimen-plate {
+  background: #F4F1EA;
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  box-shadow: inset 0 0 0 1px rgba(11, 13, 18, 0.06);
 }
 
 /* Accessible Instant Focus Ring */
